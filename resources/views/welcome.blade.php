@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/img/maskot.png') }}" alt="maskot" class="mx-auto d-block m-4 image-fluid">
+                        <img src="{{ asset('assets/img/maskot.png') }}" alt="maskot" class="mx-auto d-block m-4 image-fluid" style="max-width: 200px;">
                     </div>
                     <div class="col-md-6">
                         <table style="height: 100%;">
@@ -67,6 +67,7 @@
             </div>
         </div>
 
+        <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap4/bootstrap.min.js') }}"></script>
     </body>
 </html>
