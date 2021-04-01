@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap4/bootstrap.min.js') }}"></script>
 </body>
 </html>

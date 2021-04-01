@@ -21,15 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/client', [ClientController::class, 'index'])->name('client');
-Route::get('/client/form-syarat', [ClientController::class, 'formSyarat'])->name('client.form.syarat');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporan/pengunjung', [LaporanController::class, 'pengunjung'])->name('laporan.pengunjung');
+    Route::get('/laporan/pengunjung/json', [LaporanController::class, 'pengunjungJson'])->name('laporan.pengunjung.json');
 
     Route::resource('karyawan', MasterKaryawanController::class);
     Route::get('karyawan/{id}/delete', [MasterKaryawanController::class, 'delete'])->name('karyawan.delete');
