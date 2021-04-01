@@ -15,6 +15,6 @@ class ClientController extends Controller
 
     public function formSyarat()
     {
-        return view('client.form-rekrutmen');
+        return view('client.form-syarat');
     }
 }
