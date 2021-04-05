@@ -90,7 +90,7 @@
                        with font-awesome or any other icon font library -->
                   @foreach (Auth::user()->load('masterKaryawan.masterJabatan.jabatanMenu')->masterKaryawan->masterJabatan->jabatanMenu as $item)
                     <li class="nav-item">
-                      <a href="{{ $item->masterMenu->link }}" class="nav-link">
+                      <a href="{{ url($item->masterMenu->link) }}" class="nav-link">
                         <i class="nav-icon fas fa-arrow-circle-right"></i>
                         <p>
                           {{ $item->masterMenu->nama_menu }}

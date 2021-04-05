@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HcLokerController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\HcLamaranController;
 use App\Http\Controllers\MasterKaryawanController;
 
 /*
@@ -34,4 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('hc/loker', HcLokerController::class);
     Route::get('hc/loker/{id}/delete', [HcLokerController::class, 'delete'])->name('loker.delete');
+
+    Route::resource('hc/lamaran', HcLamaranController::class);
+    Route::get('hc/lamaran/{id}/delete', [HcLamaranController::class, 'delete'])->name('lamaran.delete');
+    Route::get('hc/lamaran/{id}/rekrutmen', [HcLamaranController::class, 'rekrutmen'])->name('lamaran.rekrutmen');
 });
