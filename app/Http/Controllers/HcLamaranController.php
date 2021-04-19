@@ -50,7 +50,9 @@ class HcLamaranController extends Controller
      */
     public function show($id)
     {
-        //
+        $lamaran = HcLamaran::with('masterJabatan')->find($id);
+
+        return view('lamaran.detail', ['lamaran' => $lamaran]);
     }
 
     /**
@@ -105,5 +107,19 @@ class HcLamaranController extends Controller
         $lamaran->save();
 
         return redirect()->route('lamaran.index');
+    }
+
+    public function gagal($id)
+    {
+        $lamaran = HcLamaran::find($id);
+        $lamaran->status_lamaran = 4;
+        $lamaran->save();
+    }
+
+    public function interview($id)
+    {
+        $lamaran = HcLamaran::find($id);
+        $lamaran->status_lamaran = 5;
+        $lamaran->save();
     }
 }

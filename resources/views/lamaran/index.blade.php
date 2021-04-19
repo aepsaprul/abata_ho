@@ -73,34 +73,49 @@
 											<td>{{ $lamaran->nama_lengkap }}</td>
 											<td>{{ $lamaran->telepon }}</td>
 											<td>{{ $lamaran->email }}</td>
+
+											
+											
 											<td class="text-center">
 												@if ($lamaran->status_lamaran == 1)
-														<b>{{ 'Persyaratan Masuk' }}</b>
-													</td>
-													<td class="text-center">
-														<a href="https://api.whatsapp.com/send?phone=+6281337667055&text=bit.ly/2Wpn5j7" target="_blank" class="btn btn-success">WA</a> |
-														<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a> | 
+														<b>{{ 'Persyaratan Masuk' }}</b> 
 												@elseif ($lamaran->status_lamaran == 2)
-														<b>{{ 'Mengisi Form Rekrutmen' }}</b>
-													</td>
-													<td class="text-center">
-														<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a> | 
+														<b>{{ 'Mengisi Form Rekrutmen' }}</b> 
 												@elseif ($lamaran->status_lamaran == 3)
-														<b>{{ 'Interview' }}</b>
+														<b>{{ 'Form Rekrutmen Telah Diisi' }}</b>
 													</td>
-													<td class="text-center">
-														<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a> | 
 												@elseif ($lamaran->status_lamaran == 4)
-														<b>{{ 'Gagal' }}</b>
-													</td>
-													<td class="text-center">
-														<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a> | 
+													<b>{{ 'Gagal' }}</b>
+												@elseif ($lamaran->status_lamaran == 5)
+													<b>{{ 'Interview' }}</b>
 												@else 
-													{{ '-' }}</td>
-													<td class="text-center">
-														<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a> | 
+													{{ '-' }}</td> 
 												@endif
-														<a href="{{ route('lamaran.edit', [$lamaran->id]) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a> | <a href="{{ route('lamaran.delete', [$lamaran->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
+											</td>
+											<td class="text-center">
+												<div class="dropdown dropleft">
+													<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														<i class="fa fa-cog"></i>
+													</button>
+													<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+														@if ($lamaran->status_lamaran == 1)
+															<a href="https://api.whatsapp.com/send?phone=+6281337667055&text=bit.ly/2Wpn5j7" target="_blank" class="dropdown-item">WA</a>
+															<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
+														@elseif ($lamaran->status_lamaran == 2)
+															<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
+														@elseif ($lamaran->status_lamaran == 3)
+															<a href="{{ route('lamaran.gagal', [$lamaran->id]) }}" class="dropdown-item">Gagal</a>
+															<a href="{{ route('lamaran.interview', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
+														@else 
+															
+														@endif
+
+														<a href="{{ route('lamaran.show', [$lamaran->id]) }}" class="dropdown-item" title="view">Detail</a>
+														<a href="{{ route('lamaran.edit', [$lamaran->id]) }}" class="dropdown-item" title="edit">Edit</a>
+														<a href="{{ route('lamaran.delete', [$lamaran->id]) }}" class="dropdown-item" onclick="return confirm('Yakin akan dihapus?')" title="hapus">Hapus</a>
+													</div>
+												</div>
 											</td>
 										</tr>
 									
