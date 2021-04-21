@@ -42,39 +42,39 @@
 							<div class="row">
 								<div class="col-md-6">
 									<dl class="row">
-										<dt class="col-sm-4">Posisi</dt>
+										<dt class="col-sm-4 p-2">Posisi</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->masterJabatan->nama_jabatan }}</dd>
-										<dt class="col-sm-4">Nama Lengkap</dt>
+										<dt class="col-sm-4 p-2">Nama Lengkap</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->nama_lengkap }}</dd>
-										<dt class="col-sm-4">Nama Panggilan</dt>
+										<dt class="col-sm-4 p-2">Nama Panggilan</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->nama_panggilan }}</dd>
-										<dt class="col-sm-4">Telepon</dt>
-										<dd class="col-sm-8">{{ $lamaran->telepon }}</dd>
-										<dt class="col-sm-4">Email</dt>
+										<dt class="col-sm-4 p-2">Telepon</dt>
+										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->telepon }}</dd>
+										<dt class="col-sm-4 p-2">Email</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->email }}</dd>
-										<dt class="col-sm-4">Nomor KTP</dt>
+										<dt class="col-sm-4 p-2">Nomor KTP</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->nomor_ktp }}</dd>
-										<dt class="col-sm-4">Nomor SIM</dt>
+										<dt class="col-sm-4 p-2">Nomor SIM</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->nomor_sim }}</dd>
 									</dl>
 								</div>
 								<div class="col-md-6">
 									<dl class="row">
-										<dt class="col-sm-4">Tempat Lahir</dt>
+										<dt class="col-sm-4 p-2">Tempat Lahir</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->tempat_lahir }}</dd>
-										<dt class="col-sm-4">Tanggal Lahir</dt>
+										<dt class="col-sm-4 p-2">Tanggal Lahir</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->tanggal_lahir }}</dd>
-										<dt class="col-sm-4">Agama</dt>
+										<dt class="col-sm-4 p-2">Agama</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->agama }}</dd>
-										<dt class="col-sm-4">Jenis Kelamin</dt>
+										<dt class="col-sm-4 p-2">Jenis Kelamin</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->jenis_kelamin }}</dd>
-										<dt class="col-sm-4">Alamat KTP</dt>
+										<dt class="col-sm-4 p-2">Alamat KTP</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->agama }}</dd>
-										<dt class="col-sm-4">Alamat Sekarang</dt>
+										<dt class="col-sm-4 p-2">Alamat Sekarang</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->alamat_sekarang }}</dd>
-										<dt class="col-sm-4">Status Perkawinan</dt>
+										<dt class="col-sm-4 p-2">Status Perkawinan</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->status_perkawinan }}</dd>										
-										<dt class="col-sm-4">Pernyataan</dt>
+										<dt class="col-sm-4 p-2">Pernyataan</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->pernyataan }}</dd>
 									</dl>
 								</div>
