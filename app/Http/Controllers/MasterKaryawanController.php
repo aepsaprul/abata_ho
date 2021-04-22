@@ -114,6 +114,7 @@ class MasterKaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $karyawan = MasterKaryawan::find($id);
         $karyawan->nama_lengkap = $request->nama_lengkap;
         $karyawan->nama_panggilan = $request->nama_panggilan;
@@ -121,6 +122,20 @@ class MasterKaryawanController extends Controller
         $karyawan->telepon = $request->telepon;
         $karyawan->master_cabang_id = $request->master_cabang_id;
         $karyawan->master_jabatan_id = $request->master_jabatan_id;
+        $karyawan->tempat_lahir = $request->tempat_lahir;
+        $karyawan->tanggal_lahir = $request->tanggal_lahir;
+        $karyawan->nomor_ktp = $request->nomor_ktp;
+        $karyawan->nomor_sim = $request->nomor_sim;
+        $karyawan->agama = $request->agama;
+        $karyawan->jenis_kelamin = $request->jenis_kelamin;
+        $karyawan->alamat_asal = $request->alamat_ktp;
+        $karyawan->alamat_domisili = $request->alamat_sekarang;
+        $karyawan->status_perkawinan = $request->status_perkawinan;
+        $karyawan->tanggal_masuk = $request->tanggal_masuk;
+        $karyawan->tanggal_keluar = $request->tanggal_keluar;
+        $karyawan->alasan = $request->alasan;
+        $karyawan->tanggal_pengambilan_ijazah = $request->tanggal_pengambilan_ijazah;
+        $karyawan->status = $request->status;
         $karyawan->updated_by = Auth::user()->id;
 
         if($request->file('foto')) {

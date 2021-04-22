@@ -85,9 +85,13 @@
 														<b>{{ 'Form Rekrutmen Telah Diisi' }}</b>
 													</td>
 												@elseif ($lamaran->status_lamaran == 4)
-													<b>{{ 'Gagal' }}</b>
+													<b>{{ 'Gagal Interview' }}</b>
 												@elseif ($lamaran->status_lamaran == 5)
-													<b>{{ 'Interview' }}</b>
+													<b>{{ 'Lanjut Interview' }}</b>
+												@elseif ($lamaran->status_lamaran == 6)
+													<b>{{ 'Gagal' }}</b>
+												@elseif ($lamaran->status_lamaran == 7)
+													<b>{{ 'Terima' }}</b>
 												@else 
 													{{ '-' }}</td> 
 												@endif
@@ -100,19 +104,22 @@
 													<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
 														@if ($lamaran->status_lamaran == 1)
-															<a href="https://api.whatsapp.com/send?phone=+6281337667055&text=bit.ly/2Wpn5j7" target="_blank" class="dropdown-item">WA</a>
+															@php $nomor_telepon =  substr($lamaran->telepon, 1,13); @endphp
+															<a href="https://api.whatsapp.com/send?phone=+62{{ $nomor_telepon }}&text=bit.ly/2Wpn5j7" target="_blank" class="dropdown-item">WA</a>
 															<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
 														@elseif ($lamaran->status_lamaran == 2)
 															<a href="{{ route('lamaran.rekrutmen', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
 														@elseif ($lamaran->status_lamaran == 3)
+															<a href="{{ route('lamaran.gagal.interview', [$lamaran->id]) }}" class="dropdown-item">Gagal Interview</a>
+															<a href="{{ route('lamaran.interview', [$lamaran->id]) }}" class="dropdown-item">Lanjut Interview</a> 
+														@elseif ($lamaran->status_lamaran == 5)
 															<a href="{{ route('lamaran.gagal', [$lamaran->id]) }}" class="dropdown-item">Gagal</a>
-															<a href="{{ route('lamaran.interview', [$lamaran->id]) }}" class="dropdown-item">Lanjut</a> 
+															<a href="{{ route('lamaran.terima', [$lamaran->id]) }}" class="dropdown-item">Terima</a>
 														@else 
 															
 														@endif
 
 														<a href="{{ route('lamaran.show', [$lamaran->id]) }}" class="dropdown-item" title="view">Detail</a>
-														<a href="{{ route('lamaran.edit', [$lamaran->id]) }}" class="dropdown-item" title="edit">Edit</a>
 														<a href="{{ route('lamaran.delete', [$lamaran->id]) }}" class="dropdown-item" onclick="return confirm('Yakin akan dihapus?')" title="hapus">Hapus</a>
 													</div>
 												</div>
