@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HcLokerController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\HcLamaranController;
+use App\Http\Controllers\HcTrainingController;
 use App\Http\Controllers\MasterKaryawanController;
 
 /*
@@ -43,4 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hc/lamaran/{id}/interview', [HcLamaranController::class, 'interview'])->name('lamaran.interview');
     Route::get('hc/lamaran/{id}/gagal', [HcLamaranController::class, 'gagal'])->name('lamaran.gagal');
     Route::get('hc/lamaran/{id}/terima', [HcLamaranController::class, 'terima'])->name('lamaran.terima');
+    
+    Route::resource('hc/training', HcTrainingController::class);
+    Route::get('hc/training/{id}/delete', [HcTrainingController::class, 'delete'])->name('training.delete');
 });

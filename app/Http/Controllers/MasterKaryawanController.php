@@ -87,7 +87,11 @@ class MasterKaryawanController extends Controller
      */
     public function show($id)
     {
-        //
+        $karyawan = MasterKaryawan::find($id);
+        $cabangs = MasterCabang::get();
+        $jabatans = MasterJabatan::get();
+        
+        return view('karyawan.detail', ['karyawan' => $karyawan, 'cabangs' => $cabangs, 'jabatans' => $jabatans]);
     }
 
     /**

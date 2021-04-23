@@ -49,7 +49,7 @@
 					@endif
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><a href="{{ route('karyawan.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+							<h3 class="card-title"><a href="{{ route('training.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -57,26 +57,24 @@
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Nama Lengkap</th>
-									<th>Telepon</th>
-									<th>Email</th>
-									<th>Cabang</th>
-									<th>Jabatan</th>
+									<th>Kategori</th>
+									<th>Judul</th>
+									<th>Divisi</th>
+									<th>Tanggal</th>
 									<th>#</th>
 								</tr>
 								</thead>
 								<tbody>
-									@foreach ($karyawans as $key => $karyawan)
+									@foreach ($trainings as $key => $training)
 										
 										<tr>
 											<td class="nomor">{{ $key + 1 }}</td>
-											<td>{{ $karyawan->nama_lengkap }}</td>
-											<td>{{ $karyawan->telepon }}</td>
-											<td>{{ $karyawan->email }}</td>
-											<td>{{ $karyawan->masterCabang ? $karyawan->masterCabang->nama_cabang : '-' }}</td>
-											<td>{{ $karyawan->masterJabatan ? $karyawan->masterJabatan->nama_jabatan : '-' }}</td>
+											<td>{{ $training->kategori }}</td>
+											<td>{{ $training->judul }}</td>
+											<td>{{ $training->masterDivisi->nama }}</td>
+											<td>{{ $training->tanggal }}</td>
 											<td class="text-center">
-												<a href="{{ route('karyawan.show', [$karyawan->id]) }}" class="btn btn-info"><i class="fa fa-eye"></i></a> | <a href="{{ route('karyawan.edit', [$karyawan->id]) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a> | <a href="{{ route('karyawan.delete', [$karyawan->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('training.show', [$training->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('training.edit', [$training->id]) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a> | <a href="{{ route('training.delete', [$training->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 									
