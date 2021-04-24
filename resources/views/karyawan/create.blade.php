@@ -1,8 +1,22 @@
 @extends('layouts.app')
 
 @section('style')
-  <!-- Tempusdominus Bbootstrap 4 -->
+
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+  <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
+	<style>
+		input:focus{
+				outline: none;
+		}
+
+		select {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
 @endsection
 
 @section('content')
@@ -37,447 +51,397 @@
 							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/karyawan') }}">BACK</a></h3>
 						</div>
 						<!-- /.card-header -->
-						<!-- form start -->
-						<form role="form" action="{{ route('karyawan.store') }}" method="POST" enctype="multipart/form-data">
-							@csrf
-							<div class="card-body">
-								<div class="row">
-
-									{{-- nama lengkap  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="nama_lengkap">Nama Lengkap</label>
-											<input type="text" name="nama_lengkap" class="form-control @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap" placeholder="Masukkan nama lengkap" required autofocus value="{{ old('nama_lengkap') }}">
-										</div>
-									</div>
-
-									@error('nama_lengkap')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- nama panggilan  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="nama_panggilan">Nama Panggilan</label>
-											<input type="text" name="nama_panggilan" class="form-control @error('nama_panggilan') is-invalid @enderror" id="nama_panggilan" placeholder="Masukkan nama panggilan" required autofocus value="{{ old('nama_panggilan') }}">
-										</div>
-									</div>
-
-									@error('nama_panggilan')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								
-									{{-- cabang  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="master_cabang_id">Cabang</label>
-											<select name="master_cabang_id" id="master_cabang_id" class="form-control">
-												@foreach ($cabangs as $cabang)
-													<option value="{{ $cabang->id }}">{{ $cabang->nama_cabang }}</option>
-												@endforeach
-											</select>
-										</div>
-									</div>
-								
-									{{-- jabatan  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="master_jabatan_id">Jabatan</label>
-											<select name="master_jabatan_id" id="master_jabatan_id" class="form-control">
-												@foreach ($jabatans as $jabatan)
-													<option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
-												@endforeach
-											</select>
-										</div>
-									</div>
-
-									{{-- nomor ktp  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="nomor_ktp">Nomor KTP</label>
-											<input type="text" name="nomor_ktp" class="form-control @error('nomor_ktp') is-invalid @enderror" id="nomor_ktp" placeholder="Masukkan nomor KTP" required autofocus value="{{ old('nomor_ktp') }}">
-										</div>
-									</div>
-
-									@error('nomor_ktp')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								
-									{{-- email  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="email">Email</label>
-											<input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Masukkan email" required autofocus value="{{ old('email') }}">
-										</div>
-									</div>
-
-									@error('email')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								
-									{{-- telepon  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="telepon">Telepon</label>
-											<input type="text" name="telepon" class="form-control @error('telepon') is-invalid @enderror" id="telepon" placeholder="Masukkan telepon" required autofocus value="{{ old('telepon') }}">
-										</div>
-									</div>
-
-									@error('telepon')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								
-									{{-- telepon darurat  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="telepon_darurat">Telepon Darurat</label>
-											<input type="text" name="telepon_darurat" class="form-control @error('telepon_darurat') is-invalid @enderror" id="telepon_darurat" placeholder="Masukkan telepon darurat" required autofocus value="{{ old('telepon_darurat') }}">
-										</div>
-									</div>
-
-									@error('telepon_darurat')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-									
-									{{-- tanggal masuk  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Tanggal Masuk:</label>
-												<div class="input-group date" id="tanggal_masuk" data-target-input="nearest">
-													<input type="text" class="form-control datetimepicker-input" data-target="#tanggal_masuk" name="tanggal_masuk"/>
-													<div class="input-group-append" data-target="#tanggal_masuk" data-toggle="datetimepicker">
-															<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="row">
+										<div class="col-md-12">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Foto</dt>
+												<dd class="col-sm-10 rounded ml-4">
+													<input type="file" name="foto" class="form-control pl-0" id="foto" style="border: none; width: 100%;">
+												</dd>
+												<dt class="col-sm-8 ml-3 ml-2">Mulai Kontrak</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+													<div class="input-group date" id="mulai_kontrak" data-target-input="nearest">
+														<input type="text" class="form-control datetimepicker-input" data-target="#mulai_kontrak" name="mulai_kontrak" style="border: none;"/>
+														<div class="input-group-append" data-target="#mulai_kontrak" data-toggle="datetimepicker">
+																<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+														</div>
 													</div>
-												</div>
-										</div>
-									</div>		
-									
-									@error('tanggal_masuk')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- mulai kontrak  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Mulai Kontrak:</label>
-												<div class="input-group date" id="mulai_kontrak" data-target-input="nearest">
-													<input type="text" class="form-control datetimepicker-input" data-target="#mulai_kontrak" name="mulai_kontrak"/>
-													<div class="input-group-append" data-target="#mulai_kontrak" data-toggle="datetimepicker">
-															<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</dd>
+												<dt class="col-sm-8 ml-3">Lama Kontrak</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+													<input type="text" name="lama_kontrak" class="form-control" id="lama_kontrak" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Akhir Kontrak</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+													<div class="input-group date" id="akhir_kontrak" data-target-input="nearest">
+														<input type="text" class="form-control datetimepicker-input" data-target="#akhir_kontrak" name="akhir_kontrak" style="border: none;"/>
+														<div class="input-group-append" data-target="#akhir_kontrak" data-toggle="datetimepicker">
+																<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+														</div>
 													</div>
-												</div>
-										</div>
-									</div>		
-									
-									@error('mulai_kontrak')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- masa kontrak  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="masa_kontrak">Masa Kontrak</label>
-											<input type="text" name="masa_kontrak" class="form-control @error('masa_kontrak') is-invalid @enderror" id="masa_kontrak" placeholder="Masukkan masa kontrak" required autofocus value="{{ old('masa_kontrak') }}">
-										</div>
-									</div>
-
-									@error('masa_kontrak')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- berakhir kontrak  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Berakhir Kontrak:</label>
-												<div class="input-group date" id="berakhir_kontrak" data-target-input="nearest">
-													<input type="text" class="form-control datetimepicker-input" data-target="#berakhir_kontrak" name="berakhir_kontrak"/>
-													<div class="input-group-append" data-target="#berakhir_kontrak" data-toggle="datetimepicker">
-															<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-													</div>
-												</div>
-										</div>
-									</div>		
-									
-									@error('berakhir_kontrak')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								
-									{{-- jenis kelamin  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="jenis_kelamin">Jenis Kelamin</label>
-											<input type="text" name="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin" placeholder="Masukkan jenis kelamin" required autofocus value="{{ old('jenis_kelamin') }}">
-										</div>
-									</div>
-
-									@error('jenis_kelamin')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- tempat lahir  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="tempat_lahir">Tempat Lahir</label>
-											<input type="text" name="tempat_lahir" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" placeholder="Masukkan tempat lahir" required autofocus value="{{ old('tempat_lahir') }}">
-										</div>
-									</div>
-
-									@error('tempat_lahir')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- tanggal lahir  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="tanggal_lahir">Tanggal Lahir</label>
-											<input type="text" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" placeholder="Masukkan tanggal lahir" required autofocus value="{{ old('tanggal_lahir') }}">
-										</div>
-									</div>
-
-									@error('tanggal_lahir')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- usia  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="usia">Usia</label>
-											<input type="text" name="usia" class="form-control @error('usia') is-invalid @enderror" id="usia" placeholder="Masukkan usia" required autofocus value="{{ old('usia') }}">
-										</div>
-									</div>
-
-									@error('usia')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- pendidikan  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="pendidikan">Pendidikan</label>
-											<input type="text" name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror" id="pendidikan" placeholder="Masukkan pendidikan" required autofocus value="{{ old('pendidikan') }}">
-										</div>
-									</div>
-
-									@error('pendidikan')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- status  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="status">Status</label>
-											<input type="text" name="status" class="form-control @error('status') is-invalid @enderror" id="status" placeholder="Masukkan status" required autofocus value="{{ old('status') }}">
-										</div>
-									</div>
-
-									@error('status')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- ibu kandung  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="ibu_kandung">Ibu Kandung</label>
-											<input type="text" name="ibu_kandung" class="form-control @error('ibu_kandung') is-invalid @enderror" id="ibu_kandung" placeholder="Masukkan ibu kandung" required autofocus value="{{ old('ibu_kandung') }}">
-										</div>
-									</div>
-
-									@error('ibu_kandung')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- alamat asal  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="alamat_asal">Alamat Asal</label>
-											<input type="text" name="alamat_asal" class="form-control @error('alamat_asal') is-invalid @enderror" id="alamat_asal" placeholder="Masukkan alamat asal" required autofocus value="{{ old('alamat_asal') }}">
-										</div>
-									</div>
-
-									@error('alamat_asal')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- alamat domisili  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="alamat_domisili">Alamat Domisili</label>
-											<input type="text" name="alamat_domisili" class="form-control @error('alamat_domisili') is-invalid @enderror" id="alamat_domisili" placeholder="Masukkan alamat domisili" required autofocus value="{{ old('alamat_domisili') }}">
-										</div>
-									</div>
-
-									@error('alamat_domisili')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-									{{-- alamat keluarga dekat  --}}
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="alamat_keluarga_dekat">Alamat Keluarga Dekat</label>
-											<input type="text" name="alamat_keluarga_dekat" class="form-control @error('alamat_keluarga_dekat') is-invalid @enderror" id="alamat_keluarga_dekat" placeholder="Masukkan alamat keluarga dekat" required autofocus value="{{ old('alamat_keluarga_dekat') }}">
-										</div>
-									</div>
-
-									@error('alamat_keluarga_dekat')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-
-								</div>
-								<hr style="border: 2px solid #000;">
-								{{-- ========================================== susunan keluarga ========================================================================= --}}
-								<h4>Susunan Keluarga</h4>
-								
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group fieldGroup">
-											<div class="row">
-
-												{{-- hubungan  --}}
-												<div class="col-md-2">												
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_hubungan[]" class="form-control @error('susunan_keluarga_hubungan') is-invalid @enderror" id="susunan_keluarga_hubungan" placeholder="Suami / Istri" required autofocus value="{{ old('susunan_keluarga_hubungan') }}">
-													</div>
-												</div>
-
-												{{-- nama  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_nama[]" class="form-control @error('susunan_keluarga_nama') is-invalid @enderror" id="susunan_keluarga_nama" placeholder="Nama" required autofocus value="{{ old('susunan_keluarga_nama') }}">
-													</div>
-												</div>
-
-												{{-- jenis kelamin  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_jenis_kelamin[]" class="form-control @error('susunan_keluarga_jenis_kelamin') is-invalid @enderror" id="susunan_keluarga_jenis_kelamin" placeholder="Jenis Kelamin" required autofocus value="{{ old('susunan_keluarga_jenis_kelamin') }}">
-													</div>
-												</div>
-
-												{{-- usia  --}}
-												<div class="col-md-1">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_usia" class="form-control @error('susunan_keluarga_usia') is-invalid @enderror" id="susunan_keluarga_usia" placeholder="Usia" required autofocus value="{{ old('susunan_keluarga_usia') }}">
-													</div>
-												</div>
-
-												{{-- pendidikan akhir  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_pendidikan_akhir" class="form-control @error('susunan_keluarga_pendidikan_akhir') is-invalid @enderror" id="susunan_keluarga_pendidikan_akhir" placeholder="Pendidikan Akhir" required autofocus value="{{ old('susunan_keluarga_pendidikan_akhir') }}">
-													</div>
-												</div>
-
-												{{-- pekerjaan terakhir  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_pekerjaan_terakhir" class="form-control @error('susunan_keluarga_pekerjaan_terakhir') is-invalid @enderror" id="susunan_keluarga_pekerjaan_terakhir" placeholder="Pekerjaan Terakhir" required autofocus value="{{ old('susunan_keluarga_pekerjaan_terakhir') }}">
-													</div>
-												</div>
-
-												<div class="col-md-1"> 
-													<a href="javascript:void(0)" class="btn btn-success addMore"><i class="fas fa-plus"></i></a>
-												</div>
-											</div>
-										</div>
-														
-										<div class="form-group fieldGroupCopy" style="display: none;">
-											<div class="row">
-												{{-- hubungan  --}}
-												<div class="col-md-2">												
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_hubungan[]" class="form-control @error('susunan_keluarga_hubungan') is-invalid @enderror" id="susunan_keluarga_hubungan" placeholder="Suami / Istri" required autofocus value="{{ old('susunan_keluarga_hubungan') }}">
-													</div>
-												</div>
-
-												{{-- nama  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_nama[]" class="form-control @error('susunan_keluarga_nama') is-invalid @enderror" id="susunan_keluarga_nama" placeholder="Nama" required autofocus value="{{ old('susunan_keluarga_nama') }}">
-													</div>
-												</div>
-
-												{{-- jenis kelamin  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_jenis_kelamin[]" class="form-control @error('susunan_keluarga_jenis_kelamin') is-invalid @enderror" id="susunan_keluarga_jenis_kelamin" placeholder="Jenis Kelamin" required autofocus value="{{ old('susunan_keluarga_jenis_kelamin') }}">
-													</div>
-												</div>
-
-												{{-- usia  --}}
-												<div class="col-md-1">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_usia" class="form-control @error('susunan_keluarga_usia') is-invalid @enderror" id="susunan_keluarga_usia" placeholder="Usia" required autofocus value="{{ old('susunan_keluarga_usia') }}">
-													</div>
-												</div>
-
-												{{-- pendidikan akhir  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_pendidikan_akhir" class="form-control @error('susunan_keluarga_pendidikan_akhir') is-invalid @enderror" id="susunan_keluarga_pendidikan_akhir" placeholder="Pendidikan Akhir" required autofocus value="{{ old('susunan_keluarga_pendidikan_akhir') }}">
-													</div>
-												</div>
-
-												{{-- pekerjaan terakhir  --}}
-												<div class="col-md-2">
-													<div class="form-group">
-														<input type="text" name="susunan_keluarga_pekerjaan_terakhir" class="form-control @error('susunan_keluarga_pekerjaan_terakhir') is-invalid @enderror" id="susunan_keluarga_pekerjaan_terakhir" placeholder="Pekerjaan Terakhir" required autofocus value="{{ old('susunan_keluarga_pekerjaan_terakhir') }}">
-													</div>
-												</div>
-
-												<div class="col-md-1"> 
-													<a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-times"></i></a>
-												</div>
-											</div>
+												</dd>
+											</dl>
 										</div>
 									</div>
 								</div>
-								<div class="card-footer">
-									<button type="submit" class="btn btn-primary">Submit</button>
+								<div class="col-md-9">
+									<div class="row">
+										<div class="col-md-4">
+											<dl class="row">											
+												<dt class="col-sm-8 ml-3">Nama Lengkap</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama_lengkap" id="nama_lengkap" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Nama Panggilan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama_panggilan" id="nama_panggilan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Telepon</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="telepon" id="telepon" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Cabang</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<select name="master_cabang_id" id="master_cabang_id" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Cabang --</option>
+														@foreach ($cabangs as $cabang)
+																<option value="{{ $cabang->id }}"}>{{ $cabang->nama_cabang }}</option>
+														@endforeach
+													</select>
+												</dd>
+												<dt class="col-sm-8 ml-3">Jabatan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<select name="master_jabatan_id" id="master_jabatan_id" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Jabatan --</option>
+														@foreach ($jabatans as $jabatan)
+																<option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+														@endforeach
+													</select>
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-4">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Email</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="email" name="email" id="email" style="border: none; width: 100%;" onkeyup="this.value = this.value.toLowerCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Nomor KTP</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="number" name="nomor_ktp" id="nomor_ktp" style="border: none; width: 100%;">
+												</dd>
+												<dt class="col-sm-8 ml-3">Nomor SIM</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="number" name="nomor_sim" id="nomor_sim" style="border: none; width: 100%;">
+												</dd>
+												<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<select name="jenis_kelamin" id="jenis_kelamin" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Jenis Kelamin --</option>
+														<option value="L">LAKI - LAKI</option>
+														<option value="P">PEREMPUAN</option>
+													</select>
+												</dd>
+												<dt class="col-sm-8 ml-3">Alamat KTP</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="alamat_ktp" id="alamat_ktp" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-4">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
+													<input type="text" name="tempat_lahir" id="tempat_lahir" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<div class="input-group date" id="tanggal_lahir" data-target-input="nearest">
+														<input type="text" class="form-control datetimepicker-input p-0" data-target="#tanggal_lahir" name="tanggal_lahir" style="border: none;"/>
+														<div class="input-group-append" data-target="#tanggal_lahir" data-toggle="datetimepicker">
+																<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+														</div>
+													</div>
+												</dd>
+												<dt class="col-sm-8 ml-3">Agama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<select name="agama" id="agama" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Agama --</option>
+														<option value="ISLAM">ISLAM</option>
+														<option value="KRISTEN">KRISTEN</option>
+														<option value="HINDU">HINDU</option>
+														<option value="BUDHA">BUDHA</option>
+													</select>
+												</dd>
+												<dt class="col-sm-8 ml-3">Alamat Sekarang</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
+													<input type="text" name="alamat_sekarang" id="alamat_sekarang" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+												<dt class="col-sm-8 ml-3">Status Perkawinan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+													<select name="status_perkawinan" id="status_perkawinan" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Status --</option>
+														<option value="1">LAJANG</option>
+														<option value="2">MENIKAH</option>
+														<option value="3">CERAI</option>
+													</select>
+												</dd>
+											</dl>
+										</div>
+									</div>
 								</div>
-
-						</form>
+							</div>
+						</div>
+						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
+					
+					{{-- media sosial  --}}
+					<div class="card card-primary">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Facebook</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Instagram</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Youtube</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Linkedin</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{{-- susunan keluarga sebelum menikah  --}}
+					<div class="card card-primary">
+						<div class="card-body">
+							<div id="k">
+							<div class="row">
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Hubungan</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="hubungan" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Nama</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="nama" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-1">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Usia</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="usia" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-1 text-right">
+									<button id="add" class="add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- keluarga setelah menikah  --}}
+					<div class="card card-primary">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Hubungan</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="hubungan" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Nama</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="nama" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="usia" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Tanggal Terakhir</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- kerabat darurat  --}}
+					<div class="card card-primary">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Hubungan</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="hubungan" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Nama</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="nama" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="usia" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Telepon</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-3">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Alamat</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- pendidikan  --}}
+					<div class="card card-primary">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Tingkat</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="hubungan" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Nama</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="nama" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Kota</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="usia" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Jurusan</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+								<div class="col-md-2">
+									<dl class="row">
+										<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!-- /.col -->
 			</div>
@@ -492,53 +456,100 @@
 
 @section('script')
 
-<!-- bs-custom-file-input -->
-<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-
 <!-- InputMask -->
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
+<!-- bs-custom-file-input -->
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
 <script type="text/javascript">
+
 	$(function () {
 
-    // tanggal masuk
-    $('#tanggal_masuk').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
+		// tanggal lahir
+		$('#tanggal_lahir').datetimepicker({
+				format: 'YYYY-MM-DD'
+		});
 
-		// mulai kontrak 
+		// mulai kontrak
 		$('#mulai_kontrak').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
+				format: 'YYYY-MM-DD'
+		});
 
-		// mulai kontrak 
-		$('#berakhir_kontrak').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
-  });
+		// akhir kontrak
+		$('#akhir_kontrak').datetimepicker({
+				format: 'YYYY-MM-DD'
+		});
+
+	});
+
 	$(document).ready(function () {
+
 		bsCustomFileInput.init();
 
-		// membatasi jumlah inputan
-    var maxGroup = 10;
-    
-    //melakukan proses multiple input 
-    $(".addMore").click(function(){
-        if($('body').find('.fieldGroup').length < maxGroup){
-            var fieldHTML = '<div class="form-group fieldGroup">'+$(".fieldGroupCopy").html()+'</div>';
-            $('body').find('.fieldGroup:last').after(fieldHTML);
-        }else{
-            alert('Maximum '+maxGroup+' groups are allowed.');
-        }
-    });
-    
-    //remove fields group
-    $("body").on("click",".remove",function(){ 
-        $(this).parents(".fieldGroup").remove();
-    });
+		$('#add').on('click', function(){
+
+			var keluarga_sebelum_menikah_value = "" +
+			"<div id=\"coba\" class=\"coba\">" +
+			"<div class=\"row\">" +
+				"<div class=\"col-md-2\">" +
+					"<dl class=\"row\">" +
+						"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+						"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+							"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+						"</dd>" + 
+					"</dl>" +
+				"</div>" +
+				"<div class=\"col-md-2\">" +
+					"<dl class=\"row\">" +
+						"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+						"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+							"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+						"</dd>" +
+					"</dl>" +
+				"</div>" +
+				"<div class=\"col-md-1\">" +
+					"<dl class=\"row\">" +
+						"<dt class=\"col-sm-8 ml-3\">Usia</dt>" +
+						"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+							"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+						"</dd>" +
+					"</dl>" +
+				"</div>" +
+				"<div class=\"col-md-3\">" +
+					"<dl class=\"row\">" +
+						"<dt class=\"col-sm-8 ml-3\">Pendidikan Terakhir</dt>" +
+						"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+							"<input type=\"text\" name=\"pendidikan_terakhir\" style=\"border: none; width: 100%;\">" +
+						"</dd>" +
+					"</dl>" +
+				"</div>" +
+				"<div class=\"col-md-3\">" +
+					"<dl class=\"row\">" +
+						"<dt class=\"col-sm-8 ml-3\">Pekerjaan Terakhir</dt>" +
+						"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+							"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+						"</dd>" +
+					"</dl>" +
+				"</div>" +
+				"<div class=\"col-md-1 text-right\">" +
+					"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+				"</div>" +
+			"</div>" +
+			"</div>";
+			
+			$('#k').append(keluarga_sebelum_menikah_value);		
+
+		});
+		
+		$('#k').on('click','#remove',function(){	
+			$('#coba').remove();	
+		});
+
 	});
+
 </script>
 
 @endsection
