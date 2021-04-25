@@ -44,17 +44,15 @@
 								{{session('status')}}
 						</div>
 					@endif
-
-					<!-- general form elements -->
-					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/karyawan') }}">BACK</a></h3>
-						</div>
-						<!-- /.card-header -->
-						<!-- form start -->
-						<form role="form" action="{{ route('karyawan.update', [$karyawan->id]) }}" method="POST" enctype="multipart/form-data">
-							@method('PUT')
-							@csrf
+					
+					<form role="form" action="{{ route('karyawan.update', [$karyawan->id]) }}" method="POST" enctype="multipart/form-data">
+						@method('PUT')
+						@csrf
+					
+						<div class="card card-primary">
+							<div class="card-header">
+								<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/karyawan') }}">BACK</a></h3>
+							</div>
 							<div class="card-body">
 								<div class="row">
 									<div class="col-md-3">
@@ -68,9 +66,31 @@
 											</div>
 											<div class="col-md-12 mt-3">
 												<dl class="row">
-													<dt class="col-sm-8">Ganti Foto</dt>
+													<dt class="col-sm-8 ml-3">Ganti Foto</dt>
 													<dd class="col-sm-10 rounded">
-														<input type="file" name="foto" class="form-control pl-0" id="foto" style="border: none; width: 100%;">
+														<input type="file" name="foto" class="form-control pl-0 ml-4" id="foto" style="border: none; width: 100%;">
+													</dd>
+													<dt class="col-sm-8 ml-3">Mulai Kontrak</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+														<div class="input-group date" id="mulai_kontrak" data-target-input="nearest">
+															<input type="text" class="form-control datetimepicker-input" data-target="#mulai_kontrak" name="mulai_kontrak" style="border: none;"/>
+															<div class="input-group-append" data-target="#mulai_kontrak" data-toggle="datetimepicker">
+																	<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+															</div>
+														</div>
+													</dd>
+													<dt class="col-sm-8 ml-3">Lama Kontrak</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+														<input type="text" name="lama_kontrak" class="form-control" id="lama_kontrak" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Akhir Kontrak</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+														<div class="input-group date" id="akhir_kontrak" data-target-input="nearest">
+															<input type="text" class="form-control datetimepicker-input" data-target="#akhir_kontrak" name="akhir_kontrak" style="border: none;"/>
+															<div class="input-group-append" data-target="#akhir_kontrak" data-toggle="datetimepicker">
+																	<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+															</div>
+														</div>
 													</dd>
 												</dl>
 											</div>
@@ -182,18 +202,272 @@
 									</div>
 								</div>
 							</div>
-							<!-- /.card-body -->
+						</div>
 
-							<div class="card-footer">
+						{{-- media sosial  --}}
+						<div class="card card-primary">
+							<div class="card-body">
 								<div class="row">
 									<div class="col-md-3">
-										<button type="submit" class="btn btn-primary btn-block">Submit</button>
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Facebook</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Instagram</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Youtube</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Linkedin</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;">
+											</dd>
+										</dl>
 									</div>
 								</div>
 							</div>
-						</form>
-					</div>
-					<!-- /.card -->
+						</div>
+
+						{{-- susunan keluarga sebelum menikah  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<div id="keluarga_sebelum_menikah">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="hubungan" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Usia</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="usia" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="add" class="add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{-- keluarga setelah menikah  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<div id="keluarga_setelah_menikah">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="hubungan" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="usia" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="keluarga_setelah_menikah_add" class="keluarga_setelah_menikah_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{-- kerabat darurat  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<div id="kerabat_darurat">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="hubungan" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="usia" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Telepon</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Alamat</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="kerabat_darurat_add" class="kerabat_darurat_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{-- pendidikan  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tingkat</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="hubungan" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Nama</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="nama" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Kota</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="usia" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Jurusan</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-3">
+									<button type="submit" class="btn btn-primary btn-block">Submit</button>
+								</div>
+							</div>
+						</div>
+					</form>
+
 				</div>
 				<!-- /.col -->
 			</div>
@@ -228,7 +502,201 @@
 	});
 
 	$(document).ready(function () {
+
 		bsCustomFileInput.init();
+
+		$('#add').on('click', function(e) {
+
+			e.preventDefault();
+
+			var keluarga_sebelum_menikah_value = "" +
+			"<div id=\"keluarga_sebelum_menikah_root\" class=\"keluarga_sebelum_menikah_root\">" +
+				"<div class=\"row\">" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+							"</dd>" + 
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-1\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Usia</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-3\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Pendidikan Terakhir</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"pendidikan_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-3\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Pekerjaan Terakhir</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-1 text-right\">" +
+						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+					"</div>" +
+				"</div>" +
+			"</div>";
+
+			$('#keluarga_sebelum_menikah').append(keluarga_sebelum_menikah_value);		
+
+		});
+
+		$('#keluarga_sebelum_menikah').on('click','#remove',function(e){	
+
+			e.preventDefault();
+			$('#keluarga_sebelum_menikah_root').remove();	
+			
+		});
+
+		$('#keluarga_setelah_menikah_add').on('click', function(e) {
+
+			e.preventDefault();
+
+			var keluarga_setelah_menikah_value = "" +
+			"<div id=\"keluarga_setelah_menikah_root\" class=\"keluarga_setelah_menikah_root\">" +
+				"<div class=\"row\">" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Tempat Lahir</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Tanggal Terakhir</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"tanggal_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-3\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Pekerjaan Terakhir</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-1 text-right\">" +
+						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+					"</div>" +
+				"</div>"
+			"</div>";
+
+			$('#keluarga_setelah_menikah').append(keluarga_setelah_menikah_value);
+
+		});
+
+		$('#keluarga_setelah_menikah').on('click', '#remove', function(e) {
+
+			e.preventDefault();
+			$('#keluarga_setelah_menikah_root').remove();
+
+		});
+
+		$('#kerabat_darurat_add').on('click', function(e) {
+
+			e.preventDefault();
+
+			var kerabat_darurat_value = "" +
+			"<div id=\"kerabat_darurat_root\" class=\"kerabat_darurat_root\">" +
+				"<div class=\"row\">" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Jenis Kelamin</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Telepon</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"tanggal_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-3\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Alamat</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-1 text-right\">" +
+						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+					"</div>" +
+				"</div>" +
+			"</div>";
+
+			$('#kerabat_darurat').append(kerabat_darurat_value);
+
+		});
+
+		$('#kerabat_darurat').on('click', '#remove', function(e) {
+
+			e.preventDefault();
+			$('#kerabat_darurat_root').remove();
+
+		});
+
 	});
 
 </script>
