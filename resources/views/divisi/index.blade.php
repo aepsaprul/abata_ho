@@ -10,9 +10,6 @@
 	table thead tr th {
 		text-align: center;
 	}
-	.nomor {
-		text-align: center;
-	}
 </style>
 
 @endsection
@@ -26,12 +23,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Data Training</h1>
+					<h1>Data Divisi</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Training</li>
+						<li class="breadcrumb-item active">Divisi</li>
 					</ol>
 				</div>
 			</div>
@@ -49,7 +46,7 @@
 					@endif
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><a href="{{ route('training.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+							<h3 class="card-title"><a href="{{ route('divisi.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -57,25 +54,18 @@
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Kategori</th>
-									<th>Judul</th>
-									<th>Divisi</th>
-									<th>Tanggal</th>
+									<th>Nama Divisi</th>
 									<th>#</th>
 								</tr>
 								</thead>
 								<tbody>
-									@foreach ($trainings as $key => $training)
+									@foreach ($divisis as $key => $divisi)
 										
 										<tr>
-											<td class="nomor">{{ $key + 1 }}</td>
-											<td>{{ $training->kategori }}</td>
-											<td>{{ $training->judul }}</td>
-											<td>{{ $training->masterDivisi->nama }}</td>
-											<td>{{ $training->tanggal }}</td>
-											<td><a href="{{ route('training.cek.datamodul') }}">download</a></td>
+											<td class="text-center">{{ $key + 1 }}</td>
+											<td>{{ $divisi->nama }}</td>
 											<td class="text-center">
-												<a href="{{ route('training.show', [$training->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('training.edit', [$training->id]) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a> | <a href="{{ route('training.delete', [$training->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('divisi.edit', [$divisi->id]) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a> | <a href="{{ route('divisi.delete', [$divisi->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 									

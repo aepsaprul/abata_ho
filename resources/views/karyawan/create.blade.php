@@ -45,23 +45,149 @@
 						</div>
 					@endif
 
-					<!-- general form elements -->
-					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/karyawan') }}">BACK</a></h3>
+					<form role="form" action="{{ route('karyawan.store') }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					
+						<div class="card card-primary">
+							<div class="card-header">
+								<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/karyawan') }}">BACK</a></h3>
+							</div>
+						
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="row">
+											<div class="col-md-12">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Foto</dt>
+													<dd class="col-sm-10 rounded ml-4">
+														<input type="file" name="foto" class="form-control pl-0" id="foto" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-9">
+										<div class="row">
+											<div class="col-md-4">
+												<dl class="row">											
+													<dt class="col-sm-8 ml-3">Nama Lengkap</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="nama_lengkap" id="nama_lengkap" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Nama Panggilan</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="nama_panggilan" id="nama_panggilan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Telepon</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="telepon" id="telepon" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Cabang</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<select name="master_cabang_id" id="master_cabang_id" class="form-control p-0" style="border: none; width: 100%;">
+															<option value="">-- Pilih Cabang --</option>
+															@foreach ($cabangs as $cabang)
+																	<option value="{{ $cabang->id }}"}>{{ $cabang->nama_cabang }}</option>
+															@endforeach
+														</select>
+													</dd>
+													<dt class="col-sm-8 ml-3">Jabatan</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<select name="master_jabatan_id" id="master_jabatan_id" class="form-control p-0" style="border: none; width: 100%;">
+															<option value="">-- Pilih Jabatan --</option>
+															@foreach ($jabatans as $jabatan)
+																	<option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+															@endforeach
+														</select>
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-4">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Email</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="email" name="email" id="email" style="border: none; width: 100%;" onkeyup="this.value = this.value.toLowerCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Nomor KTP</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="number" name="nomor_ktp" id="nomor_ktp" style="border: none; width: 100%;">
+													</dd>
+													<dt class="col-sm-8 ml-3">Nomor SIM</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="number" name="nomor_sim" id="nomor_sim" style="border: none; width: 100%;">
+													</dd>
+													<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<select name="jenis_kelamin" id="jenis_kelamin" class="form-control p-0" style="border: none; width: 100%;">
+															<option value="">-- Pilih Jenis Kelamin --</option>
+															<option value="L">LAKI - LAKI</option>
+															<option value="P">PEREMPUAN</option>
+														</select>
+													</dd>
+													<dt class="col-sm-8 ml-3">Alamat KTP</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="alamat_ktp" id="alamat_ktp" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-4">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
+														<input type="text" name="tempat_lahir" id="tempat_lahir" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<div class="input-group date" id="tanggal_lahir" data-target-input="nearest">
+															<input type="text" class="form-control datetimepicker-input p-0" data-target="#tanggal_lahir" name="tanggal_lahir"  style="border: none;"/>
+															<div class="input-group-append" data-target="#tanggal_lahir" data-toggle="datetimepicker">
+																	<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+															</div>
+														</div>
+													</dd>
+													<dt class="col-sm-8 ml-3">Agama</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<select name="agama" id="agama" class="form-control p-0" style="border: none; width: 100%;">
+															<option value="">-- Pilih Agama --</option>
+															<option value="ISLAM">ISLAM</option>
+															<option value="KRISTEN">KRISTEN</option>
+															<option value="HINDU">HINDU</option>
+															<option value="BUDHA">BUDHA</option>
+														</select>
+													</dd>
+													<dt class="col-sm-8 ml-3">Alamat Sekarang</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
+														<input type="text" name="alamat_sekarang" id="alamat_sekarang" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+													<dt class="col-sm-8 ml-3">Status Perkawinan</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
+														<select name="status_perkawinan" id="status_perkawinan" class="form-control p-0" style="border: none; width: 100%;">
+															<option value="">-- Pilih Status --</option>
+															<option value="1">LAJANG</option>
+															<option value="2">MENIKAH</option>
+															<option value="3">CERAI</option>
+														</select>
+													</dd>
+												</dl>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-body -->
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-3">
+
+						{{-- kontrak  --}}
+						<div class="card card-primary">
+							<div class="card-body">								
+								<h5 class="text-center text-uppercase mb-3">kontrak</h5>
+								<hr>
+								<div id="kontrak">
 									<div class="row">
-										<div class="col-md-12">
+										<div class="col-md-4">
 											<dl class="row">
-												<dt class="col-sm-8 ml-3">Foto</dt>
-												<dd class="col-sm-10 rounded ml-4">
-													<input type="file" name="foto" class="form-control pl-0" id="foto" style="border: none; width: 100%;">
-												</dd>
-												<dt class="col-sm-8 ml-3 ml-2">Mulai Kontrak</dt>
+												<dt class="col-sm-8 ml-3">Mulai Kontrak</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
 													<div class="input-group date" id="mulai_kontrak" data-target-input="nearest">
 														<input type="text" class="form-control datetimepicker-input" data-target="#mulai_kontrak" name="mulai_kontrak" style="border: none;"/>
@@ -70,10 +196,10 @@
 														</div>
 													</div>
 												</dd>
-												<dt class="col-sm-8 ml-3">Lama Kontrak</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
-													<input type="text" name="lama_kontrak" class="form-control" id="lama_kontrak" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
+											</dl>
+										</div>
+										<div class="col-md-4">
+											<dl class="row">
 												<dt class="col-sm-8 ml-3">Akhir Kontrak</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
 													<div class="input-group date" id="akhir_kontrak" data-target-input="nearest">
@@ -85,373 +211,293 @@
 												</dd>
 											</dl>
 										</div>
-									</div>
-								</div>
-								<div class="col-md-9">
-									<div class="row">
-										<div class="col-md-4">
-											<dl class="row">											
-												<dt class="col-sm-8 ml-3">Nama Lengkap</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="nama_lengkap" id="nama_lengkap" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Nama Panggilan</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="nama_panggilan" id="nama_panggilan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Telepon</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="telepon" id="telepon" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Cabang</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<select name="master_cabang_id" id="master_cabang_id" class="form-control p-0" style="border: none; width: 100%;">
-														<option value="">-- Pilih Cabang --</option>
-														@foreach ($cabangs as $cabang)
-																<option value="{{ $cabang->id }}"}>{{ $cabang->nama_cabang }}</option>
-														@endforeach
-													</select>
-												</dd>
-												<dt class="col-sm-8 ml-3">Jabatan</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<select name="master_jabatan_id" id="master_jabatan_id" class="form-control p-0" style="border: none; width: 100%;">
-														<option value="">-- Pilih Jabatan --</option>
-														@foreach ($jabatans as $jabatan)
-																<option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
-														@endforeach
-													</select>
-												</dd>
-											</dl>
-										</div>
 										<div class="col-md-4">
 											<dl class="row">
-												<dt class="col-sm-8 ml-3">Email</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="email" name="email" id="email" style="border: none; width: 100%;" onkeyup="this.value = this.value.toLowerCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Nomor KTP</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="number" name="nomor_ktp" id="nomor_ktp" style="border: none; width: 100%;">
-												</dd>
-												<dt class="col-sm-8 ml-3">Nomor SIM</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="number" name="nomor_sim" id="nomor_sim" style="border: none; width: 100%;">
-												</dd>
-												<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<select name="jenis_kelamin" id="jenis_kelamin" class="form-control p-0" style="border: none; width: 100%;">
-														<option value="">-- Pilih Jenis Kelamin --</option>
-														<option value="L">LAKI - LAKI</option>
-														<option value="P">PEREMPUAN</option>
-													</select>
-												</dd>
-												<dt class="col-sm-8 ml-3">Alamat KTP</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="alamat_ktp" id="alamat_ktp" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												<dt class="col-sm-8 ml-3">Lama Kontrak</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+													<input type="text" name="lama_kontrak" class="form-control" id="lama_kontrak" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
 										</div>
-										<div class="col-md-4">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						{{-- media sosial  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<h5 class="text-center text-uppercase mb-3">media sosial</h5>
+								<hr>
+								<div class="row">
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Facebook</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Instagram</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Youtube</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Linkedin</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						{{-- susunan keluarga sebelum menikah  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<h5 class="text-center text-uppercase mb-3">susunan keluarga sebelum menikah</h5>
+								<hr>
+								<div id="keluarga_sebelum_menikah">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_sebelum_menikah_hubungan[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_sebelum_menikah_nama[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Usia</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="number" name="keluarga_sebelum_menikah_usia[]" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_sebelum_menikah_pendidikan_terakhir[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_sebelum_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="add" class="add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{-- keluarga setelah menikah  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<h5 class="text-center text-uppercase mb-3">susuanan keluarga setelah menikah</h5>
+								<hr>
+								<div id="keluarga_setelah_menikah">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_setelah_menikah_hubungan[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_setelah_menikah_nama[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
-													<input type="text" name="tempat_lahir" id="tempat_lahir" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<div class="input-group date" id="tanggal_lahir" data-target-input="nearest">
-														<input type="text" class="form-control datetimepicker-input p-0" data-target="#tanggal_lahir" name="tanggal_lahir" style="border: none;"/>
-														<div class="input-group-append" data-target="#tanggal_lahir" data-toggle="datetimepicker">
-																<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-														</div>
-													</div>
-												</dd>
-												<dt class="col-sm-8 ml-3">Agama</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<select name="agama" id="agama" class="form-control p-0" style="border: none; width: 100%;">
-														<option value="">-- Pilih Agama --</option>
-														<option value="ISLAM">ISLAM</option>
-														<option value="KRISTEN">KRISTEN</option>
-														<option value="HINDU">HINDU</option>
-														<option value="BUDHA">BUDHA</option>
-													</select>
-												</dd>
-												<dt class="col-sm-8 ml-3">Alamat Sekarang</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded p-2 ml-4">
-													<input type="text" name="alamat_sekarang" id="alamat_sekarang" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
-												</dd>
-												<dt class="col-sm-8 ml-3">Status Perkawinan</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4">
-													<select name="status_perkawinan" id="status_perkawinan" class="form-control p-0" style="border: none; width: 100%;">
-														<option value="">-- Pilih Status --</option>
-														<option value="1">LAJANG</option>
-														<option value="2">MENIKAH</option>
-														<option value="3">CERAI</option>
-													</select>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_setelah_menikah_tempat_lahir[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_setelah_menikah_tanggal_lahir[]" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="keluarga_setelah_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="keluarga_setelah_menikah_add" class="keluarga_setelah_menikah_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- /.card-body -->
-					</div>
-					
-					{{-- media sosial  --}}
-					<div class="card card-primary">
-						<div class="card-body">
+
+						{{-- kerabat darurat  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<h5 class="text-center text-uppercase mb-3">kerabat yg bisa dihubungi saat darurat</h5>
+								<hr>
+								<div id="kerabat_darurat">
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="kerabat_hubungan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="kerabat_nama" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="kerabat_jenis_kelamin" style="border: none; width: 100%;" placeholder="L/P" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Telepon</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="number" name="kerabat_telepon" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Alamat</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="kerabat_alamat" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1 text-right">
+											<button id="kerabat_darurat_add" class="kerabat_darurat_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{-- pendidikan  --}}
+						<div class="card card-primary">
+							<div class="card-body">
+								<h5 class="text-center text-uppercase mb-3">pendidikan</h5>
+								<hr>
+								<div class="row">
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tingkat</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_tingkat" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Nama</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_nama_gedung" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Kota</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_kota" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Jurusan</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_jurusan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_tahun_masuk" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_tahun_lulus" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-footer">
 							<div class="row">
 								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Facebook</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Instagram</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Youtube</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Linkedin</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;">
-										</dd>
-									</dl>
+									<button type="submit" class="btn btn-primary btn-block">SIMPAN</button>
 								</div>
 							</div>
 						</div>
-					</div>
-					
-					{{-- susunan keluarga sebelum menikah  --}}
-					<div class="card card-primary">
-						<div class="card-body">
-							<div id="keluarga_sebelum_menikah">
-								<div class="row">
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Hubungan</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Nama</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-1">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Usia</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-1 text-right">
-										<button id="add" class="add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					{{-- keluarga setelah menikah  --}}
-					<div class="card card-primary">
-						<div class="card-body">
-							<div id="keluarga_setelah_menikah">
-								<div class="row">
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Hubungan</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Nama</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-1 text-right">
-										<button id="keluarga_setelah_menikah_add" class="keluarga_setelah_menikah_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{{-- kerabat darurat  --}}
-					<div class="card card-primary">
-						<div class="card-body">
-							<div id="kerabat_darurat">
-								<div class="row">
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Hubungan</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Nama</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Telepon</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Alamat</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-1 text-right">
-										<button id="kerabat_darurat_add" class="kerabat_darurat_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{{-- pendidikan  --}}
-					<div class="card card-primary">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Tingkat</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="hubungan" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Nama</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="nama" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Kota</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="usia" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Jurusan</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-										</dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-					</div>
+					</form>
 				</div>
 				<!-- /.col -->
 			</div>
@@ -500,7 +546,9 @@
 
 		bsCustomFileInput.init();
 
-		$('#add').on('click', function() {
+		$('#add').on('click', function(e) {
+
+			e.preventDefault();
 
 			var keluarga_sebelum_menikah_value = "" +
 			"<div id=\"keluarga_sebelum_menikah_root\" class=\"keluarga_sebelum_menikah_root\">" +
@@ -509,7 +557,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_sebelum_menikah_hubungan[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" + 
 						"</dl>" +
 					"</div>" +
@@ -517,7 +565,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_sebelum_menikah_nama[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -525,7 +573,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Usia</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_sebelum_menikah_usia[]\" style=\"border: none; width: 100%;\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -533,7 +581,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Pendidikan Terakhir</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"pendidikan_terakhir\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_sebelum_menikah_pendidikan_terakhir[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -541,7 +589,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Pekerjaan Terakhir</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_sebelum_menikah_pekerjaan_terakhir[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -555,11 +603,16 @@
 
 		});
 		
-		$('#keluarga_sebelum_menikah').on('click','#remove',function(){	
+		$('#keluarga_sebelum_menikah').on('click','#remove',function(e){	
+
+			e.preventDefault();
 			$('#keluarga_sebelum_menikah_root').remove();	
+
 		});
 
-		$('#keluarga_setelah_menikah_add').on('click', function() {
+		$('#keluarga_setelah_menikah_add').on('click', function(e) {
+
+			e.preventDefault();
 
 			var keluarga_setelah_menikah_value = "" +
 			"<div id=\"keluarga_setelah_menikah_root\" class=\"keluarga_setelah_menikah_root\">" +
@@ -568,7 +621,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_setelah_menikah_hubungan[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -576,7 +629,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_setelah_menikah_nama[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -584,15 +637,15 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Tempat Lahir</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_setelah_menikah_tempat_lahir[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
 					"<div class=\"col-md-2\">" +
 						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Tanggal Terakhir</dt>" +
+							"<dt class=\"col-sm-8 ml-3\">Tanggal Lahir</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"tanggal_terakhir\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_setelah_menikah_tanggal_lahir[]\" style=\"border: none; width: 100%;\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -600,7 +653,7 @@
 						"<dl class=\"row\">" +
 							"<dt class=\"col-sm-8 ml-3\">Pekerjaan Terakhir</dt>" +
 							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
+								"<input type=\"text\" name=\"keluarga_setelah_menikah_pekerjaan_terakhir[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
 							"</dd>" +
 						"</dl>" +
 					"</div>" +
@@ -614,68 +667,76 @@
 
 		});
 
-		$('#keluarga_setelah_menikah').on('click', '#remove', function() {
+		$('#keluarga_setelah_menikah').on('click', '#remove', function(e) {
+
+			e.preventDefault();
 			$('#keluarga_setelah_menikah_root').remove();
-		});
-
-		$('#kerabat_darurat_add').on('click', function() {
-
-			var kerabat_darurat_value = "" +
-			"<div id=\"kerabat_darurat_root\" class=\"kerabat_darurat_root\">" +
-				"<div class=\"row\">" +
-					"<div class=\"col-md-2\">" +
-						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
-							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"hubungan\" style=\"border: none; width: 100%;\">" +
-							"</dd>" +
-						"</dl>" +
-					"</div>" +
-					"<div class=\"col-md-2\">" +
-						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
-							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"nama\" style=\"border: none; width: 100%;\">" +
-							"</dd>" +
-						"</dl>" +
-					"</div>" +
-					"<div class=\"col-md-2\">" +
-						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Jenis Kelamin</dt>" +
-							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"usia\" style=\"border: none; width: 100%;\">" +
-							"</dd>" +
-						"</dl>" +
-					"</div>" +
-					"<div class=\"col-md-2\">" +
-						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Telepon</dt>" +
-							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"tanggal_terakhir\" style=\"border: none; width: 100%;\">" +
-							"</dd>" +
-						"</dl>" +
-					"</div>" +
-					"<div class=\"col-md-3\">" +
-						"<dl class=\"row\">" +
-							"<dt class=\"col-sm-8 ml-3\">Alamat</dt>" +
-							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-								"<input type=\"text\" name=\"pekerjaan_terakhir\" style=\"border: none; width: 100%;\">" +
-							"</dd>" +
-						"</dl>" +
-					"</div>" +
-					"<div class=\"col-md-1 text-right\">" +
-						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
-					"</div>" +
-				"</div>" +
-			"</div>";
-
-			$('#kerabat_darurat').append(kerabat_darurat_value);
 
 		});
 
-		$('#kerabat_darurat').on('click', '#remove', function() {
-			$('#kerabat_darurat_root').remove();
-		});
+		// $('#kerabat_darurat_add').on('click', function(e) {
+
+		// 	e.preventDefault();
+
+		// 	var kerabat_darurat_value = "" +
+		// 	"<div id=\"kerabat_darurat_root\" class=\"kerabat_darurat_root\">" +
+		// 		"<div class=\"row\">" +
+		// 			"<div class=\"col-md-2\">" +
+		// 				"<dl class=\"row\">" +
+		// 					"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+		// 						"<input type=\"text\" name=\"kerabat_hubungan\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+		// 					"</dd>" +
+		// 				"</dl>" +
+		// 			"</div>" +
+		// 			"<div class=\"col-md-2\">" +
+		// 				"<dl class=\"row\">" +
+		// 					"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+		// 						"<input type=\"text\" name=\"kerabat_nama\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+		// 					"</dd>" +
+		// 				"</dl>" +
+		// 			"</div>" +
+		// 			"<div class=\"col-md-2\">" +
+		// 				"<dl class=\"row\">" +
+		// 					"<dt class=\"col-sm-8 ml-3\">Jenis Kelamin</dt>" +
+		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+		// 						"<input type=\"text\" name=\"kerabat_jenis_kelamin\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+		// 					"</dd>" +
+		// 				"</dl>" +
+		// 			"</div>" +
+		// 			"<div class=\"col-md-2\">" +
+		// 				"<dl class=\"row\">" +
+		// 					"<dt class=\"col-sm-8 ml-3\">Telepon</dt>" +
+		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+		// 						"<input type=\"number\" name=\"kerabat_telepon\" style=\"border: none; width: 100%;\">" +
+		// 					"</dd>" +
+		// 				"</dl>" +
+		// 			"</div>" +
+		// 			"<div class=\"col-md-3\">" +
+		// 				"<dl class=\"row\">" +
+		// 					"<dt class=\"col-sm-8 ml-3\">Alamat</dt>" +
+		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+		// 						"<input type=\"text\" name=\"kerabat_alamat\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+		// 					"</dd>" +
+		// 				"</dl>" +
+		// 			"</div>" +
+		// 			"<div class=\"col-md-1 text-right\">" +
+		// 				"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+		// 			"</div>" +
+		// 		"</div>" +
+		// 	"</div>";
+
+		// 	$('#kerabat_darurat').append(kerabat_darurat_value);
+
+		// });
+
+		// $('#kerabat_darurat').on('click', '#remove', function(e) {
+
+		// 	e.preventDefault();
+		// 	$('#kerabat_darurat_root').remove();
+
+		// });
 
 	});
 

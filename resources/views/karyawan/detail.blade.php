@@ -28,7 +28,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Ubah Karyawan</h1>
+					<h1>Detail Karyawan</h1>
 				</div>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -183,14 +183,16 @@
 
 					{{-- kontrak  --}}
 					<div class="card card-primary">
-						<div class="card-body">
+						<div class="card-body">								
+							<h5 class="text-center text-uppercase mb-3">kontrak</h5>
+							<hr>
 							<div class="row">
 								<div class="col-md-4">
 									<dl class="row">
-										<dt class="col-sm-8">Mulai Kontrak</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded">
+										<dt class="col-sm-8 ml-3">Mulai Kontrak</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
 											<div class="input-group date" id="mulai_kontrak" data-target-input="nearest">
-												<input type="text" class="form-control datetimepicker-input p-0" data-target="#mulai_kontrak" name="mulai_kontrak" style="border: none;" value="{{ $karyawan->mulai_kontrak }}"/>
+												<input type="text" class="form-control datetimepicker-input" data-target="#mulai_kontrak" name="mulai_kontrak" style="border: none;" value=""/>
 												<div class="input-group-append" data-target="#mulai_kontrak" data-toggle="datetimepicker">
 														<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 												</div>
@@ -200,18 +202,18 @@
 								</div>
 								<div class="col-md-4">
 									<dl class="row">
-										<dt class="col-sm-8">Lama Kontrak</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="lama_kontrak" id="lama_kontrak" style="border: none; width: 100%;" value="{{ $karyawan->lama_kontrak }}" onkeyup="this.value = this.value.toUpperCase()">
+										<dt class="col-sm-8 ml-3">Lama Kontrak</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
+											<input type="text" name="lama_kontrak" class="form-control" id="lama_kontrak" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-4">
 									<dl class="row">
-										<dt class="col-sm-8">Akhir Kontrak</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded">
+										<dt class="col-sm-8 ml-3">Akhir Kontrak</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded pl-0 ml-4">
 											<div class="input-group date" id="akhir_kontrak" data-target-input="nearest">
-												<input type="text" class="form-control datetimepicker-input p-0" data-target="#akhir_kontrak" name="akhir_kontrak" style="border: none;" value="{{ $karyawan->akhir_kontrak }}"/>
+												<input type="text" class="form-control datetimepicker-input" data-target="#akhir_kontrak" name="akhir_kontrak" style="border: none;"/>
 												<div class="input-group-append" data-target="#akhir_kontrak" data-toggle="datetimepicker">
 														<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 												</div>
@@ -222,90 +224,96 @@
 							</div>
 						</div>
 					</div>
-					
+
 					{{-- media sosial  --}}
 					<div class="card card-primary">
-						<div class="card-body">
+						<div class="card-body">							
+							<h5 class="text-center text-uppercase mb-3">media sosial</h5>
+							<hr>
 							<div class="row">
 								<div class="col-md-3">
 									<dl class="row">
-										<dt class="col-sm-8">Facebook</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;" value="{{ $karyawan->facebook }}">
+										<dt class="col-sm-8 ml-3">Facebook</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;" value="{{ $medsos->facebook }}">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-3">
 									<dl class="row">
-										<dt class="col-sm-8">Instagram</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;" value="{{ $karyawan->instagram }}">
+										<dt class="col-sm-8 ml-3">Instagram</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;" value="{{ $medsos->instagram }}">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-3">
 									<dl class="row">
-										<dt class="col-sm-8">Youtube</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;" value="{{ $karyawan->youtube }}">
+										<dt class="col-sm-8 ml-3">Youtube</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;" value="{{ $medsos->youtube }}">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-3">
 									<dl class="row">
-										<dt class="col-sm-8">Linkedin</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;" value="{{ $karyawan->linkedin }}">
+										<dt class="col-sm-8 ml-3">Linkedin</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;" value="{{ $medsos->linkedin }}">
 										</dd>
 									</dl>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+
 					{{-- susunan keluarga sebelum menikah  --}}
 					<div class="card card-primary">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Hubungan</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="hubungan" id="hubungan" style="border: none; width: 100%;" value="{{ $karyawan->hubungan }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Nama</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="nama" id="nama" style="border: none; width: 100%;" value="{{ $karyawan->nama }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-1">
-									<dl class="row">
-										<dt class="col-sm-8">Usia</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="usia" id="usia" style="border: none; width: 100%;" value="{{ $karyawan->usia }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Pendidikan Terakhir</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pendidikan_terakhir }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Pekerjaan Terakhir</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pekerjaan_terakhir }}">
-										</dd>
-									</dl>
+						<div class="card-body">							
+							<h5 class="text-center text-uppercase mb-3">susunan keluarga sebelum menikah</h5>
+							<hr>
+							<div id="keluarga_sebelum_menikah">
+								<div class="row">
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Hubungan</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="hubungan" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Nama</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="nama" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-1">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Usia</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="usia" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -313,47 +321,51 @@
 
 					{{-- keluarga setelah menikah  --}}
 					<div class="card card-primary">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Hubungan</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="hubungan" id="hubungan" style="border: none; width: 100%;" value="{{ $karyawan->hubungan }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Nama</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="nama" id="nama" style="border: none; width: 100%;" value="{{ $karyawan->nama }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Tempat Lahir</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="usia" id="usia" style="border: none; width: 100%;" value="{{ $karyawan->usia }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Tanggal Terakhir</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="tanggal_terakhir" id="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pendidikan_terakhir }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Pekerjaan Terakhir</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pekerjaan_terakhir }}">
-										</dd>
-									</dl>
+						<div class="card-body">							
+							<h5 class="text-center text-uppercase mb-3">susuan keluarga setelah menikah</h5>
+							<hr>
+							<div id="keluarga_setelah_menikah">
+								<div class="row">
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Hubungan</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="hubungan" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Nama</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="nama" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="usia" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -361,47 +373,51 @@
 
 					{{-- kerabat darurat  --}}
 					<div class="card card-primary">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Hubungan</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="hubungan" id="hubungan" style="border: none; width: 100%;" value="{{ $karyawan->hubungan }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Nama</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="nama" id="nama" style="border: none; width: 100%;" value="{{ $karyawan->nama }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-2">
-									<dl class="row">
-										<dt class="col-sm-8">Jenis Kelamin</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="usia" id="usia" style="border: none; width: 100%;" value="{{ $karyawan->usia }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Telepon</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="tanggal_terakhir" id="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pendidikan_terakhir }}">
-										</dd>
-									</dl>
-								</div>
-								<div class="col-md-3">
-									<dl class="row">
-										<dt class="col-sm-8">Alamat</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pekerjaan_terakhir }}">
-										</dd>
-									</dl>
+						<div class="card-body">							
+							<h5 class="text-center text-uppercase mb-3">kerabat yg bisa dihubungi saat darurat</h5>
+							<hr>
+							<div id="kerabat_darurat">
+								<div class="row">
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Hubungan</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="hubungan" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Nama</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="nama" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="usia" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-2">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Telepon</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
+									<div class="col-md-3">
+										<dl class="row">
+											<dt class="col-sm-8 ml-3">Alamat</dt>
+											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											</dd>
+										</dl>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -409,53 +425,55 @@
 
 					{{-- pendidikan  --}}
 					<div class="card card-primary">
-						<div class="card-body">
+						<div class="card-body">							
+							<h5 class="text-center text-uppercase mb-3">pendidikan</h5>
+							<hr>
 							<div class="row">
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Tingkat</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="hubungan" id="hubungan" style="border: none; width: 100%;" value="{{ $karyawan->hubungan }}">
+										<dt class="col-sm-8 ml-3">Tingkat</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="hubungan" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Nama</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="nama" id="nama" style="border: none; width: 100%;" value="{{ $karyawan->nama }}">
+										<dt class="col-sm-8 ml-3">Nama</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="nama" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Kota</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="usia" id="usia" style="border: none; width: 100%;" value="{{ $karyawan->usia }}">
+										<dt class="col-sm-8 ml-3">Kota</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="usia" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Jurusan</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="tanggal_terakhir" id="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pendidikan_terakhir }}">
+										<dt class="col-sm-8 ml-3">Jurusan</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Tahun Masuk</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pekerjaan_terakhir }}">
+										<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>
 								<div class="col-md-2">
 									<dl class="row">
-										<dt class="col-sm-8">Tahun Lulus</dt>
-										<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-											<input type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $karyawan->pekerjaan_terakhir }}">
+										<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
+										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
 										</dd>
 									</dl>
 								</div>

@@ -115,6 +115,8 @@ class HcLamaranController extends Controller
         $lamaran = HcLamaran::find($id);
         $lamaran->status_lamaran = 4;
         $lamaran->save();
+
+        return redirect()->route('lamaran.index');
     }
 
     public function interview($id)
@@ -122,6 +124,8 @@ class HcLamaranController extends Controller
         $lamaran = HcLamaran::find($id);
         $lamaran->status_lamaran = 5;
         $lamaran->save();
+
+        return redirect()->route('lamaran.index');
     }
     
     public function gagal($id)
@@ -129,6 +133,8 @@ class HcLamaranController extends Controller
         $lamaran = HcLamaran::find($id);
         $lamaran->status_lamaran = 6;
         $lamaran->save();
+
+        return redirect()->route('lamaran.index');
     }
 
     public function terima($id)

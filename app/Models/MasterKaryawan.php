@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\SitumpurCs;
+use App\Models\KaryawanMenu;
 use App\Models\MasterCabang;
 use App\Models\MasterJabatan;
 use App\Models\SitumpurDesain;
@@ -48,6 +49,10 @@ class MasterKaryawan extends Model
 
     public function masterJabatan() {
         return $this->belongsTo(MasterJabatan::class);
+    }
+
+    public function karyawanMenu() {
+        return $this->hasMany(KaryawanMenu::class);
     }
 
     public function user() {

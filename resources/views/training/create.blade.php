@@ -13,7 +13,7 @@
 
 	<style>
 		input:focus{
-				outline: none;
+			outline: none;
 		}
 
 		select {
@@ -55,15 +55,19 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form role="form" action="{{ route('training.store') }}" method="POST">
+						<form role="form" action="{{ route('training.store') }}" method="POST" enctype="multipart/form-data">
 							@csrf
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-3">
 											<dl class="row">
 												<dt class="col-sm-8">Kategori</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded p-2">
-													<input type="text" name="kategori" id="kategori" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+												<dd class="col-sm-10 border-bottom border-warning rounded">
+													<select name="kategori" id="kategori" class="form-control p-0" style="border: none; width: 100%;">
+														<option value="">-- Pilih Kategori --</option>
+														<option value="softskill">Softskills</option>
+														<option value="hardskill">Hardskills</option>
+													</select>
 												</dd>
 											</dl>
 										</div>
@@ -176,6 +180,19 @@
 											</dl>
 										</div>
 									</div>
+
+									<div class="row">
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8">Modul</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded p-2">
+													<input type="file" name="modul" id="modul" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										</div>
+									</div>
+
 								</div>
 								<div class="card-footer">
 									<button type="submit" class="btn btn-primary">Submit</button>

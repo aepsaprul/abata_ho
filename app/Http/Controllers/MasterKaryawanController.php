@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\HcKontrak;
+use App\Models\HcPendidikan;
 use App\Models\MasterCabang;
 use Illuminate\Http\Request;
+use App\Models\HcMediaSosial;
 use App\Models\MasterJabatan;
 use App\Models\MasterKaryawan;
+use App\Models\HcKerabatDarurat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\HcKeluargaSebelumMenikah;
+use App\Models\HcKeluargaSetelahMenikah;
 
 class MasterKaryawanController extends Controller
 {
@@ -46,13 +52,25 @@ class MasterKaryawanController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        $email = $request->email;
+
         $karyawans = new MasterKaryawan;
         $karyawans->nama_lengkap = $request->nama_lengkap;
         $karyawans->nama_panggilan = $request->nama_panggilan;
         $karyawans->email = $request->email;
         $karyawans->telepon = $request->telepon;
+        $karyawans->nomor_ktp = $request->nomor_ktp;
+        $karyawans->nomor_sim = $request->nomor_sim;
         $karyawans->master_cabang_id = $request->master_cabang_id;
         $karyawans->master_jabatan_id = $request->master_jabatan_id;
+        $karyawans->agama = $request->agama;
+        $karyawans->jenis_kelamin = $request->jenis_kelamin;
+        $karyawans->tempat_lahir = $request->tempat_lahir;
+        $karyawans->tanggal_lahir = $request->tanggal_lahir;
+        $karyawans->alamat_asal = $request->alamat_ktp;
+        $karyawans->alamat_domisili = $request->alamat_sekarang;
+        $karyawans->status_perkawinan = $request->status_perkawinan;
         $karyawans->created_by = Auth::user()->id;
         
         if($request->file('foto')) {
@@ -61,6 +79,67 @@ class MasterKaryawanController extends Controller
         }
 
         $karyawans->save();
+
+        $kontraks = new HcKontrak;
+        $kontraks->email = $request->email;
+        $kontraks->mulai_kontrak = $request->mulai_kontrak;
+        $kontraks->akhir_kontrak = $request->akhir_kontrak;
+        $kontraks->lama_kontrak = $request->lama_kontrak;
+        $kontraks->save();
+
+        $media_sosial = new HcMediaSosial;
+        $media_sosial->email = $request->email;
+        $media_sosial->facebook = $request->facebook;
+        $media_sosial->instagram = $request->instagram;
+        $media_sosial->linkedin = $request->linkedin;
+        $media_sosial->youtube = $request->youtube;
+        $media_sosial->save();
+
+        foreach ($request->keluarga_sebelum_menikah_hubungan as $key => $value) {
+            $keluarga_sebelum_menikah = new HcKeluargaSebelumMenikah;
+            $keluarga_sebelum_menikah->email = $email;
+            $keluarga_sebelum_menikah->hubungan = $value;
+            $keluarga_sebelum_menikah->nama = $request->keluarga_sebelum_menikah_nama[$key];
+            $keluarga_sebelum_menikah->usia = $request->keluarga_sebelum_menikah_usia[$key];
+            $keluarga_sebelum_menikah->jenis_kelamin = $request->keluarga_sebelum_menikah_jenis_kelamin[$key];
+            $keluarga_sebelum_menikah->pendidikan_terakhir = $request->keluarga_sebelum_menikah_pendidikan_terakhir[$key];
+            $keluarga_sebelum_menikah->pekerjaan_terakhir = $request->keluarga_sebelum_menikah_pekerjaan_terakhir[$key];
+            $keluarga_sebelum_menikah->save();
+        }
+
+        if (!empty($request->keluarga_setelah_menikah_hubungan)) {
+            # code...
+            foreach ($request->keluarga_setelah_menikah_hubungan as $key => $value) {
+                $keluarga_setelah_menikah = new HcKeluargaSetelahMenikah;
+                $keluarga_setelah_menikah->email = $email;
+                $keluarga_setelah_menikah->hubungan = $value;
+                $keluarga_setelah_menikah->nama = $request->keluarga_setelah_menikah_nama[$key];
+                $keluarga_setelah_menikah->tempat_lahir = $request->keluarga_setelah_menikah_tempat_lahir[$key];
+                $keluarga_setelah_menikah->tanggal_lahir = $request->keluarga_setelah_menikah_tanggal_lahir[$key];
+                $keluarga_setelah_menikah->pekerjaan_terakhir = $request->keluarga_setelah_menikah_pekerjaan_terakhir[$key];
+                $keluarga_setelah_menikah->save();
+            }
+        }
+
+
+        $kerabat = new HcKerabatDarurat;
+        $kerabat->email = $request->email;
+        $kerabat->hubungan = $request->kerabat_hubungan;
+        $kerabat->nama = $request->kerabat_nama;
+        $kerabat->jenis_kelamin = $request->kerabat_jenis_kelamin;
+        $kerabat->telepon = $request->kerabat_telepon;
+        $kerabat->alamat = $request->kerabat_alamat;
+        $kerabat->save();
+
+        $pendidikan = new HcPendidikan;
+        $pendidikan->email = $request->email;
+        $pendidikan->tingkat = $request->pendidikan_tingkat;
+        $pendidikan->nama = $request->pendidikan_nama_gedung;
+        $pendidikan->kota = $request->pendidikan_kota;
+        $pendidikan->jurusan = $request->pendidikan_jurusan;
+        $pendidikan->tahun_masuk = $request->pendidikan_tahun_masuk;
+        $pendidikan->tahun_lulus = $request->pendidikan_tahun_lulus;
+        $pendidikan->save();
 
         $user = new User;
         $user->name = $request->nama_lengkap;
@@ -90,8 +169,11 @@ class MasterKaryawanController extends Controller
         $karyawan = MasterKaryawan::find($id);
         $cabangs = MasterCabang::get();
         $jabatans = MasterJabatan::get();
+
+        $email = $karyawan->email;
+        $medsos = HcMediaSosial::where('email', $email)->first();
         
-        return view('karyawan.detail', ['karyawan' => $karyawan, 'cabangs' => $cabangs, 'jabatans' => $jabatans]);
+        return view('karyawan.detail', ['karyawan' => $karyawan, 'cabangs' => $cabangs, 'jabatans' => $jabatans, 'medsos' => $medsos]);
     }
 
     /**

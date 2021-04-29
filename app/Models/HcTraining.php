@@ -22,7 +22,8 @@ class HcTraining extends Model
         'pengisi',
         'jenis',
         'hasil',
-        'status'
+        'status',
+        'modul'
     ];
 
     public function masterDivisi() {

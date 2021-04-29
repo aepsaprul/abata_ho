@@ -6,6 +6,7 @@ use App\Http\Controllers\HcLokerController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\HcLamaranController;
 use App\Http\Controllers\HcTrainingController;
+use App\Http\Controllers\MasterDivisiController;
 use App\Http\Controllers\MasterKaryawanController;
 
 /*
@@ -28,6 +29,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('divisi', MasterDivisiController::class);
+    Route::get('divisi/{id}/delete', [MasterDivisiController::class, 'delete'])->name('divisi.delete');
+    
     Route::get('/laporan/pengunjung', [LaporanController::class, 'pengunjung'])->name('laporan.pengunjung');
     Route::get('/laporan/pengunjung/json', [LaporanController::class, 'pengunjungJson'])->name('laporan.pengunjung.json');
 
@@ -47,4 +51,5 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::resource('hc/training', HcTrainingController::class);
     Route::get('hc/training/{id}/delete', [HcTrainingController::class, 'delete'])->name('training.delete');
+    Route::get('hc/training/data/modul', [HcTrainingController::class, 'datamodul'])->name('training.cek.datamodul');
 });

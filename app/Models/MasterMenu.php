@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\JabatanMenu;
+use App\Models\KaryawanMenu;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,5 +22,9 @@ class MasterMenu extends Model
 
     public function jabatanMenu() {
         return $this->hasMany(JabatanMenu::class);
+    }
+    
+    public function karyawanMenu() {
+        return $this->hasMany(KaryawanMenu::class);
     }
 }

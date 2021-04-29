@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HcTraining;
 use App\Models\MasterDivisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HcTrainingController extends Controller
 {
@@ -53,6 +54,12 @@ class HcTrainingController extends Controller
         $trainings->jenis = $request->jenis;
         $trainings->hasil = $request->hasil;
         $trainings->status = $request->status;
+        
+        if($request->file('modul')) {
+            $file = $request->file('modul')->store('modul', 'public');
+            $trainings->modul = $file;
+        }
+
         $trainings->save();
 
         return redirect()->route('training.index')->with('status', 'Data berhasil disimpan');
@@ -121,5 +128,11 @@ class HcTrainingController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function datamodul(Request $request)
+    {
+        // return Storage::url('app/public/modul/jAaEVVZQWEubwBtNogWpOyyOYGPQi84Bx84bjnt1.pdf');
+        return response()->download(public_path('../storage/app/public/modul/jAaEVVZQWEubwBtNogWpOyyOYGPQi84Bx84bjnt1.pdf'));
     }
 }

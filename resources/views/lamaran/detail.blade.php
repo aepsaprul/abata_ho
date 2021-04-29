@@ -73,7 +73,17 @@
 										<dt class="col-sm-4 p-2">Alamat Sekarang</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->alamat_sekarang }}</dd>
 										<dt class="col-sm-4 p-2">Status Perkawinan</dt>
-										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->status_perkawinan }}</dd>										
+										<dd class="col-sm-8 border-bottom border-warning rounded p-2">
+											@if ($lamaran->status_perkawinan == 1)
+												Lajang
+											@elseif ($lamaran->status_perkawinan == 2)
+												Menikah
+											@elseif ($lamaran->status_perkawinan == 3)
+												Cerai
+											@else
+												Lajang
+											@endif
+										</dd>										
 										<dt class="col-sm-4 p-2">Pernyataan</dt>
 										<dd class="col-sm-8 border-bottom border-warning rounded p-2">{{ $lamaran->pernyataan }}</dd>
 									</dl>
