@@ -241,7 +241,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Facebook</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;">
+												<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;" value="{{ $medsos->facebook }}">
 											</dd>
 										</dl>
 									</div>
@@ -249,7 +249,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Instagram</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;">
+												<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;" value="{{ $medsos->instagram }}">
 											</dd>
 										</dl>
 									</div>
@@ -257,7 +257,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Youtube</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;">
+												<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;" value="{{ $medsos->youtube }}">
 											</dd>
 										</dl>
 									</div>
@@ -265,7 +265,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Linkedin</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;">
+												<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;" value="{{ $medsos->linkedin }}">
 											</dd>
 										</dl>
 									</div>
@@ -276,54 +276,54 @@
 						{{-- susunan keluarga sebelum menikah  --}}
 						<div class="card card-primary">
 							<div class="card-body">							
-								<h5 class="text-center text-uppercase mb-3">susunan keluarga sebelum menikah</h5>
+								<h5 class="text-center text-uppercase mb-3">susunan keluarga sebelum menikah <button id="add" class="add btn btn-success"><i class="fa fa-plus"></i></button></h5>
 								<hr>
+								@foreach ($keluarga_sebelum_menikahs as $keluarga_sebelum_menikah)
+										<div class="row">
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Hubungan</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_sebelum_menikah_hubungan[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Nama</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_sebelum_menikah_nama[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-1">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Usia</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_sebelum_menikah_usia[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-3">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_sebelum_menikah_pendidikan_terakhir[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-3">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_sebelum_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+										</div>
+								@endforeach
 								<div id="keluarga_sebelum_menikah">
-									<div class="row">
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Hubungan</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_sebelum_menikah_hubungan[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Nama</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_sebelum_menikah_nama[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-1">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Usia</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_sebelum_menikah_usia[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-3">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_sebelum_menikah_pendidikan_terakhir[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-3">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_sebelum_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-1 text-right">
-											<button id="add" class="add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -331,54 +331,54 @@
 						{{-- keluarga setelah menikah  --}}
 						<div class="card card-primary">
 							<div class="card-body">							
-								<h5 class="text-center text-uppercase mb-3">susuan keluarga setelah menikah</h5>
+								<h5 class="text-center text-uppercase mb-3">susuan keluarga setelah menikah <button id="keluarga_setelah_menikah_add" class="keluarga_setelah_menikah_add btn btn-success"><i class="fa fa-plus"></i></button></h5>
 								<hr>
+									@foreach ($keluarga_setelah_menikahs as $keluarga_setelah_menikah)
+										<div class="row">
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Hubungan</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_setelah_menikah_hubungan[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Nama</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_setelah_menikah_nama[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_setelah_menikah_tempat_lahir[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-2">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_setelah_menikah_tanggal_lahir[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+											<div class="col-md-3">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="text" name="keluarga_setelah_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;">
+													</dd>
+												</dl>
+											</div>
+									@endforeach
 								<div id="keluarga_setelah_menikah">
-									<div class="row">
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Hubungan</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_setelah_menikah_hubungan[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Nama</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_setelah_menikah_nama[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_setelah_menikah_tempat_lahir[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-2">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_setelah_menikah_tanggal_lahir[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-3">
-											<dl class="row">
-												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="keluarga_setelah_menikah_pekerjaan_terakhir[]" style="border: none; width: 100%;">
-												</dd>
-											</dl>
-										</div>
-										<div class="col-md-1 text-right">
-											<button id="keluarga_setelah_menikah_add" class="keluarga_setelah_menikah_add btn btn-success mt-4"><i class="fa fa-plus"></i></button>
-										</div>
-									</div>
+
+								</div>
 								</div>
 							</div>
 						</div>

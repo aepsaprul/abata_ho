@@ -172,8 +172,21 @@ class MasterKaryawanController extends Controller
 
         $email = $karyawan->email;
         $medsos = HcMediaSosial::where('email', $email)->first();
+        $keluarga_sebelum_menikah = HcKeluargaSebelumMenikah::where('email', $email)->get();
+        $keluarga_setelah_menikah = HcKeluargaSetelahMenikah::where('email', $email)->get();
+        $kerabat_dihubungi = HcKerabatDarurat::where('email', $email)->first();
+        $pendidikan = HcPendidikan::where('email', $email)->first();
         
-        return view('karyawan.detail', ['karyawan' => $karyawan, 'cabangs' => $cabangs, 'jabatans' => $jabatans, 'medsos' => $medsos]);
+        return view('karyawan.detail', [
+            'karyawan' => $karyawan, 
+            'cabangs' => $cabangs, 
+            'jabatans' => $jabatans, 
+            'medsos' => $medsos,
+            'keluarga_sebelum_menikahs' => $keluarga_sebelum_menikah,
+            'keluarga_setelah_menikahs' => $keluarga_setelah_menikah,
+            'kerabat_hubungi' => $kerabat_dihubungi,
+            'pendidikan' => $pendidikan
+        ]);
     }
 
     /**
@@ -187,8 +200,24 @@ class MasterKaryawanController extends Controller
         $karyawan = MasterKaryawan::find($id);
         $cabangs = MasterCabang::get();
         $jabatans = MasterJabatan::get();
+
+        $email = $karyawan->email;
+        $medsos = HcMediaSosial::where('email', $email)->first();
+        $keluarga_sebelum_menikah = HcKeluargaSebelumMenikah::where('email', $email)->get();
+        $keluarga_setelah_menikah = HcKeluargaSetelahMenikah::where('email', $email)->get();
+        $kerabat_dihubungi = HcKerabatDarurat::where('email', $email)->first();
+        $pendidikan = HcPendidikan::where('email', $email)->first();
         
-        return view('karyawan.edit', ['karyawan' => $karyawan, 'cabangs' => $cabangs, 'jabatans' => $jabatans]);
+        return view('karyawan.edit', [
+            'karyawan' => $karyawan, 
+            'cabangs' => $cabangs, 
+            'jabatans' => $jabatans,
+            'medsos' => $medsos,
+            'keluarga_sebelum_menikahs' => $keluarga_sebelum_menikah,
+            'keluarga_setelah_menikahs' => $keluarga_setelah_menikah,
+            'kerabat_hubungi' => $kerabat_dihubungi,
+            'pendidikan' => $pendidikan
+        ]);
     }
 
     /**

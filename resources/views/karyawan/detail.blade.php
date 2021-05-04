@@ -273,51 +273,53 @@
 							<h5 class="text-center text-uppercase mb-3">susunan keluarga sebelum menikah</h5>
 							<hr>
 							<div id="keluarga_sebelum_menikah">
-								<div class="row">
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Hubungan</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
-											</dd>
-										</dl>
+								@foreach ($keluarga_sebelum_menikahs as $keluarga_sebelum_menikah)
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->hubungan }}">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->nama }}">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-1">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Usia</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->usia }}">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->pendidikan_terakhir }}">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->pekerjaan_terakhir }}">
+												</dd>
+											</dl>
+										</div>
 									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Nama</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-1">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Usia</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
-					</div>
+					</div>							
 
 					{{-- keluarga setelah menikah  --}}
 					<div class="card card-primary">
@@ -325,48 +327,50 @@
 							<h5 class="text-center text-uppercase mb-3">susuan keluarga setelah menikah</h5>
 							<hr>
 							<div id="keluarga_setelah_menikah">
-								<div class="row">
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Hubungan</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
-											</dd>
-										</dl>
+								@foreach ($keluarga_setelah_menikahs as $keluarga_setelah_menikah)
+									<div class="row">
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Hubungan</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="hubungan" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Nama</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="nama" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-2">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="usia" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
+										<div class="col-md-3">
+											<dl class="row">
+												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+												</dd>
+											</dl>
+										</div>
 									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Nama</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-2">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-									<div class="col-md-3">
-										<dl class="row">
-											<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
-											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
-											</dd>
-										</dl>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -382,7 +386,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Hubungan</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;">
+												<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->hubungan }}">
 											</dd>
 										</dl>
 									</div>
@@ -390,7 +394,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Nama</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;">
+												<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->nama }}">
 											</dd>
 										</dl>
 									</div>
@@ -398,7 +402,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;">
+												<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->jenis_kelamin }}">
 											</dd>
 										</dl>
 									</div>
@@ -406,7 +410,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Telepon</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->telepon }}">
 											</dd>
 										</dl>
 									</div>
@@ -414,7 +418,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Alamat</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->alamat }}">
 											</dd>
 										</dl>
 									</div>
@@ -433,7 +437,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tingkat</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="hubungan" style="border: none; width: 100%;">
+											<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $pendidikan->tingkat }}">
 										</dd>
 									</dl>
 								</div>
@@ -441,7 +445,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Nama</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="nama" style="border: none; width: 100%;">
+											<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $pendidikan->nama }}">
 										</dd>
 									</dl>
 								</div>
@@ -449,7 +453,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Kota</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="usia" style="border: none; width: 100%;">
+											<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $pendidikan->kota }}">
 										</dd>
 									</dl>
 								</div>
@@ -457,7 +461,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Jurusan</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->jurusan }}">
 										</dd>
 									</dl>
 								</div>
@@ -465,7 +469,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->tahun_masuk }}">
 										</dd>
 									</dl>
 								</div>
@@ -473,7 +477,7 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->tahun_lulus }}">
 										</dd>
 									</dl>
 								</div>
