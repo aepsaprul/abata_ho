@@ -81,7 +81,7 @@
 											@elseif ($lamaran->status_perkawinan == 3)
 												Cerai
 											@else
-												Lajang
+												
 											@endif
 										</dd>										
 										<dt class="col-sm-4 p-2">Pernyataan</dt>

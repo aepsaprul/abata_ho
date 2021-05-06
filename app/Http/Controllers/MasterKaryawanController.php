@@ -121,15 +121,19 @@ class MasterKaryawanController extends Controller
             }
         }
 
-
-        $kerabat = new HcKerabatDarurat;
-        $kerabat->email = $request->email;
-        $kerabat->hubungan = $request->kerabat_hubungan;
-        $kerabat->nama = $request->kerabat_nama;
-        $kerabat->jenis_kelamin = $request->kerabat_jenis_kelamin;
-        $kerabat->telepon = $request->kerabat_telepon;
-        $kerabat->alamat = $request->kerabat_alamat;
-        $kerabat->save();
+        if (!empty($request->kerabat_hubungan)) {
+            # code...
+            foreach ($request->kerabat_hubungan as $key => $value) {
+                $kerabat = new HcKerabatDarurat;
+                $kerabat->email = $request->email;
+                $kerabat->hubungan = $value;
+                $kerabat->nama = $request->kerabat_nama[$key];
+                $kerabat->jenis_kelamin = $request->kerabat_jenis_kelamin[$key];
+                $kerabat->telepon = $request->kerabat_telepon[$key];
+                $kerabat->alamat = $request->kerabat_alamat[$key];
+                $kerabat->save();
+            }
+        }
 
         $pendidikan = new HcPendidikan;
         $pendidikan->email = $request->email;

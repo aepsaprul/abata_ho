@@ -387,7 +387,7 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Hubungan</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="kerabat_hubungan" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													<input type="text" name="kerabat_hubungan[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
 										</div>
@@ -395,7 +395,7 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Nama</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="kerabat_nama" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													<input type="text" name="kerabat_nama[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
 										</div>
@@ -403,7 +403,7 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="kerabat_jenis_kelamin" style="border: none; width: 100%;" placeholder="L/P" onkeyup="this.value = this.value.toUpperCase()">
+													<input type="text" name="kerabat_jenis_kelamin[]" style="border: none; width: 100%;" placeholder="L/P" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
 										</div>
@@ -411,7 +411,7 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Telepon</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="number" name="kerabat_telepon" style="border: none; width: 100%;">
+													<input type="number" name="kerabat_telepon[]" style="border: none; width: 100%;">
 												</dd>
 											</dl>
 										</div>
@@ -419,7 +419,7 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Alamat</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="kerabat_alamat" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													<input type="text" name="kerabat_alamat[]" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
 												</dd>
 											</dl>
 										</div>
@@ -660,7 +660,7 @@
 					"<div class=\"col-md-1 text-right\">" +
 						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
 					"</div>" +
-				"</div>"
+				"</div>" +
 			"</div>";
 			
 			$('#keluarga_setelah_menikah').append(keluarga_setelah_menikah_value);
@@ -674,69 +674,69 @@
 
 		});
 
-		// $('#kerabat_darurat_add').on('click', function(e) {
+		$('#kerabat_darurat_add').on('click', function(e) {
 
-		// 	e.preventDefault();
+			e.preventDefault();
 
-		// 	var kerabat_darurat_value = "" +
-		// 	"<div id=\"kerabat_darurat_root\" class=\"kerabat_darurat_root\">" +
-		// 		"<div class=\"row\">" +
-		// 			"<div class=\"col-md-2\">" +
-		// 				"<dl class=\"row\">" +
-		// 					"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
-		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-		// 						"<input type=\"text\" name=\"kerabat_hubungan\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
-		// 					"</dd>" +
-		// 				"</dl>" +
-		// 			"</div>" +
-		// 			"<div class=\"col-md-2\">" +
-		// 				"<dl class=\"row\">" +
-		// 					"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
-		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-		// 						"<input type=\"text\" name=\"kerabat_nama\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
-		// 					"</dd>" +
-		// 				"</dl>" +
-		// 			"</div>" +
-		// 			"<div class=\"col-md-2\">" +
-		// 				"<dl class=\"row\">" +
-		// 					"<dt class=\"col-sm-8 ml-3\">Jenis Kelamin</dt>" +
-		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-		// 						"<input type=\"text\" name=\"kerabat_jenis_kelamin\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
-		// 					"</dd>" +
-		// 				"</dl>" +
-		// 			"</div>" +
-		// 			"<div class=\"col-md-2\">" +
-		// 				"<dl class=\"row\">" +
-		// 					"<dt class=\"col-sm-8 ml-3\">Telepon</dt>" +
-		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-		// 						"<input type=\"number\" name=\"kerabat_telepon\" style=\"border: none; width: 100%;\">" +
-		// 					"</dd>" +
-		// 				"</dl>" +
-		// 			"</div>" +
-		// 			"<div class=\"col-md-3\">" +
-		// 				"<dl class=\"row\">" +
-		// 					"<dt class=\"col-sm-8 ml-3\">Alamat</dt>" +
-		// 					"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
-		// 						"<input type=\"text\" name=\"kerabat_alamat\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
-		// 					"</dd>" +
-		// 				"</dl>" +
-		// 			"</div>" +
-		// 			"<div class=\"col-md-1 text-right\">" +
-		// 				"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
-		// 			"</div>" +
-		// 		"</div>" +
-		// 	"</div>";
+			var kerabat_darurat_value = "" +
+			"<div id=\"kerabat_darurat_root\" class=\"kerabat_darurat_root\">" +
+				"<div class=\"row\">" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Hubungan</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"kerabat_hubungan[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Nama</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"kerabat_nama[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Jenis Kelamin</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"kerabat_jenis_kelamin[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-2\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Telepon</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"number\" name=\"kerabat_telepon[]\" style=\"border: none; width: 100%;\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-3\">" +
+						"<dl class=\"row\">" +
+							"<dt class=\"col-sm-8 ml-3\">Alamat</dt>" +
+							"<dd class=\"col-sm-10 border-bottom border-warning rounded ml-4 p-2\">" +
+								"<input type=\"text\" name=\"kerabat_alamat[]\" style=\"border: none; width: 100%;\" onkeyup=\"this.value = this.value.toUpperCase()\">" +
+							"</dd>" +
+						"</dl>" +
+					"</div>" +
+					"<div class=\"col-md-1 text-right\">" +
+						"<button id=\"remove\" class=\"btn btn-danger mt-4\"><i class=\"fa fa-times\"></i></button>" +
+					"</div>" +
+				"</div>" +
+			"</div>";
 
-		// 	$('#kerabat_darurat').append(kerabat_darurat_value);
+			$('#kerabat_darurat').append(kerabat_darurat_value);
 
-		// });
+		});
 
-		// $('#kerabat_darurat').on('click', '#remove', function(e) {
+		$('#kerabat_darurat').on('click', '#remove', function(e) {
 
-		// 	e.preventDefault();
-		// 	$('#kerabat_darurat_root').remove();
+			e.preventDefault();
+			$('#kerabat_darurat_root').remove();
 
-		// });
+		});
 
 	});
 

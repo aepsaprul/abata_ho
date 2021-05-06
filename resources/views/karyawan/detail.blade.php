@@ -235,7 +235,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Facebook</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;" value="{{ $medsos->facebook }}">
+											<input type="text" name="facebook" id="facebook" style="border: none; width: 100%;" 
+											@if (!empty($medsos->facebook))
+												value="{{ $medsos->facebook }}"													
+											@endif											
+											>
 										</dd>
 									</dl>
 								</div>
@@ -243,7 +247,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Instagram</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;" value="{{ $medsos->instagram }}">
+											<input type="text" name="instagram" id="instagram" style="border: none; width: 100%;" 
+											@if (!empty($medsos->instagram))
+												value="{{ $medsos->instagram }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -251,7 +259,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Youtube</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;" value="{{ $medsos->youtube }}">
+											<input type="text" name="youtube" id="youtube" style="border: none; width: 100%;" 
+											@if (!empty($medsos->youtube))
+												value="{{ $medsos->youtube }}"													
+											@endif											
+											>
 										</dd>
 									</dl>
 								</div>
@@ -259,7 +271,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Linkedin</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;" value="{{ $medsos->linkedin }}">
+											<input type="text" name="linkedin" id="linkedin" style="border: none; width: 100%;" 
+											@if (!empty($medsos->linkedin))
+												value="{{ $medsos->linkedin }}"
+											@endif											
+											>
 										</dd>
 									</dl>
 								</div>
@@ -279,7 +295,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Hubungan</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->hubungan }}">
+													<input type="text" name="hubungan" style="border: none; width: 100%;" 
+													@if (!empty($keluarga_sebelum_menikah))
+														value="{{ $keluarga_sebelum_menikah->hubungan }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -287,7 +307,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Nama</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->nama }}">
+													<input type="text" name="nama" style="border: none; width: 100%;" 
+													@if (!empty($keluarga_sebelum_menikah))
+														value="{{ $keluarga_sebelum_menikah->nama }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -295,7 +319,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Usia</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->usia }}">
+													<input type="text" name="usia" style="border: none; width: 100%;" 
+													@if (!empty($keluarga_sebelum_menikah))
+														value="{{ $keluarga_sebelum_menikah->usia }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -303,7 +331,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Pendidikan Terakhir</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->pendidikan_terakhir }}">
+													<input type="text" name="pendidikan_terakhir" style="border: none; width: 100%;" 
+													@if (!empty($keluarga_sebelum_menikah))
+														value="{{ $keluarga_sebelum_menikah->pendidikan_terakhir }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -311,7 +343,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $keluarga_sebelum_menikah->pekerjaan_terakhir }}">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" 
+													@if (!empty($keluarga_sebelum_menikah))
+														value="{{ $keluarga_sebelum_menikah->pekerjaan_terakhir }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -333,7 +369,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Hubungan</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="hubungan" style="border: none; width: 100%;">
+													<input type="text" name="hubungan" style="border: none; width: 100%;"
+													@if (!empty($keluarga_setelah_menikah))
+															value="{{ $keluarga_setelah_menikah->hubungan }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -341,7 +381,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Nama</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="nama" style="border: none; width: 100%;">
+													<input type="text" name="nama" style="border: none; width: 100%;"
+													@if (!empty($keluarga_setelah_menikah))
+															value="{{ $keluarga_setelah_menikah->nama }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -349,7 +393,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Tempat Lahir</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="usia" style="border: none; width: 100%;">
+													<input type="text" name="usia" style="border: none; width: 100%;"
+													@if (!empty($keluarga_setelah_menikah))
+															value="{{ $keluarga_setelah_menikah->tempat_lahir }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -357,7 +405,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Tanggal Lahir</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;">
+													<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;"
+													@if (!empty($keluarga_setelah_menikah))
+															value="{{ $keluarga_setelah_menikah->tanggal_lahir }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -365,7 +417,11 @@
 											<dl class="row">
 												<dt class="col-sm-8 ml-3">Pekerjaan Terakhir</dt>
 												<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;">
+													<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;"
+													@if (!empty($keluarga_setelah_menikah))
+															value="{{ $keluarga_setelah_menikah->pekerjaan_terakhir }}"
+													@endif
+													>
 												</dd>
 											</dl>
 										</div>
@@ -386,7 +442,11 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Hubungan</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->hubungan }}">
+												<input type="text" name="hubungan" style="border: none; width: 100%;" 
+												@if (!empty($kerabat_hubungi))
+													value="{{ $kerabat_hubungi->hubungan }}"
+												@endif
+												>
 											</dd>
 										</dl>
 									</div>
@@ -394,7 +454,11 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Nama</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->nama }}">
+												<input type="text" name="nama" style="border: none; width: 100%;" 
+												@if (!empty($kerabat_hubungi))
+													value="{{ $kerabat_hubungi->nama }}"
+												@endif
+												>
 											</dd>
 										</dl>
 									</div>
@@ -402,7 +466,11 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Jenis Kelamin</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->jenis_kelamin }}">
+												<input type="text" name="usia" style="border: none; width: 100%;" 
+												@if (!empty($kerabat_hubungi))
+													value="{{ $kerabat_hubungi->jenis_kelamin }}"
+												@endif
+												>
 											</dd>
 										</dl>
 									</div>
@@ -410,7 +478,11 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Telepon</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->telepon }}">
+												<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" 
+												@if (!empty($kerabat_hubungi))
+													value="{{ $kerabat_hubungi->telepon }}"
+												@endif
+												>
 											</dd>
 										</dl>
 									</div>
@@ -418,7 +490,11 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Alamat</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $kerabat_hubungi->alamat }}">
+												<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" 
+												@if (!empty($kerabat_hubungi))
+													value="{{ $kerabat_hubungi->alamat }}"
+												@endif
+												>
 											</dd>
 										</dl>
 									</div>
@@ -437,7 +513,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tingkat</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="hubungan" style="border: none; width: 100%;" value="{{ $pendidikan->tingkat }}">
+											<input type="text" name="hubungan" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->tingkat }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -445,7 +525,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Nama</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="nama" style="border: none; width: 100%;" value="{{ $pendidikan->nama }}">
+											<input type="text" name="nama" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->nama }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -453,7 +537,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Kota</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="usia" style="border: none; width: 100%;" value="{{ $pendidikan->kota }}">
+											<input type="text" name="usia" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->kota }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -461,7 +549,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Jurusan</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->jurusan }}">
+											<input type="text" name="tanggal_terakhir" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->jurusan }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -469,7 +561,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tahun Masuk</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->tahun_masuk }}">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->tahun_masuk }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
@@ -477,7 +573,11 @@
 									<dl class="row">
 										<dt class="col-sm-8 ml-3">Tahun Lulus</dt>
 										<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" value="{{ $pendidikan->tahun_lulus }}">
+											<input type="text" name="pekerjaan_terakhir" style="border: none; width: 100%;" 
+											@if (!empty($pendidikan))
+												value="{{ $pendidikan->tahun_lulus }}"
+											@endif
+											>
 										</dd>
 									</dl>
 								</div>
