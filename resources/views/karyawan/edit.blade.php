@@ -524,7 +524,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Tingkat</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pendidikan_hubungan" style="border: none; width: 100%;"
+												<input type="text" name="pendidikan_tingkat" style="border: none; width: 100%;"
 												@if (!empty($pendidikan))
 														value="{{ $pendidikan->tingkat }}"
 												@endif
@@ -536,7 +536,7 @@
 										<dl class="row">
 											<dt class="col-sm-8 ml-3">Nama</dt>
 											<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
-												<input type="text" name="pendidikan_nama" style="border: none; width: 100%;"
+												<input type="text" name="pendidikan_gedung" style="border: none; width: 100%;"
 												@if (!empty($pendidikan))
 														value="{{ $pendidikan->nama }}"
 												@endif

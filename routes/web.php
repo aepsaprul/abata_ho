@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HcCirController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HcLokerController;
 use App\Http\Controllers\LaporanController;
@@ -37,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('karyawan', MasterKaryawanController::class);
     Route::get('karyawan/{id}/delete', [MasterKaryawanController::class, 'delete'])->name('karyawan.delete');
+
+    Route::resource('hc/cir', HcCirController::class);
+    Route::get('hc/cir/{id}/delete', [HcCirController::class, 'delete'])->name('cir.delete');
 
     Route::resource('hc/loker', HcLokerController::class);
     Route::get('hc/loker/{id}/delete', [HcLokerController::class, 'delete'])->name('loker.delete');
