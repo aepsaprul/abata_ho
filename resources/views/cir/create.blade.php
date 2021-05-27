@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('style')
-	<!-- daterange picker -->
-	<link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-	<!-- Tempusdominus Bootstrap 4 -->
-	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 	<!-- Select2 -->
 	<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+	
 @endsection
 
 @section('content')
@@ -75,6 +74,7 @@
 									<div id="jenis_form">
 										{{-- content jenis form --}}
 									</div>
+									
 								</div>
 								<div class="card-footer">
 									<button type="submit" class="btn btn-primary">Submit</button>
@@ -106,7 +106,11 @@
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
+
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -126,27 +130,27 @@
 					"<tr>" +
 						"<td><label>Bagian</label></td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"cuti_bagian\" id=\"cuti_bagian\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td><label>No Telp yg aktif</label></td>" +
 						"<td>:</td>" +
-						"<td><input type=\"number\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"number\" name=\"cuti_telepon\" id=\"cuti_telepon\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td><label>Alamat saat Cuti</label></td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"cuti_alamat\" id=\"cuti_alamat\" class=\"form-control\"></td>" +
 					"</tr>" +
 				"</table>" +
 
 				"<label for=\"\">Menerangkan dengan ini bahwa saya bermaksud untuk mengambil cuti :</label>" +
 				"<ul style=\"list-style-type: none;\">" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"\"> Melahirkan</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"\"> Tahunan</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"\"> Kematian</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"\"> Menikah</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"\"> Lainnya</li>" +
+					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Melahirkan</li>" +
+					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Tahunan</li>" +
+					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Kematian</li>" +
+					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Menikah</li>" +
+					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Lainnya</li>" +
 				"</ul>" +
 
 				"<table class=\"table table-bordered\">" +
@@ -155,31 +159,25 @@
 						"<td>" +
 							"<div class=\"row\">" +
 								"<div class=\"col-md-6\">" +
-									// "<input type=\"text\" name=\"\" id=\"\" class=\"form-control\" placeholder=\"Tanggal Mulai\">" +
-									"<div class=\"input-group date\" id=\"tanggal\" data-target-input=\"nearest\">" +
-										"<input type=\"text\" class=\"form-control datetimepicker-input p-0\" data-target=\"#tanggal\" name=\"tanggal\" style=\"border: none;\"/>" +
-										"<div class=\"input-group-append\" data-target=\"#tanggal\" data-toggle=\"datetimepicker\">" +
-												"<div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>" +
-										"</div>" +
-									"</div>" +
+									"<input type=\"text\" id=\"cuti_tanggal_mulai\" class=\"form-control\" placeholder=\"Tanggal Mulai\">" +
 								"</div>" +
 								"<div class=\"col-md-6\">" +
-									"<input type=\"text\" name=\"\" id=\"\" class=\"form-control\" placeholder=\"Tanggal Berakhir\">" +
+									"<input type=\"text\" id=\"cuti_tanggal_berakhir\" class=\"form-control\" placeholder=\"Tanggal Berakhir\">" +
 								"</div>" +
 							"</div>" +
 						"</td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Nama karyawan pengganti saat cuti adalah</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"cuti_pengganti\" id=\"cuti_pengganti\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Alasan Cuti (secara lebih detail)</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"cuti_alasan\" id=\"cuti_alasan\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Dan saya bersedia berangkat kerja lagi mulai tanggal</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" id=\"cuti_tanggal_kerja\" class=\"form-control\"></td>" +
 					"</tr>" +
 				"</table>";
 
@@ -188,32 +186,32 @@
 					"<tr>" +
 						"<td>Jabatan</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_jabatan\" id=\"resign_jabatan\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Lokasi Kerja</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_lokasi\" id=\"resign_lokasi\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Tanggal Masuk</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_tanggal_masuk\" id=\"resign_tanggal_masuk\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Tanggal Efektif Keluar</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_tanggal_keluar\" id=\"resign_tanggal_keluar\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>Alamat Rumah yang ditempati</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_alamat\" id=\"resign_alamat\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>No Telp / HP</td>" +
 						"<td>:</td>" +
-						"<td><input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"resign_telepon\" id=\"resign_telepon\" class=\"form-control\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td colspan=\"3\">" +
@@ -229,53 +227,53 @@
 									"<table class=\"mt-3\">" +
 										"<tr>" +
 											"<td>Kewajiban keuangan</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_kewajiban_keuangan\" id=\"resign_radio_kewajiban_keuangan\"> Ada / <input type=\"radio\" name=\"resign_radio_kewajiban_keuangan\" id=\"resign_radio_kewajiban_keuangan\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_kewajiban_keuangan\" id=\"resign_tanggal_kewajiban_keuangan\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Serah terima kerja</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_serah_terima\" id=\"resign_radio_serah_terima\"> Ada / <input type=\"radio\" name=\"resign_radio_serah_terima\" id=\"resign_radio_serah_terima\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_serah_terima\" id=\"resign_tanggal_serah_terima\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>ID Card karyawan</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_id_card\" id=\"resign_radio_id_card\"> Ada / <input type=\"radio\" name=\"resign_radio_id_card\" id=\"resign_radio_id_card\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_id_card\" id=\"resign_tanggal_id_card\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Seragam karyawan</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_seragam_karyawan\" id=\"resign_radio_seragam_karyawan\"> Ada / <input type=\"radio\" name=\"resign_radio_seragam_karyawan\" id=\"resign_radio_seragam_karyawan\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_seragam_karyawan\" id=\"resign_tanggal_seragam_karyawan\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Laptop</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_laptop\" id=\"resign_radio_laptop\"> Ada / <input type=\"radio\" name=\"resign_radio_laptop\" id=\"resign_radio_laptop\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_laptop\" id=\"resign_tanggal_laptop\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Peralatan kantor</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_peralatan_kantor\" id=\"resign_radio_peralatan_kantor\"> Ada / <input type=\"radio\" name=\"resign_radio_peralatan_kantor\" id=\"resign_radio_peralatan_kantor\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_peralatan_kantor\" id=\"resign_tanggal_peralatan_kantor\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Penghapusan email dan akun yg berhubungan dengan kantor</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_penghapusan_akun\" id=\"resign_radio_penghapusan_akun\"> Ada / <input type=\"radio\" name=\"resign_radio_penghapusan_akun\" id=\"resign_radio_penghapusan_akun\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_penghapusan_akun\" id=\"resign_tanggal_penghapusan_akun\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Penghapusan chat WA</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_penghapusan_chat\" id=\"resign_radio_penghapusan_chat\"> Ada / <input type=\"radio\" name=\"resign_radio_penghapusan_chat\" id=\"resign_radio_penghapusan_chat\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_penghapusan_chat\" id=\"resign_tanggal_penghapusan_chat\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Penutupan rekening bank berhubungan dengan kantor</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_penutupan_rekening\" id=\"resign_radio_penutupan_rekening\"> Ada / <input type=\"radio\" name=\"resign_radio_penutupan_rekening\" id=\"resign_radio_penutupan_rekening\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_penutupan_rekening\" id=\"resign_tanggal_penutupan_rekening\" class=\"form-control\"></td>" +
 										"</tr>" +
 										"<tr>" +
 											"<td>Lain lain</td>" +
-											"<td><input type=\"radio\" name=\"\" id=\"\"> Ada / <input type=\"radio\" name=\"\" id=\"\"> Tidak</td>" +
-											"<td>Tgl Selesai : <input type=\"text\" name=\"\" id=\"\" class=\"form-control\"></td>" +
+											"<td><input type=\"radio\" name=\"resign_radio_lain\" id=\"resign_radio_lain\"> Ada / <input type=\"radio\" name=\"resign_radio_lain\" id=\"resign_radio_lain\"> Tidak</td>" +
+											"<td>Tgl Selesai : <input type=\"text\" name=\"resign_tanggal_lain\" id=\"resign_tanggal_lain\" class=\"form-control\"></td>" +
 										"</tr>" +
 									"</table>" +
 								"</li>" +
@@ -598,23 +596,79 @@
 				"<textarea name=\"\" id=\"\" rows=\"3\" class=\"form-control\"></textarea>";
 			
 			if (jenis_val == 'cuti') {
-				$('#jenis_form').append(cuti_form);				
+				$('#jenis_form').append(cuti_form);
+
+				$( function() {
+					$( "#cuti_tanggal_mulai" ).datepicker({
+						dateFormat: "yy-mm-dd"
+					});
+					$( "#cuti_tanggal_berakhir" ).datepicker({
+						dateFormat: "yy-mm-dd"
+					});
+					$( "#cuti_tanggal_kerja" ).datepicker({
+						dateFormat: "yy-mm-dd"
+					});
+				} );				
 			}
+
 			if (jenis_val == 'resign') {
 				$('#jenis_form').append(resign_form);
+
+				$( "#resign_tanggal_masuk" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+
+				$( "#resign_tanggal_keluar" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+
+				$( "#resign_tanggal_kewajiban_keuangan" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_serah_terima" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_id_card" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_seragam_karyawan" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_laptop" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_peralatan_kantor" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_penghapusan_akun" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_penghapusan_chat" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_penutupan_rekening" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+				
+				$( "#resign_tanggal_lain" ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
 			}
 
-		})
+		});
+
+		
 	});
 
-	$(function () {
-
-	// tanggal lahir
-	$('#tanggal').datetimepicker({
-			format: 'YYYY-MM-DD'
-	});
-
-})
+	
   
 </script>
 
