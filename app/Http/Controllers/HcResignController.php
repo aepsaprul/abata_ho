@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HcCir;
-use App\Models\HcCuti;
-use App\Models\HcResign;
 use Illuminate\Http\Request;
-use App\Models\MasterJabatan;
-use App\Models\HcResignCeklis;
-use App\Models\MasterKaryawan;
-use App\Models\HcResignSurveiCeklis;
 
-class HcCirController extends Controller
+class HcResignController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +13,7 @@ class HcCirController extends Controller
      */
     public function index()
     {
-        $cirs = HcCir::get();
-        $jabatans = MasterJabatan::get();
-
-        return view('cir.index', ['cirs' => $cirs]);
+        //
     }
 
     /**
@@ -33,9 +23,7 @@ class HcCirController extends Controller
      */
     public function create()
     {
-        $karyawans = MasterKaryawan::get();
-        
-        return view('cir.create', ['karyawans' => $karyawans]);
+        //
     }
 
     /**
@@ -46,17 +34,7 @@ class HcCirController extends Controller
      */
     public function store(Request $request)
     {
-        // if ($request->jenis == "cuti") {
-        //     # code...
-        //     $cutis = new HcCuti;
-        //     $cutis->master_karyawan_id = $request->master_karyawan_id;
-        //     $cutis->master_jabatan_id = $request->master_jabatan_id;
-        // } else {
-        //     $resign = new HcResign;
-        //     $resign_ceklis = new HcResignCeklis;
-        //     $resign_survei_ceklis = new HcResignSurveiCeklis;
-        // }
-            dd($request);
+        //
     }
 
     /**

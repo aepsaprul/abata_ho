@@ -49,7 +49,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Nama</label>
-												<select class="form-control select2bs4" name="master_jabatan_id" style="width: 100%;">
+												<select class="form-control select2bs4" name="master_karyawan_id" style="width: 100%;">
 													<option value="">--Pilih Nama--</option>
 													@foreach ($karyawans as $karyawan)
 														<option value="{{ $karyawan->id }}">{{ $karyawan->nama_lengkap }}</option>
@@ -146,11 +146,11 @@
 
 				"<label for=\"\">Menerangkan dengan ini bahwa saya bermaksud untuk mengambil cuti :</label>" +
 				"<ul style=\"list-style-type: none;\">" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Melahirkan</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Tahunan</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Kematian</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Menikah</li>" +
-					"<li><input type=\"radio\" name=\"jenis_cuti\" id=\"jenis_cuti\"> Lainnya</li>" +
+					"<li><input type=\"radio\" name=\"cuti_jenis\" id=\"cuti_jenis\" value=\"melahirkan\"> Melahirkan</li>" +
+					"<li><input type=\"radio\" name=\"cuti_jenis\" id=\"cuti_jenis\" value=\"tahunan\"> Tahunan</li>" +
+					"<li><input type=\"radio\" name=\"cuti_jenis\" id=\"cuti_jenis\" value=\"kematian\"> Kematian</li>" +
+					"<li><input type=\"radio\" name=\"cuti_jenis\" id=\"cuti_jenis\" value=\"menikah\"> Menikah</li>" +
+					"<li><input type=\"radio\" name=\"cuti_jenis\" id=\"cuti_jenis\" value=\"lainnya\"> Lainnya</li>" +
 				"</ul>" +
 
 				"<table class=\"table table-bordered\">" +
@@ -159,10 +159,10 @@
 						"<td>" +
 							"<div class=\"row\">" +
 								"<div class=\"col-md-6\">" +
-									"<input type=\"text\" id=\"cuti_tanggal_mulai\" class=\"form-control\" placeholder=\"Tanggal Mulai\">" +
+									"<input type=\"text\" name=\"cuti_tanggal_mulai\" id=\"cuti_tanggal_mulai\" class=\"form-control\" placeholder=\"Tanggal Mulai\">" +
 								"</div>" +
 								"<div class=\"col-md-6\">" +
-									"<input type=\"text\" id=\"cuti_tanggal_berakhir\" class=\"form-control\" placeholder=\"Tanggal Berakhir\">" +
+									"<input type=\"text\" name=\"cuti_tanggal_berakhir\" id=\"cuti_tanggal_berakhir\" class=\"form-control\" placeholder=\"Tanggal Berakhir\">" +
 								"</div>" +
 							"</div>" +
 						"</td>" +
@@ -177,7 +177,7 @@
 					"</tr>" +
 					"<tr>" +
 						"<td>Dan saya bersedia berangkat kerja lagi mulai tanggal</td>" +
-						"<td><input type=\"text\" id=\"cuti_tanggal_kerja\" class=\"form-control\"></td>" +
+						"<td><input type=\"text\" name=\"cuti_tanggal_kerja\" id=\"cuti_tanggal_kerja\" class=\"form-control\"></td>" +
 					"</tr>" +
 				"</table>";
 
@@ -294,47 +294,47 @@
 					"<tr>" +
 						"<td>1.</td>" +
 						"<td>Secara umum saya merasa puas selama bekerja di Abata/Wahana/perfecta Utama</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_1\" id=\"resign_survei_ceklis_keterangan_1\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_1\" id=\"resign_survei_ceklis_keterangan_1\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_1\" id=\"resign_survei_ceklis_keterangan_1\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_1\" id=\"resign_survei_ceklis_keterangan_1\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_1\" id=\"resign_survei_ceklis_keterangan_1\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>2.</td>" +
 						"<td>Saya tahu apa yang diharapkan atasan dan perusahaan kepada saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_2\" id=\"resign_survei_ceklis_keterangan_2\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_2\" id=\"resign_survei_ceklis_keterangan_2\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_2\" id=\"resign_survei_ceklis_keterangan_2\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_2\" id=\"resign_survei_ceklis_keterangan_2\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_2\" id=\"resign_survei_ceklis_keterangan_2\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>3.</td>" +
 						"<td>Atasan saya memberikan pengarahan yang jelas mengenai target kerja yang harus saya capai.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_3\" id=\"resign_survei_ceklis_keterangan_3\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_3\" id=\"resign_survei_ceklis_keterangan_3\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_3\" id=\"resign_survei_ceklis_keterangan_3\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_3\" id=\"resign_survei_ceklis_keterangan_3\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_3\" id=\"resign_survei_ceklis_keterangan_3\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>4.</td>" +
 						"<td>Saya memiliki peralatan bantu yang memadai untuk menyelesaikan setiap tugas saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_4\" id=\"resign_survei_ceklis_keterangan_4\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_4\" id=\"resign_survei_ceklis_keterangan_4\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_4\" id=\"resign_survei_ceklis_keterangan_4\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_4\" id=\"resign_survei_ceklis_keterangan_4\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_4\" id=\"resign_survei_ceklis_keterangan_4\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>5.</td>" +
 						"<td>Waktu kerja yang saya miliki sesuai dengan beban pekerjaan saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_5\" id=\"resign_survei_ceklis_keterangan_5\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_5\" id=\"resign_survei_ceklis_keterangan_5\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_5\" id=\"resign_survei_ceklis_keterangan_5\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_5\" id=\"resign_survei_ceklis_keterangan_5\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_5\" id=\"resign_survei_ceklis_keterangan_5\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<th class=\"text-center\" colspan=\"2\">ASPEK TIM KERJA</th>" +
@@ -347,47 +347,47 @@
 					"<tr>" +
 						"<td>6.</td>" +
 						"<td>Rekan tim kerja saya menghargai pendapat saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_6\" id=\"resign_survei_ceklis_keterangan_6\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_6\" id=\"resign_survei_ceklis_keterangan_6\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_6\" id=\"resign_survei_ceklis_keterangan_6\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_6\" id=\"resign_survei_ceklis_keterangan_6\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_6\" id=\"resign_survei_ceklis_keterangan_6\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>7.</td>" +
 						"<td>Rekan tim kerja saya selalu memberikan hasil terbaik dalam bekerja.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_7\" id=\"resign_survei_ceklis_keterangan_7\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_7\" id=\"resign_survei_ceklis_keterangan_7\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_7\" id=\"resign_survei_ceklis_keterangan_7\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_7\" id=\"resign_survei_ceklis_keterangan_7\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_7\" id=\"resign_survei_ceklis_keterangan_7\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>8.</td>" +
 						"<td>Di tim kerja, saya memiliki sahabat yang dapat saya ajak bertukar pikirandan berbicara secara personal.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_8\" id=\"resign_survei_ceklis_keterangan_8\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_8\" id=\"resign_survei_ceklis_keterangan_8\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_8\" id=\"resign_survei_ceklis_keterangan_8\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_8\" id=\"resign_survei_ceklis_keterangan_8\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_8\" id=\"resign_survei_ceklis_keterangan_8\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>9.</td>" +
 						"<td>Saya mengenal secara pribadi setiap anggota tim kerja saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_9\" id=\"resign_survei_ceklis_keterangan_9\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_9\" id=\"resign_survei_ceklis_keterangan_9\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_9\" id=\"resign_survei_ceklis_keterangan_9\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_9\" id=\"resign_survei_ceklis_keterangan_9\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_9\" id=\"resign_survei_ceklis_keterangan_9\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>10.</td>" +
 						"<td>Saya paham arti penting pekerjaan saya dalam upaya pencapaian Misi dan Visi.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_10\" id=\"resign_survei_ceklis_keterangan_10\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_10\" id=\"resign_survei_ceklis_keterangan_10\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_10\" id=\"resign_survei_ceklis_keterangan_10\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_10\" id=\"resign_survei_ceklis_keterangan_10\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_10\" id=\"resign_survei_ceklis_keterangan_10\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<th class=\"text-center\" colspan=\"2\">ASPEK KONTRIBUSI</th>" +
@@ -400,56 +400,56 @@
 					"<tr>" +
 						"<td>11.</td>" +
 						"<td>Saya memiliki ketrampilan dan keahlian yang memadai untuk	menyelesaikan tugas sehari-hari saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_11\" id=\"resign_survei_ceklis_keterangan_11\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_11\" id=\"resign_survei_ceklis_keterangan_11\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_11\" id=\"resign_survei_ceklis_keterangan_11\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_11\" id=\"resign_survei_ceklis_keterangan_11\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_11\" id=\"resign_survei_ceklis_keterangan_11\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>12.</td>" +
 						"<td>Atasan saya selalu memberikan pujian atau penghargaan setiap sayamelakukan pekerjaan dengan baik.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_12\" id=\"resign_survei_ceklis_keterangan_12\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_12\" id=\"resign_survei_ceklis_keterangan_12\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_12\" id=\"resign_survei_ceklis_keterangan_12\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_12\" id=\"resign_survei_ceklis_keterangan_12\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_12\" id=\"resign_survei_ceklis_keterangan_12\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>13.</td>" +
 						"<td>Atasan saya memberikan bimibingan kepada saya secara teratur.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_13\" id=\"resign_survei_ceklis_keterangan_13\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_13\" id=\"resign_survei_ceklis_keterangan_13\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_13\" id=\"resign_survei_ceklis_keterangan_13\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_13\" id=\"resign_survei_ceklis_keterangan_13\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_13\" id=\"resign_survei_ceklis_keterangan_13\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>14.</td>" +
 						"<td>Rekan kerja dan atasan saya peduli kepada saya sebagai seorang manusia.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_14\" id=\"resign_survei_ceklis_keterangan_14\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_14\" id=\"resign_survei_ceklis_keterangan_14\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_14\" id=\"resign_survei_ceklis_keterangan_14\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_14\" id=\"resign_survei_ceklis_keterangan_14\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_14\" id=\"resign_survei_ceklis_keterangan_14\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>15.</td>" +
 						"<td>Atasan atau rekan kerja saya selalu mendorong dan mendukung saya untuk berkembang.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_15\" id=\"resign_survei_ceklis_keterangan_15\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_15\" id=\"resign_survei_ceklis_keterangan_15\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_15\" id=\"resign_survei_ceklis_keterangan_15\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_15\" id=\"resign_survei_ceklis_keterangan_15\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_15\" id=\"resign_survei_ceklis_keterangan_15\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>16.</td>" +
 						"<td>Saya memiliki kesempatan untuk melakukan pekerjaan sesuai dengan bakat yang saya miliki.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_16\" id=\"resign_survei_ceklis_keterangan_16\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_16\" id=\"resign_survei_ceklis_keterangan_16\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_16\" id=\"resign_survei_ceklis_keterangan_16\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_16\" id=\"resign_survei_ceklis_keterangan_16\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_16\" id=\"resign_survei_ceklis_keterangan_16\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<th class=\"text-center\" colspan=\"2\">ASPEK PERUSAHAAN</th>" +
@@ -462,29 +462,29 @@
 					"<tr>" +
 						"<td>17.</td>" +
 						"<td>Setiap orang di perusahaan ini diberikan kesempatan yang sama tanpa menghiraukan latar belakang etnis, gender, usia, ketidak-mampuan, atau perbedaan lainnya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_17\" id=\"resign_survei_ceklis_keterangan_17\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_17\" id=\"resign_survei_ceklis_keterangan_17\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_17\" id=\"resign_survei_ceklis_keterangan_17\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_17\" id=\"resign_survei_ceklis_keterangan_17\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_17\" id=\"resign_survei_ceklis_keterangan_17\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>18.</td>" +
 						"<td>Para rekan kerja saya selalu saling terbuka dan jujur (kecuali terhadap kerahasiaan bisnis).</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_18\" id=\"resign_survei_ceklis_keterangan_18\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_18\" id=\"resign_survei_ceklis_keterangan_18\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_18\" id=\"resign_survei_ceklis_keterangan_18\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_18\" id=\"resign_survei_ceklis_keterangan_18\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_18\" id=\"resign_survei_ceklis_keterangan_18\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>19.</td>" +
 						"<td>Saya akan merekomendasikan kepada teman dan keluargasebagai tempat yang menyenangkan untuk bekerja.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_19\" id=\"resign_survei_ceklis_keterangan_19\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_19\" id=\"resign_survei_ceklis_keterangan_19\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_19\" id=\"resign_survei_ceklis_keterangan_19\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_19\" id=\"resign_survei_ceklis_keterangan_19\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_19\" id=\"resign_survei_ceklis_keterangan_19\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<th class=\"text-center\" colspan=\"2\">ASPEK PENGEMBANGAN</th>" +
@@ -497,29 +497,29 @@
 					"<tr>" +
 						"<td>20.</td>" +
 						"<td>Atasan saya memberitahu saya tentang kemajuan yang saya capai dalam setahun terakhir.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_20\" id=\"resign_survei_ceklis_keterangan_20\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_20\" id=\"resign_survei_ceklis_keterangan_20\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_20\" id=\"resign_survei_ceklis_keterangan_20\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_20\" id=\"resign_survei_ceklis_keterangan_20\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_20\" id=\"resign_survei_ceklis_keterangan_20\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>21.</td>" +
 						"<td>Di perusahaan ini saya berkesempatan mendapatkan pengembangan diri secara profesional dan personal.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_21\" id=\"resign_survei_ceklis_keterangan_21\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_21\" id=\"resign_survei_ceklis_keterangan_21\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_21\" id=\"resign_survei_ceklis_keterangan_21\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_21\" id=\"resign_survei_ceklis_keterangan_21\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_21\" id=\"resign_survei_ceklis_keterangan_21\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>22.</td>" +
 						"<td>Selama bekerja saya menentukan sendiri pengembangan karir seperti apa yang saya inginkan.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_22\" id=\"resign_survei_ceklis_keterangan_22\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_22\" id=\"resign_survei_ceklis_keterangan_22\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_22\" id=\"resign_survei_ceklis_keterangan_22\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_22\" id=\"resign_survei_ceklis_keterangan_22\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_22\" id=\"resign_survei_ceklis_keterangan_22\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<th class=\"text-center\" colspan=\"2\">ASPEK REWARDS</th>" +
@@ -532,68 +532,69 @@
 					"<tr>" +
 						"<td>23.</td>" +
 						"<td>Sistem penggajian yang diterapkan saat ini sesuai dengan penilaian kinerja.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_23\" id=\"resign_survei_ceklis_keterangan_23\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_23\" id=\"resign_survei_ceklis_keterangan_23\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_23\" id=\"resign_survei_ceklis_keterangan_23\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_23\" id=\"resign_survei_ceklis_keterangan_23\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_23\" id=\"resign_survei_ceklis_keterangan_23\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>24.</td>" +
 						"<td>Gaji saya kurang lebih sama dibandingkan perusahaan lain yang setara untuk pekerjaan sejenis</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_24\" id=\"resign_survei_ceklis_keterangan_24\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_24\" id=\"resign_survei_ceklis_keterangan_24\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_24\" id=\"resign_survei_ceklis_keterangan_24\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_24\" id=\"resign_survei_ceklis_keterangan_24\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_24\" id=\"resign_survei_ceklis_keterangan_24\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>25.</td>" +
 						"<td>Saya memahami seluruh informasi mengenai benefit yang diberikan perusahaan kepada Karyawan.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_25\" id=\"resign_survei_ceklis_keterangan_25\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_25\" id=\"resign_survei_ceklis_keterangan_25\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_25\" id=\"resign_survei_ceklis_keterangan_25\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_25\" id=\"resign_survei_ceklis_keterangan_25\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_25\" id=\"resign_survei_ceklis_keterangan_25\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>26.</td>" +
 						"<td>Besarnya Insentif dan bonus yang diberikan perusahaan sesuai dengan	kebutuhan saya.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_26\" id=\"resign_survei_ceklis_keterangan_26\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_26\" id=\"resign_survei_ceklis_keterangan_26\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_26\" id=\"resign_survei_ceklis_keterangan_26\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_26\" id=\"resign_survei_ceklis_keterangan_26\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_26\" id=\"resign_survei_ceklis_keterangan_26\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td>27.</td>" +
 						"<td>Saat ini perhatian perusahaan sudah cukup baik dibanding perusahaan lain yang saya ketahui.</td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
-						"<td class=\"text-center\"><input type=\"radio\" name=\"\" id=\"\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_27\" id=\"resign_survei_ceklis_keterangan_27\" value=\"sangat setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_27\" id=\"resign_survei_ceklis_keterangan_27\" value=\"setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_27\" id=\"resign_survei_ceklis_keterangan_27\" value=\"ragu - ragu\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_27\" id=\"resign_survei_ceklis_keterangan_27\" value=\"tidak setuju\"></td>" +
+						"<td class=\"text-center\"><input type=\"radio\" name=\"resign_survei_ceklis_keterangan_27\" id=\"resign_survei_ceklis_keterangan_27\" value=\"sangat tidak setuju\"></td>" +
 					"</tr>" +
 				"</table>" +
 				"<label for=\"\">Alasan utama Anda mengundurkan diri (pilih salah satu) :</label>" +
 				"<ol style=\"list-style-type: none;\">" +
-					"<li><input type=\"radio\" name=\"\" id=\"\"> Pindah ke Perusahaan lain yaitu</li>" +
-					"<li><input type=\"radio\" name=\"\" id=\"\"> Melanjutkan sekolah</li>" +
-					"<li><input type=\"radio\" name=\"\" id=\"\"> Wiraswasta</li>" +
-					"<li><input type=\"radio\" name=\"\" id=\"\"> Tidak bekerja</li>" +
-					"<li><input type=\"radio\" name=\"\" id=\"\"> Lainnya</li>" +
+					"<li><input type=\"radio\" name=\"resign_survei_essay_1\" id=\"resign_survei_essay_1\" value=\"pindah_perusahaan\"> Pindah ke Perusahaan lain yaitu</li>" +
+					"<li><input type=\"radio\" name=\"resign_survei_essay_1\" id=\"resign_survei_essay_1\" value=\"melanjutkan sekolah\"> Melanjutkan sekolah</li>" +
+					"<li><input type=\"radio\" name=\"resign_survei_essay_1\" id=\"resign_survei_essay_1\" value=\"wiraswasta\"> Wiraswasta</li>" +
+					"<li><input type=\"radio\" name=\"resign_survei_essay_1\" id=\"resign_survei_essay_1\" value=\"tidak bekerja\"> Tidak bekerja</li>" +
+					"<li><input type=\"radio\" name=\"resign_survei_essay_1\" id=\"resign_survei_essay_1\" value=\"lainnya\"> Lainnya</li>" +
 				"</ol>" +
 
 				"<label for=\"\">Jelaskan apa yang Anda rasakan dengan beban pekerjaan yang telah diberikan pada Anda dari awal masuk kerja hingga saat ini?</label><br>" +
-				"<textarea name=\"\" id=\"\" rows=\"3\" class=\"form-control\"></textarea>" +
+				"<textarea name=\"resign_survei_essay_2\" id=\"resign_survei_essay_2\" rows=\"3\" class=\"form-control\"></textarea>" +
 
 				"<label for=\"\">Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?</label><br>" +
 				"<p for=\"\">A. Baik, Jelaskan :</p>" +
-				"<textarea name=\"\" id=\"\" rows=\"3\" class=\"form-control\"></textarea>" +
+				"<textarea name=\"resign_survei_essay_3\" id=\"resign_survei_essay_3\" rows=\"3\" class=\"form-control\"></textarea>" +
 				"<p for=\"\">B. Kurang Baik, Jelaskan :</p>" +
-				"<textarea name=\"\" id=\"\" rows=\"3\" class=\"form-control\"></textarea>" +
+				"<textarea name=\"resign_survei_essay_3\" id=\"resign_survei_essay_3\" rows=\"3\" class=\"form-control\"></textarea>" +
+
 				"<label for=\"\">Berikan pendapat Anda mengenai perusahaan ini sebagi bahan masukan bagi kami</label>" +
-				"<textarea name=\"\" id=\"\" rows=\"3\" class=\"form-control\"></textarea>";
+				"<textarea name=\"resign_survei_essay_4\" id=\"resign_survei_essay_4\" rows=\"3\" class=\"form-control\"></textarea>";
 			
 			if (jenis_val == 'cuti') {
 				$('#jenis_form').append(cuti_form);
