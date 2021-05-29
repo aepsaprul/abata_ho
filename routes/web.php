@@ -41,6 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('hc/cir', HcCirController::class);
     Route::get('hc/cir/{id}/delete', [HcCirController::class, 'delete'])->name('cir.delete');
+    Route::get('hc/cir/{id}/atasan_approve', [HcCirController::class, 'atasanApprove'])->name('cir.atasan_approve');
+    Route::get('hc/cir/{id}/atasan_tolak', [HcCirController::class, 'atasanTolak'])->name('cir.atasan_tolak');
+    Route::get('hc/cir/{id}/hc_approve', [HcCirController::class, 'hcApprove'])->name('cir.hc_approve');
+    Route::get('hc/cir/{id}/hc_tolak', [HcCirController::class, 'hcTolak'])->name('cir.hc_tolak');
+    Route::get('hc/cuti', [HcCirController::class, 'indexCuti'])->name('cir.index_cuti');
+    Route::get('hc/cuti/create', [HcCirController::class, 'createCuti'])->name('cir.create_cuti');
+    Route::post('hc/cuti/store', [HcCirController::class, 'storeCuti'])->name('cir.store_cuti');
+    Route::get('hc/resign', [HcCirController::class, 'indexResign'])->name('cir.index_resign');
 
     Route::resource('hc/loker', HcLokerController::class);
     Route::get('hc/loker/{id}/delete', [HcLokerController::class, 'delete'])->name('loker.delete');

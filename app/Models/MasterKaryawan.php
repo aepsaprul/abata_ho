@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\HcCuti;
 use App\Models\SitumpurCs;
 use App\Models\KaryawanMenu;
 use App\Models\MasterCabang;
@@ -69,5 +70,9 @@ class MasterKaryawan extends Model
 
     public function situmpurAntrianDesainNomor() {
         return $this->hasMany(SitumpurAntrianDesainNomor::class);
+    }
+
+    public function cuti() {
+        return $this->hasMany(HcCuti::class);
     }
 }

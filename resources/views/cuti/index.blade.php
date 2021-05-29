@@ -23,12 +23,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Data Formulir</h1>
+					<h1>Data Cuti</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Formulir</li>
+						<li class="breadcrumb-item active">Cuti</li>
 					</ol>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 					@endif
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><a href="{{ route('cir.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+							<h3 class="card-title"><a href="{{ route('cir.create_cuti') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -54,47 +54,40 @@
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Karyawan</th>
 									<th>Jenis</th>
 									<th>Status</th>
-									<th>#</th>
 								</tr>
 								</thead>
 								<tbody>
-									@foreach ($cirs as $key => $cir)
+									@foreach ($cutis as $key => $cuti)
 										
 										<tr>
 											<td class="text-center">{{ $key + 1 }}</td>
+											{{-- <td>{{ $cuti->masterKaryawan->nama_panggilan }}</td> --}}
+											<td>{{ $cuti->jenis }}</td>
 											<td>
-
-												{{ $cir->masterKaryawan ? $cir->masterKaryawan->nama_panggilan : '' }}
-											</td>
-											<td>{{ $cir->jenis }}</td>
-											<td>
-												@if ($cir->status == 1)
-													Data masuk
-												@elseif ($cir->status == 2)
+												@if ($cuti->status == 1)
+													Terkirim
+												@elseif ($cuti->status == 2)
 													Acc Atasan
-												@elseif ($cir->status == 3)
+												@elseif ($cuti->status == 3)
 													Ditolak Atasan
-												@elseif ($cir->status == 4)
+												@elseif ($cuti->status == 4)
 													Acc HC
-												@elseif ($cir->status == 5)
-													Ditolak HC
-												@else	
-														
-												@endif
-											</td>
-											<td class="text-center">
-												@if ($cir->status == 1 && Auth::user()->master_karyawan_id == $cir->atasan)
-													<a href="{{ route('cir.atasan_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.atasan_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
-												@elseif ($cir->status == 2 && Auth::user()->master_karyawan_id != $cir->atasan)
-													<a href="{{ route('cir.hc_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.hc_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
 												@else
+													Ditolak HC
 												@endif
-												
-												<a href="{{ route('cir.show', [$cir->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('cir.delete', [$cir->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
 											</td>
+											{{-- <td class="text-center"> --}}
+												{{-- @if ($cuti->status == 1 && Auth::user()->master_karyawan_id == $cuti->atasan)
+													<a href="{{ route('cuti.atasan_approve', [$cuti->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cuti.atasan_tolak', [$cuti->id]) }}" class="btn btn-danger">Tolak</a> | 
+												@elseif ($cuti->status == 2)
+													<a href="{{ route('cuti.atasan_approve', [$cuti->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cuti.atasan_tolak', [$cuti->id]) }}" class="btn btn-danger">Tolak</a> | 
+												@else
+												@endif --}}
+												
+												{{-- <a href="{{ route('cuti.show', [$cuti->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('cuti.delete', [$cuti->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a> --}}
+											{{-- </td> --}}
 										</tr>
 									
 									@endforeach
