@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\MasterJabatan;
 use App\Models\HcResignCeklis;
 use App\Models\MasterKaryawan;
+use App\Models\HcResignSurveiEssay;
 use App\Models\HcResignSurveiCeklis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -173,10 +174,11 @@ class HcCirController extends Controller
 
     public function createCuti()
     {
+        $nama_karyawan = MasterKaryawan::find(Auth::user()->master_karyawan_id);
         $karyawans = MasterKaryawan::get();
         $jabatans = MasterJabatan::get();
 
-        return view('cuti.create', ['karyawans' => $karyawans, 'jabatans' => $jabatans]);
+        return view('cuti.create', ['nama_karyawan' => $nama_karyawan, 'karyawans' => $karyawans, 'jabatans' => $jabatans]);
     }
 
     public function storeCuti(Request $request)
@@ -202,16 +204,182 @@ class HcCirController extends Controller
 
     public function indexResign()
     {
+        $resigns = HcResign::where('master_karyawan_id', Auth::user()->master_karyawan_id)->get();
 
+        return view('resign.index', ['resigns' => $resigns]);
     }
 
     public function createResign()
     {
+        $nama_karyawan = MasterKaryawan::find(Auth::user()->master_karyawan_id);
+        $karyawans = MasterKaryawan::get();
+        $jabatans = MasterJabatan::get();
 
+        return view('resign.create', ['nama_karyawan' => $nama_karyawan,'karyawans' => $karyawans, 'jabatans' => $jabatans]);
     }
 
-    public function storeResign()
+    public function storeResign(Request $request)
     {
+        // dd($request);
+        $resigns = new HcResign;
+        $resigns->master_karyawan_id = $request->master_karyawan_id;
+        $resigns->master_jabatan_id = $request->master_jabatan_id;
+        $resigns->atasan = $request->atasan;
+        $resigns->lokasi_kerja = $request->lokasi_kerja;
+        $resigns->tanggal_masuk = $request->tanggal_masuk;
+        $resigns->tanggal_keluar = $request->tanggal_keluar;
+        $resigns->alamat = $request->alamat;
+        $resigns->telepon = $request->telepon;
+        $resigns->status = 1;
+        $resigns->save();
+
+        if ($request->resign_ceklis_lain == null) {
+            $ceklis_lain = "lainnya";
+        } else {
+            $ceklis_lain = $request->resign_ceklis_lain;
+        }
         
+
+        $data_ceklis = [
+            $request->resign_ceklis_kewajiban_keuangan,
+            $request->resign_ceklis_serah_terima,
+            $request->resign_ceklis_id_card,
+            $request->resign_ceklis_seragam_karyawan,
+            $request->resign_ceklis_laptop,
+            $request->resign_ceklis_peralatan_kantor,
+            $request->resign_ceklis_penghapusan_akun,
+            $request->resign_ceklis_penghapusan_chat,
+            $request->resign_ceklis_penutupan_rekening,
+            $ceklis_lain,
+        ];
+
+        foreach ($request->resign_ceklis as $key => $value) {
+            # code...
+            $resign_ceklis = new HcResignCeklis;
+            $resign_ceklis->master_karyawan_id = $request->master_karyawan_id;
+            $resign_ceklis->nama_ceklis = $value;
+            $resign_ceklis->keterangan = $data_ceklis[$key];
+            $resign_ceklis->tanggal_selesai = $request->resign_ceklis_tanggal[$key];
+            $resign_ceklis->save();
+        }
+
+        $data_survei_ceklis = [
+            $request->resign_survei_ceklis_keterangan_1,
+            $request->resign_survei_ceklis_keterangan_2,
+            $request->resign_survei_ceklis_keterangan_3,
+            $request->resign_survei_ceklis_keterangan_4,
+            $request->resign_survei_ceklis_keterangan_5,
+            $request->resign_survei_ceklis_keterangan_6,
+            $request->resign_survei_ceklis_keterangan_7,
+            $request->resign_survei_ceklis_keterangan_8,
+            $request->resign_survei_ceklis_keterangan_9,
+            $request->resign_survei_ceklis_keterangan_10,
+            $request->resign_survei_ceklis_keterangan_11,
+            $request->resign_survei_ceklis_keterangan_12,
+            $request->resign_survei_ceklis_keterangan_13,
+            $request->resign_survei_ceklis_keterangan_14,
+            $request->resign_survei_ceklis_keterangan_15,
+            $request->resign_survei_ceklis_keterangan_16,
+            $request->resign_survei_ceklis_keterangan_17,
+            $request->resign_survei_ceklis_keterangan_18,
+            $request->resign_survei_ceklis_keterangan_19,
+            $request->resign_survei_ceklis_keterangan_20,
+            $request->resign_survei_ceklis_keterangan_21,
+            $request->resign_survei_ceklis_keterangan_22,
+            $request->resign_survei_ceklis_keterangan_23,
+            $request->resign_survei_ceklis_keterangan_24,
+            $request->resign_survei_ceklis_keterangan_25,
+            $request->resign_survei_ceklis_keterangan_26,
+            $request->resign_survei_ceklis_keterangan_27,
+        ];
+
+        foreach ($request->hc_resign_survei_nama_ceklis_id as $key => $value) {
+            $survei_ceklis = new HcResignSurveiCeklis;
+            $survei_ceklis->master_karyawan_id = $request->master_karyawan_id;
+            $survei_ceklis->hc_resign_survei_nama_ceklis_id = $value;
+            $survei_ceklis->keterangan = $data_survei_ceklis[$key];
+            $survei_ceklis->save();
+        }
+
+        $data_survei_essay = [
+            $request->resign_survei_essay_1,
+            $request->resign_survei_essay_2,
+            $request->resign_survei_essay_3,
+            $request->resign_survei_essay_4,
+        ];
+
+        foreach ($request->hc_resign_survei_nama_essay_id as $key => $value) {
+            $survei_essay = new HcResignSurveiEssay;
+            $survei_essay->master_karyawan_id = $request->master_karyawan_id;
+            $survei_essay->hc_resign_survei_nama_essay_id = $value;
+            $survei_essay->keterangan = $data_survei_essay[$key];
+            $survei_essay->save();
+        }
+    }
+
+    public function resignFormIndex()
+    {
+        $cirs = HcResign::get();
+
+        return view('hc_resign.index', ['cirs' => $cirs]);
+    }
+
+    public function resignShow($id)
+    {
+        $resign = HcResign::with(['masterKaryawan', 'masterJabatan'])->find($id);
+        $atasan = MasterKaryawan::find($resign->atasan);
+        $resign_ceklis = HcResignCeklis::where('master_karyawan_id', $resign->master_karyawan_id)->get();
+        // $resign_survei_ceklis = HcResignSurveiCeklis::with('resignSurveiCeklis')->get();
+
+        return view('hc_resign.detail', [
+            'resign' => $resign, 
+            'atasan' => $atasan, 
+            'resign_ceklis' => $resign_ceklis
+            // 'resign_survei_ceklis' => $resign_survei_ceklis
+            ]);
+    }
+
+    public function resignDelete(Request $request, $id)
+    {
+        $resign = HcResign::find($id);
+        $resign->delete();
+
+        return redirect()->route('hc_resign.index')->with('status', 'Data berhasil dihapus');
+    }
+
+    public function resignAtasanApprove($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 2;
+        $cuti->save();
+
+        return redirect()->route('cir.index')->with('status', 'Cuti Di Approve');
+    }
+
+    public function resignAtasanTolak($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 3;
+        $cuti->save();
+
+        return redirect()->route('cir.index')->with('status', 'Cuti Di Tolak');
+    }
+
+    public function resignHcApprove($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 4;
+        $cuti->save();
+
+        return redirect()->route('cir.index')->with('status', 'Cuti Di Approve');
+    }
+
+    public function resignHcTolak($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 5;
+        $cuti->save();
+
+        return redirect()->route('cir.index')->with('status', 'Cuti Di Tolak');
     }
 }

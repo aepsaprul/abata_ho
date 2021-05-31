@@ -55,7 +55,7 @@
 								<tr>
 									<th>No</th>
 									<th>Karyawan</th>
-									<th>Jenis</th>
+									<th>Jenis Cuti</th>
 									<th>Status</th>
 									<th>#</th>
 								</tr>
@@ -72,7 +72,7 @@
 											<td>{{ $cir->jenis }}</td>
 											<td>
 												@if ($cir->status == 1)
-													Data masuk
+													Permohonan Cuti
 												@elseif ($cir->status == 2)
 													Acc Atasan
 												@elseif ($cir->status == 3)

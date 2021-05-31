@@ -45,10 +45,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hc/cir/{id}/atasan_tolak', [HcCirController::class, 'atasanTolak'])->name('cir.atasan_tolak');
     Route::get('hc/cir/{id}/hc_approve', [HcCirController::class, 'hcApprove'])->name('cir.hc_approve');
     Route::get('hc/cir/{id}/hc_tolak', [HcCirController::class, 'hcTolak'])->name('cir.hc_tolak');
+
+    Route::get('hc/form_resign', [HcCirController::class, 'resignFormIndex'])->name('cir.index_form_resign');
+    Route::get('hc/form_resign/{id}/show', [HcCirController::class, 'resignShow'])->name('cir.resign_show');
+    Route::get('hc/form_resign/{id}/delete', [HcCirController::class, 'resignDelete'])->name('cir.resign_delete');
+    Route::get('hc/form_resign/{id}/atasan_approve', [HcCirController::class, 'resignAtasanApprove'])->name('cir.resign_atasan_approve');
+    Route::get('hc/form_resign/{id}/atasan_tolak', [HcCirController::class, 'resignAtasanTolak'])->name('cir.resign_atasan_tolak');
+    Route::get('hc/form_resign/{id}/hc_approve', [HcCirController::class, 'resignHcApprove'])->name('cir.resign_hc_approve');
+    Route::get('hc/form_resign/{id}/hc_tolak', [HcCirController::class, 'resignHcTolak'])->name('cir.resign_hc_tolak');
+
     Route::get('hc/cuti', [HcCirController::class, 'indexCuti'])->name('cir.index_cuti');
     Route::get('hc/cuti/create', [HcCirController::class, 'createCuti'])->name('cir.create_cuti');
     Route::post('hc/cuti/store', [HcCirController::class, 'storeCuti'])->name('cir.store_cuti');
     Route::get('hc/resign', [HcCirController::class, 'indexResign'])->name('cir.index_resign');
+    Route::get('hc/resign/create', [HcCirController::class, 'createResign'])->name('cir.create_resign');
+    Route::post('hc/resign/store', [HcCirController::class, 'storeResign'])->name('cir.store_resign');
 
     Route::resource('hc/loker', HcLokerController::class);
     Route::get('hc/loker/{id}/delete', [HcLokerController::class, 'delete'])->name('loker.delete');

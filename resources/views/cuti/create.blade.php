@@ -38,7 +38,7 @@
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<div class="card-header">
-							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/hc/cir') }}">BACK</a></h3>
+							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/hc/cuti') }}">BACK</a></h3>
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
@@ -49,12 +49,8 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Nama</label>
-												<select class="form-control select2bs4" name="master_karyawan_id" style="width: 100%;">
-													<option value="">--Pilih Nama--</option>
-													@foreach ($karyawans as $karyawan)
-														<option value="{{ $karyawan->id }}">{{ $karyawan->nama_lengkap }}</option>
-													@endforeach
-												</select>
+												<p>{{ $nama_karyawan->nama_lengkap }}</p>
+												<input type="hidden" name="master_karyawan_id" value="{{ $nama_karyawan->id }}">
 											</div>
 										</div>
 									</div>									

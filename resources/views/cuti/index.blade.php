@@ -54,7 +54,7 @@
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Jenis</th>
+									<th>Jenis Cuti</th>
 									<th>Status</th>
 								</tr>
 								</thead>
@@ -63,7 +63,6 @@
 										
 										<tr>
 											<td class="text-center">{{ $key + 1 }}</td>
-											{{-- <td>{{ $cuti->masterKaryawan->nama_panggilan }}</td> --}}
 											<td>{{ $cuti->jenis }}</td>
 											<td>
 												@if ($cuti->status == 1)
@@ -78,16 +77,6 @@
 													Ditolak HC
 												@endif
 											</td>
-											{{-- <td class="text-center"> --}}
-												{{-- @if ($cuti->status == 1 && Auth::user()->master_karyawan_id == $cuti->atasan)
-													<a href="{{ route('cuti.atasan_approve', [$cuti->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cuti.atasan_tolak', [$cuti->id]) }}" class="btn btn-danger">Tolak</a> | 
-												@elseif ($cuti->status == 2)
-													<a href="{{ route('cuti.atasan_approve', [$cuti->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cuti.atasan_tolak', [$cuti->id]) }}" class="btn btn-danger">Tolak</a> | 
-												@else
-												@endif --}}
-												
-												{{-- <a href="{{ route('cuti.show', [$cuti->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('cuti.delete', [$cuti->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a> --}}
-											{{-- </td> --}}
 										</tr>
 									
 									@endforeach

@@ -46,7 +46,7 @@
 					@endif
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><a href="{{ route('cir.create_resign') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+							<h3 class="card-title"><a href="{{ route('cir.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -54,32 +54,46 @@
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Lokasi Kerja</th>
-									<th>Tanggal Masuk</th>
+									<th>Karyawan</th>
 									<th>Tanggal Keluar</th>
 									<th>Status</th>
+									<th>#</th>
 								</tr>
 								</thead>
 								<tbody>
-									@foreach ($resigns as $key => $resign)
+									@foreach ($cirs as $key => $cir)
 										
 										<tr>
 											<td class="text-center">{{ $key + 1 }}</td>
-											<td>{{ $resign->lokasi_kerja }}</td>
-											<td>{{ $resign->tanggal_masuk }}</td>
-											<td>{{ $resign->tanggal_keluar }}</td>
 											<td>
-												@if ($resign->status == 1)
-													Terkirim
-												@elseif ($resign->status == 2)
+
+												{{ $cir->masterKaryawan ? $cir->masterKaryawan->nama_panggilan : '' }}
+											</td>
+											<td>{{ $cir->tanggal_keluar }}</td>
+											<td>
+												@if ($cir->status == 1)
+													Permohonan Resign
+												@elseif ($cir->status == 2)
 													Acc Atasan
-												@elseif ($resign->status == 3)
+												@elseif ($cir->status == 3)
 													Ditolak Atasan
-												@elseif ($resign->status == 4)
+												@elseif ($cir->status == 4)
 													Acc HC
-												@else
+												@elseif ($cir->status == 5)
 													Ditolak HC
+												@else	
+														
 												@endif
+											</td>
+											<td class="text-center">
+												@if ($cir->status == 1 && Auth::user()->master_karyawan_id == $cir->atasan)
+													<a href="{{ route('cir.resign_atasan_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.resign_atasan_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
+												@elseif ($cir->status == 2 && Auth::user()->master_karyawan_id != $cir->atasan)
+													<a href="{{ route('cir.resign_hc_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.resign_hc_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
+												@else
+												@endif
+												
+												<a href="{{ route('cir.resign_show', [$cir->id]) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a> | <a href="{{ route('cir.resign_delete', [$cir->id]) }}" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 									
