@@ -68,9 +68,9 @@
 												@if ($cuti->status == 1)
 													Terkirim
 												@elseif ($cuti->status == 2)
-													Acc Atasan
+													Acc Atasan Langsung
 												@elseif ($cuti->status == 3)
-													Ditolak Atasan
+													Ditolak Atasan Langsung
 												@elseif ($cuti->status == 4)
 													Acc HC
 												@else

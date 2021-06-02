@@ -74,9 +74,9 @@
 												@if ($cir->status == 1)
 													Permohonan Cuti
 												@elseif ($cir->status == 2)
-													Acc Atasan
+													Acc Atasan Langsung
 												@elseif ($cir->status == 3)
-													Ditolak Atasan
+													Ditolak Atasan Langsung
 												@elseif ($cir->status == 4)
 													Acc HC
 												@elseif ($cir->status == 5)

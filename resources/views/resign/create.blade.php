@@ -220,7 +220,7 @@
 																	<input type="hidden" name="resign_ceklis[]" value="penutupan rekening bank berhubungan dengan kantor">
 																</tr>
 																<tr>
-																	<td>Lain lain <input type="text" class="form-control" name="resign_ceklis[]"></td>
+																	<td>Lain lain <input type="text" class="form-control" name="resign_ceklis[]" value="kosong"></td>
 																	<td>
 																		<input type="radio" name="resign_ceklis_lain" id="resign_ceklis_lain" value="ada"> Ada 
 																		<input type="radio" name="resign_ceklis_lain" id="resign_ceklis_lain" value="tidak"> Tidak
@@ -246,7 +246,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="1">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Secara umum saya merasa puas selama bekerja di Abata/Wahana/perfecta Utama">
 												<td>1.</td>
 												<td>Secara umum saya merasa puas selama bekerja di Abata/Wahana/perfecta Utama</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="sangat setuju"></td>
@@ -256,7 +256,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="2">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya tahu apa yang diharapkan atasan dan perusahaan kepada saya.">
 												<td>2.</td>
 												<td>Saya tahu apa yang diharapkan atasan dan perusahaan kepada saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_2" id="resign_survei_ceklis_keterangan_2" value="sangat setuju"></td>
@@ -266,7 +266,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_2" id="resign_survei_ceklis_keterangan_2" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="3">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Atasan saya memberikan pengarahan yang jelas mengenai target kerja yang harus saya capai.">
 												<td>3.</td>
 												<td>Atasan saya memberikan pengarahan yang jelas mengenai target kerja yang harus saya capai.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_3" id="resign_survei_ceklis_keterangan_3" value="sangat setuju"></td>
@@ -276,7 +276,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_3" id="resign_survei_ceklis_keterangan_3" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="4">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya memiliki peralatan bantu yang memadai untuk menyelesaikan setiap tugas saya.">
 												<td>4.</td>
 												<td>Saya memiliki peralatan bantu yang memadai untuk menyelesaikan setiap tugas saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_4" id="resign_survei_ceklis_keterangan_4" value="sangat setuju"></td>
@@ -286,7 +286,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_4" id="resign_survei_ceklis_keterangan_4" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="5">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Waktu kerja yang saya miliki sesuai dengan beban pekerjaan saya.">
 												<td>5.</td>
 												<td>Waktu kerja yang saya miliki sesuai dengan beban pekerjaan saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_5" id="resign_survei_ceklis_keterangan_5" value="sangat setuju"></td>
@@ -304,7 +304,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="6">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Rekan tim kerja saya menghargai pendapat saya.">
 												<td>6.</td>
 												<td>Rekan tim kerja saya menghargai pendapat saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_6" id="resign_survei_ceklis_keterangan_6" value="sangat setuju"></td>
@@ -314,7 +314,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_6" id="resign_survei_ceklis_keterangan_6" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="7">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Rekan tim kerja saya selalu memberikan hasil terbaik dalam bekerja.">
 												<td>7.</td>
 												<td>Rekan tim kerja saya selalu memberikan hasil terbaik dalam bekerja.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_7" id="resign_survei_ceklis_keterangan_7" value="sangat setuju"></td>
@@ -324,7 +324,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_7" id="resign_survei_ceklis_keterangan_7" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="8">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Di tim kerja, saya memiliki sahabat yang dapat saya ajak bertukar pikirandan berbicara secara personal.">
 												<td>8.</td>
 												<td>Di tim kerja, saya memiliki sahabat yang dapat saya ajak bertukar pikirandan berbicara secara personal.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_8" id="resign_survei_ceklis_keterangan_8" value="sangat setuju"></td>
@@ -334,7 +334,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_8" id="resign_survei_ceklis_keterangan_8" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="9">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya mengenal secara pribadi setiap anggota tim kerja saya.">
 												<td>9.</td>
 												<td>Saya mengenal secara pribadi setiap anggota tim kerja saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_9" id="resign_survei_ceklis_keterangan_9" value="sangat setuju"></td>
@@ -344,7 +344,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_9" id="resign_survei_ceklis_keterangan_9" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="10">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya paham arti penting pekerjaan saya dalam upaya pencapaian Misi dan Visi.">
 												<td>10.</td>
 												<td>Saya paham arti penting pekerjaan saya dalam upaya pencapaian Misi dan Visi.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_10" id="resign_survei_ceklis_keterangan_10" value="sangat setuju"></td>
@@ -362,7 +362,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="11">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya memiliki ketrampilan dan keahlian yang memadai untuk	menyelesaikan tugas sehari-hari saya.">
 												<td>11.</td>
 												<td>Saya memiliki ketrampilan dan keahlian yang memadai untuk	menyelesaikan tugas sehari-hari saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_11" id="resign_survei_ceklis_keterangan_11" value="sangat setuju"></td>
@@ -372,7 +372,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_11" id="resign_survei_ceklis_keterangan_11" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="12">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Atasan saya selalu memberikan pujian atau penghargaan setiap sayamelakukan pekerjaan dengan baik.">
 												<td>12.</td>
 												<td>Atasan saya selalu memberikan pujian atau penghargaan setiap sayamelakukan pekerjaan dengan baik.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_12" id="resign_survei_ceklis_keterangan_12" value="sangat setuju"></td>
@@ -382,7 +382,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_12" id="resign_survei_ceklis_keterangan_12" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="13">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Atasan saya memberikan bimibingan kepada saya secara teratur.">
 												<td>13.</td>
 												<td>Atasan saya memberikan bimibingan kepada saya secara teratur.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_13" id="resign_survei_ceklis_keterangan_13" value="sangat setuju"></td>
@@ -392,7 +392,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_13" id="resign_survei_ceklis_keterangan_13" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="14">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Rekan kerja dan atasan saya peduli kepada saya sebagai seorang manusia.">
 												<td>14.</td>
 												<td>Rekan kerja dan atasan saya peduli kepada saya sebagai seorang manusia.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_14" id="resign_survei_ceklis_keterangan_14" value="sangat setuju"></td>
@@ -402,7 +402,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_14" id="resign_survei_ceklis_keterangan_14" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="15">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Atasan atau rekan kerja saya selalu mendorong dan mendukung saya untuk berkembang.">
 												<td>15.</td>
 												<td>Atasan atau rekan kerja saya selalu mendorong dan mendukung saya untuk berkembang.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_15" id="resign_survei_ceklis_keterangan_15" value="sangat setuju"></td>
@@ -412,7 +412,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_15" id="resign_survei_ceklis_keterangan_15" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="16">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya memiliki kesempatan untuk melakukan pekerjaan sesuai dengan bakat yang saya miliki.">
 												<td>16.</td>
 												<td>Saya memiliki kesempatan untuk melakukan pekerjaan sesuai dengan bakat yang saya miliki.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_16" id="resign_survei_ceklis_keterangan_16" value="sangat setuju"></td>
@@ -430,7 +430,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="17">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Setiap orang di perusahaan ini diberikan kesempatan yang sama tanpa menghiraukan latar belakang etnis, gender, usia, ketidak-mampuan, atau perbedaan lainnya.">
 												<td>17.</td>
 												<td>Setiap orang di perusahaan ini diberikan kesempatan yang sama tanpa menghiraukan latar belakang etnis, gender, usia, ketidak-mampuan, atau perbedaan lainnya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_17" id="resign_survei_ceklis_keterangan_17" value="sangat setuju"></td>
@@ -440,7 +440,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_17" id="resign_survei_ceklis_keterangan_17" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="18">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Para rekan kerja saya selalu saling terbuka dan jujur (kecuali terhadap kerahasiaan bisnis).">
 												<td>18.</td>
 												<td>Para rekan kerja saya selalu saling terbuka dan jujur (kecuali terhadap kerahasiaan bisnis).</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_18" id="resign_survei_ceklis_keterangan_18" value="sangat setuju"></td>
@@ -450,7 +450,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_18" id="resign_survei_ceklis_keterangan_18" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="19">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya akan merekomendasikan kepada teman dan keluargasebagai tempat yang menyenangkan untuk bekerja.">
 												<td>19.</td>
 												<td>Saya akan merekomendasikan kepada teman dan keluargasebagai tempat yang menyenangkan untuk bekerja.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_19" id="resign_survei_ceklis_keterangan_19" value="sangat setuju"></td>
@@ -468,7 +468,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="20">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Atasan saya memberitahu saya tentang kemajuan yang saya capai dalam setahun terakhir.">
 												<td>20.</td>
 												<td>Atasan saya memberitahu saya tentang kemajuan yang saya capai dalam setahun terakhir.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_20" id="resign_survei_ceklis_keterangan_20" value="sangat setuju"></td>
@@ -478,7 +478,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_20" id="resign_survei_ceklis_keterangan_20" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="21">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Di perusahaan ini saya berkesempatan mendapatkan pengembangan diri secara profesional dan personal.">
 												<td>21.</td>
 												<td>Di perusahaan ini saya berkesempatan mendapatkan pengembangan diri secara profesional dan personal.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_21" id="resign_survei_ceklis_keterangan_21" value="sangat setuju"></td>
@@ -488,7 +488,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_21" id="resign_survei_ceklis_keterangan_21" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="22">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Selama bekerja saya menentukan sendiri pengembangan karir seperti apa yang saya inginkan.">
 												<td>22.</td>
 												<td>Selama bekerja saya menentukan sendiri pengembangan karir seperti apa yang saya inginkan.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_22" id="resign_survei_ceklis_keterangan_22" value="sangat setuju"></td>
@@ -506,7 +506,7 @@
 												<th class="text-center">Sangat Tidak Setuju</th>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="23">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Sistem penggajian yang diterapkan saat ini sesuai dengan penilaian kinerja.">
 												<td>23.</td>
 												<td>Sistem penggajian yang diterapkan saat ini sesuai dengan penilaian kinerja.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_23" id="resign_survei_ceklis_keterangan_23" value="sangat setuju"></td>
@@ -516,7 +516,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_23" id="resign_survei_ceklis_keterangan_23" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="24">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Gaji saya kurang lebih sama dibandingkan perusahaan lain yang setara untuk pekerjaan sejenis">
 												<td>24.</td>
 												<td>Gaji saya kurang lebih sama dibandingkan perusahaan lain yang setara untuk pekerjaan sejenis</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_24" id="resign_survei_ceklis_keterangan_24" value="sangat setuju"></td>
@@ -526,7 +526,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_24" id="resign_survei_ceklis_keterangan_24" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="25">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saya memahami seluruh informasi mengenai benefit yang diberikan perusahaan kepada Karyawan.">
 												<td>25.</td>
 												<td>Saya memahami seluruh informasi mengenai benefit yang diberikan perusahaan kepada Karyawan.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_25" id="resign_survei_ceklis_keterangan_25" value="sangat setuju"></td>
@@ -536,7 +536,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_25" id="resign_survei_ceklis_keterangan_25" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="26">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Besarnya Insentif dan bonus yang diberikan perusahaan sesuai dengan	kebutuhan saya.">
 												<td>26.</td>
 												<td>Besarnya Insentif dan bonus yang diberikan perusahaan sesuai dengan	kebutuhan saya.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_26" id="resign_survei_ceklis_keterangan_26" value="sangat setuju"></td>
@@ -546,7 +546,7 @@
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_26" id="resign_survei_ceklis_keterangan_26" value="sangat tidak setuju"></td>
 											</tr>
 											<tr>
-												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="27">
+												<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="Saat ini perhatian perusahaan sudah cukup baik dibanding perusahaan lain yang saya ketahui.">
 												<td>27.</td>
 												<td>Saat ini perhatian perusahaan sudah cukup baik dibanding perusahaan lain yang saya ketahui.</td>
 												<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_27" id="resign_survei_ceklis_keterangan_27" value="sangat setuju"></td>
@@ -557,21 +557,21 @@
 											</tr>
 										</table>
 										
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="1">
+										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Alasan utama Anda mengundurkan diri (pilih salah satu) :">
 										<label for="">Alasan utama Anda mengundurkan diri (pilih salah satu) :</label>
 										<ol style="list-style-type: none;">
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="pindah_perusahaan"> Pindah ke Perusahaan lain yaitu</li>
+											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="Pindah ke Perusahaan lain yaitu: "> Pindah ke Perusahaan lain yaitu <input type="text" name="pindah_perusahaan" id=""></li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="melanjutkan sekolah"> Melanjutkan sekolah</li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="wiraswasta"> Wiraswasta</li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="tidak bekerja"> Tidak bekerja</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="lainnya"> Lainnya</li>
+											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="lainnya"> Lainnya <input type="text" name="teks_lainnya" id=""></li>
 										</ol>
 						
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="2">
+										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Jelaskan apa yang Anda rasakan dengan beban pekerjaan yang telah diberikan pada Anda dari awal masuk kerja hingga saat ini?">
 										<label for="">Jelaskan apa yang Anda rasakan dengan beban pekerjaan yang telah diberikan pada Anda dari awal masuk kerja hingga saat ini?</label><br>
 										<textarea name="resign_survei_essay_2" id="resign_survei_essay_2" rows="3" class="form-control"></textarea>
 										
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="3">
+										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?">
 										<label for="">Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?</label><br>
 										<p for="">
 											<input type="radio" name="essay_radio" id="essay_radio" value="baik"> Baik, Jelaskan 
@@ -579,7 +579,7 @@
 										</p>
 										<textarea name="resign_survei_essay_3" id="resign_survei_essay_3" rows="3" class="form-control"></textarea>
 						
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="4">
+										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Berikan pendapat Anda mengenai perusahaan ini sebagi bahan masukan bagi kami">
 										<label for="">Berikan pendapat Anda mengenai perusahaan ini sebagi bahan masukan bagi kami</label>
 										<textarea name="resign_survei_essay_4" id="resign_survei_essay_4" rows="3" class="form-control"></textarea>
 									</div>

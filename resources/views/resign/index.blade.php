@@ -72,9 +72,9 @@
 												@if ($resign->status == 1)
 													Terkirim
 												@elseif ($resign->status == 2)
-													Acc Atasan
+													Acc Atasan Langsung
 												@elseif ($resign->status == 3)
-													Ditolak Atasan
+													Ditolak Atasan Langsung
 												@elseif ($resign->status == 4)
 													Acc HC
 												@else

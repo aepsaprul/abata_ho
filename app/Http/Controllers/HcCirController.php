@@ -233,8 +233,8 @@ class HcCirController extends Controller
         $resigns->status = 1;
         $resigns->save();
 
-        if ($request->resign_ceklis_lain == null) {
-            $ceklis_lain = "lainnya";
+        if ($request->resign_ceklis_lain == "tidak") {
+            $ceklis_lain = "tidak";
         } else {
             $ceklis_lain = $request->resign_ceklis_lain;
         }
@@ -296,7 +296,7 @@ class HcCirController extends Controller
         foreach ($request->hc_resign_survei_nama_ceklis_id as $key => $value) {
             $survei_ceklis = new HcResignSurveiCeklis;
             $survei_ceklis->master_karyawan_id = $request->master_karyawan_id;
-            $survei_ceklis->hc_resign_survei_nama_ceklis_id = $value;
+            $survei_ceklis->nama_ceklis = $value;
             $survei_ceklis->keterangan = $data_survei_ceklis[$key];
             $survei_ceklis->save();
         }
@@ -311,10 +311,12 @@ class HcCirController extends Controller
         foreach ($request->hc_resign_survei_nama_essay_id as $key => $value) {
             $survei_essay = new HcResignSurveiEssay;
             $survei_essay->master_karyawan_id = $request->master_karyawan_id;
-            $survei_essay->hc_resign_survei_nama_essay_id = $value;
+            $survei_essay->nama_essay = $value;
             $survei_essay->keterangan = $data_survei_essay[$key];
             $survei_essay->save();
         }
+
+        return redirect()->route('cir.index_resign')->with('status', 'Data berhasil disimpan');
     }
 
     public function resignFormIndex()
@@ -329,13 +331,15 @@ class HcCirController extends Controller
         $resign = HcResign::with(['masterKaryawan', 'masterJabatan'])->find($id);
         $atasan = MasterKaryawan::find($resign->atasan);
         $resign_ceklis = HcResignCeklis::where('master_karyawan_id', $resign->master_karyawan_id)->get();
-        // $resign_survei_ceklis = HcResignSurveiCeklis::with('resignSurveiCeklis')->get();
+        $resign_survei_ceklis = HcResignSurveiCeklis::where('master_karyawan_id', $resign->master_karyawan_id)->get();
+        $resign_survei_essay = HcResignSurveiEssay::where('master_karyawan_id', $resign->master_karyawan_id)->get();
 
         return view('hc_resign.detail', [
             'resign' => $resign, 
             'atasan' => $atasan, 
-            'resign_ceklis' => $resign_ceklis
-            // 'resign_survei_ceklis' => $resign_survei_ceklis
+            'resign_ceklis' => $resign_ceklis,
+            'resign_survei_ceklis' => $resign_survei_ceklis,
+            'resign_survei_essay' => $resign_survei_essay
             ]);
     }
 
@@ -344,7 +348,7 @@ class HcCirController extends Controller
         $resign = HcResign::find($id);
         $resign->delete();
 
-        return redirect()->route('hc_resign.index')->with('status', 'Data berhasil dihapus');
+        return redirect()->route('cir.index_form_resign')->with('status', 'Data berhasil dihapus');
     }
 
     public function resignAtasanApprove($id)
@@ -353,7 +357,7 @@ class HcCirController extends Controller
         $cuti->status = 2;
         $cuti->save();
 
-        return redirect()->route('cir.index')->with('status', 'Cuti Di Approve');
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Approve');
     }
 
     public function resignAtasanTolak($id)
@@ -362,7 +366,7 @@ class HcCirController extends Controller
         $cuti->status = 3;
         $cuti->save();
 
-        return redirect()->route('cir.index')->with('status', 'Cuti Di Tolak');
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Tolak');
     }
 
     public function resignHcApprove($id)
@@ -371,7 +375,7 @@ class HcCirController extends Controller
         $cuti->status = 4;
         $cuti->save();
 
-        return redirect()->route('cir.index')->with('status', 'Cuti Di Approve');
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Approve');
     }
 
     public function resignHcTolak($id)
@@ -380,6 +384,6 @@ class HcCirController extends Controller
         $cuti->status = 5;
         $cuti->save();
 
-        return redirect()->route('cir.index')->with('status', 'Cuti Di Tolak');
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Tolak');
     }
 }

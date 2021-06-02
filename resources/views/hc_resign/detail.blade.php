@@ -18,7 +18,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Tambah Formulir</h1>
+					<h1>Detail Formulir</h1>
 				</div>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -38,7 +38,7 @@
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<div class="card-header">
-							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/hc/resign') }}">BACK</a></h3>
+							<h3 class="card-title"><i class="fa fa-arrow-left"></i> <a href="{{ url('/hc/form_resign') }}">BACK</a></h3>
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
@@ -143,12 +143,12 @@
 												<tr>
 													<input type="hidden" name="hc_resign_survei_nama_ceklis_id[]" value="1">
 													<td>{{ $key + 1 }}</td>
-													<td>{{ $item->resignSurveiCeklis->nama_ceklis }}</td>
-													<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="sangat setuju"></td>
-													<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="setuju"></td>
-													<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="ragu - ragu"></td>
-													<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="tidak setuju"></td>
-													<td class="text-center"><input type="radio" name="resign_survei_ceklis_keterangan_1" id="resign_survei_ceklis_keterangan_1" value="sangat tidak setuju"></td>
+													<td>{{ $item->nama_ceklis }}</td>
+													<td class="text-center"><input type="radio" id="resign_survei_ceklis_keterangan_1" {{ $item->keterangan == "sangat setuju" ? 'checked' : '' }} value="sangat setuju"></td>
+													<td class="text-center"><input type="radio" id="resign_survei_ceklis_keterangan_1" {{ $item->keterangan == "setuju" ? 'checked' : '' }} value="setuju"></td>
+													<td class="text-center"><input type="radio" id="resign_survei_ceklis_keterangan_1" {{ $item->keterangan == "ragu - ragu" ? 'checked' : '' }} value="ragu - ragu"></td>
+													<td class="text-center"><input type="radio" id="resign_survei_ceklis_keterangan_1" {{ $item->keterangan == "tidak setuju" ? 'checked' : '' }} value="tidak setuju"></td>
+													<td class="text-center"><input type="radio" id="resign_survei_ceklis_keterangan_1" {{ $item->keterangan == "sangat tidak setuju" ? 'checked' : '' }} value="sangat tidak setuju"></td>
 												</tr>													
 											@endforeach
 											{{-- <tr>
@@ -413,36 +413,13 @@
 											</tr> --}}
 										</table>
 										
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="1">
-										<label for="">Alasan utama Anda mengundurkan diri (pilih salah satu) :</label>
-										<ol style="list-style-type: none;">
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="pindah_perusahaan"> Pindah ke Perusahaan lain yaitu</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="melanjutkan sekolah"> Melanjutkan sekolah</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="wiraswasta"> Wiraswasta</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="tidak bekerja"> Tidak bekerja</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="lainnya"> Lainnya</li>
-										</ol>
-						
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="2">
-										<label for="">Jelaskan apa yang Anda rasakan dengan beban pekerjaan yang telah diberikan pada Anda dari awal masuk kerja hingga saat ini?</label><br>
-										<textarea name="resign_survei_essay_2" id="resign_survei_essay_2" rows="3" class="form-control"></textarea>
-										
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="3">
-										<label for="">Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?</label><br>
-										<p for="">
-											<input type="radio" name="essay_radio" id="essay_radio" value="baik"> Baik, Jelaskan 
-											<input type="radio" name="essay_radio" id="essay_radio" value="kurang baik"> Kurang Baik, Jelaskan
-										</p>
-										<textarea name="resign_survei_essay_3" id="resign_survei_essay_3" rows="3" class="form-control"></textarea>
-						
-										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="4">
-										<label for="">Berikan pendapat Anda mengenai perusahaan ini sebagi bahan masukan bagi kami</label>
-										<textarea name="resign_survei_essay_4" id="resign_survei_essay_4" rows="3" class="form-control"></textarea>
+										@foreach ($resign_survei_essay as $item)
+											<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="1">
+											<label for="">{{ $item->nama_essay }}</label>
+											<textarea id="resign_survei_essay_2" rows="3" class="form-control">{{ $item->keterangan }}</textarea>											
+										@endforeach
 									</div>
 									
-								</div>
-								<div class="card-footer">
-									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
 							</form>
 						</div>
