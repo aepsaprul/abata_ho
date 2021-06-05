@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HcCir;
 use App\Models\HcCuti;
 use App\Models\HcResign;
+use App\Models\HcCutiTgl;
 use Illuminate\Http\Request;
 use App\Models\MasterJabatan;
 use App\Models\HcResignCeklis;
@@ -84,8 +85,9 @@ class HcCirController extends Controller
         $cuti = HcCuti::with(['masterKaryawan', 'atasanLangsung', 'masterJabatan'])->find($id);
         $karyawan = MasterKaryawan::where('id', $cuti->atasan)->first();
         $karyawanPengganti = MasterKaryawan::where('id', $cuti->karyawan_pengganti)->first();
+        $cuti_tgls = HcCutiTgl::where('hc_cuti_id', $cuti->id)->get();
 
-        return view('cir.detail', ['cuti' => $cuti, 'karyawan' => $karyawan, 'karyawanPengganti' => $karyawanPengganti]);
+        return view('cir.detail', ['cuti' => $cuti, 'karyawan' => $karyawan, 'karyawanPengganti' => $karyawanPengganti, 'cuti_tgls' => $cuti_tgls]);
     }
 
     /**
@@ -198,6 +200,14 @@ class HcCirController extends Controller
         $cutis->tanggal = Date('yyyy-mm-dd');
         $cutis->status = 1;
         $cutis->save();
+
+        foreach ($request->cuti_tanggal as $key => $value) {
+            # code...
+            $cuti_tgl = new HcCutiTgl;
+            $cuti_tgl->hc_cuti_id = $cutis->id;
+            $cuti_tgl->tanggal = $value;
+            $cuti_tgl->save();
+        }
 
         return redirect()->route('cir.index_cuti')->with('status', 'Data berhasil disimpan');
     }
@@ -346,6 +356,16 @@ class HcCirController extends Controller
     public function resignDelete(Request $request, $id)
     {
         $resign = HcResign::find($id);
+
+        $resign_ceklis = HcResignCeklis::where('master_karyawan_id', $resign->master_karyawan_id);
+        $resign_ceklis->delete();
+
+        $resign_survei_ceklis = HcResignSurveiCeklis::where('master_karyawan_id', $resign->master_karyawan_id);
+        $resign_survei_ceklis->delete();
+
+        $resign_survei_essay = HcResignSurveiEssay::where('master_karyawan_id', $resign->master_karyawan_id);
+        $resign_survei_essay->delete();
+        
         $resign->delete();
 
         return redirect()->route('cir.index_form_resign')->with('status', 'Data berhasil dihapus');
@@ -382,6 +402,24 @@ class HcCirController extends Controller
     {
         $cuti = HcResign::find($id);
         $cuti->status = 5;
+        $cuti->save();
+
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Tolak');
+    }
+
+    public function resignDirekturApprove($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 6;
+        $cuti->save();
+
+        return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Approve');
+    }
+
+    public function resignDirekturTolak($id)
+    {
+        $cuti = HcResign::find($id);
+        $cuti->status = 7;
         $cuti->save();
 
         return redirect()->route('cir.index_form_resign')->with('status', 'Cuti Di Tolak');

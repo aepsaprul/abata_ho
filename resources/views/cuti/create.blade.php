@@ -18,7 +18,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Tambah Formulir</h1>
+					<h1>Tambah Formulir Cuti</h1>
 				</div>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -72,11 +72,11 @@
 									<div id="formulir_cuti">
 										<table class="table table-bordered">
 											<tr>
-												<td><label>Bagian</label></td>
+												<td><label>Jabatan</label></td>
 												<td>:</td>
 												<td>
 													<select name="master_jabatan_id" id="master_jabatan_id" class="form-control">
-														<option value="">--Pilih Bagian--</option>
+														<option value="">--Pilih Jabatan--</option>
 														@foreach ($jabatans as $jabatan)
 																<option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
 														@endforeach
@@ -88,11 +88,11 @@
 												<td>:</td>
 												<td><input type="number" name="cuti_telepon" id="cuti_telepon" class="form-control"></td>
 											</tr>
-											<tr>
+											{{-- <tr>
 												<td><label>Alamat saat Cuti</label></td>
 												<td>:</td>
 												<td><input type="text" name="cuti_alamat" id="cuti_alamat" class="form-control"></td>
-											</tr>
+											</tr> --}}
 										</table>
 						
 										<label for="">Menerangkan dengan ini bahwa saya bermaksud untuk mengambil cuti :</label>
@@ -106,15 +106,16 @@
 						
 										<table class="table table-bordered">
 											<tr>
-												<td>Tanggal</td>
+												<td>Jumlah Hari</td>
 												<td>
-													<div class="row">
-														<div class="col-md-6">
-															<input type="text" name="cuti_tanggal_mulai" id="cuti_tanggal_mulai" class="form-control" placeholder="Tanggal Mulai">
-														</div>
-														<div class="col-md-6">
-															<input type="text" name="cuti_tanggal_berakhir" id="cuti_tanggal_berakhir" class="form-control" placeholder="Tanggal Berakhir">
-														</div>
+													<select name="jml_hari" id="jml_hari" class="form-control">
+														<option value="">--Pilih Jumlah Hari--</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+													</select>
+													<div id="form_tanggal">
+														
 													</div>
 												</td>
 											</tr>
@@ -135,7 +136,7 @@
 											</tr>
 											<tr>
 												<td>Dan saya bersedia berangkat kerja lagi mulai tanggal</td>
-												<td><input type="text" name="cuti_tanggal_kerja" id="cuti_tanggal_kerja" class="form-control"></td>
+												<td><input type="text" name="cuti_tanggal_kerja" id="cuti_tanggal_kerja" class="form-control" autocomplete="off"></td>
 											</tr>
 										</table>
 									</div>
@@ -177,80 +178,43 @@
 <script>
 
   $(function () {
-    //Initialize Select2 Elements
     $('.select2').select2()
-		//Initialize Select2 Elements
+		
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
   })
 
 	$(document).ready(function () {
-
-					$( "#cuti_tanggal_mulai" ).datepicker({
-						dateFormat: "yy-mm-dd"
-					});
-					$( "#cuti_tanggal_berakhir" ).datepicker({
-						dateFormat: "yy-mm-dd"
-					});
-					$( "#cuti_tanggal_kerja" ).datepicker({
-						dateFormat: "yy-mm-dd"
-					});
-
-			// if (jenis_val == 'resign') {
-			// 	$('#formulir_resign').show();				
-			// 	$('#formulir_cuti').hide();
-
-			// 	$( "#resign_tanggal_masuk" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-
-			// 	$( "#resign_tanggal_keluar" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-
-			// 	$( "#resign_tanggal_kewajiban_keuangan" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_serah_terima" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_id_card" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_seragam_karyawan" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_laptop" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_peralatan_kantor" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_penghapusan_akun" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_penghapusan_chat" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_penutupan_rekening" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-				
-			// 	$( "#resign_tanggal_lain" ).datepicker({
-			// 		dateFormat: "yy-mm-dd"
-			// 	});
-			// }
-
 		
+		$('#jml_hari').on('change', function () {
+			var jml_hari = $(this).val();
+			$('#form_tanggal').empty();
+			
+			for (let index = 1; index <= jml_hari; index++) {
+				
+				var form_tanggal = "<br>" +
+					"<div class=\"row\">" +
+						"<div class=\"col-md-3\">" +
+							"<label for=\"\">Tanggal " + index + "</label>" +															
+						"</div>" +
+						"<div class=\"col-md-9\">" +
+							"<input type=\"text\" name=\"cuti_tanggal[]\" id=\"cuti_tanggal_" + index + "\" class=\"form-control\" autocomplete=\"off\">" +															
+						"</div>" +
+					"</div>";	
+
+				$('#form_tanggal').append(form_tanggal);
+
+				$( "#cuti_tanggal_" + index ).datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+			}
+		});
+
+		$( "#cuti_tanggal_kerja" ).datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+
 	});
 
 	

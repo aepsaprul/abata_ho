@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hc/form_resign/{id}/atasan_tolak', [HcCirController::class, 'resignAtasanTolak'])->name('cir.resign_atasan_tolak');
     Route::get('hc/form_resign/{id}/hc_approve', [HcCirController::class, 'resignHcApprove'])->name('cir.resign_hc_approve');
     Route::get('hc/form_resign/{id}/hc_tolak', [HcCirController::class, 'resignHcTolak'])->name('cir.resign_hc_tolak');
+    Route::get('hc/form_resign/{id}/direktur_approve', [HcCirController::class, 'resignDirekturApprove'])->name('cir.resign_direktur_approve');
+    Route::get('hc/form_resign/{id}/direktur_tolak', [HcCirController::class, 'resignDirekturTolak'])->name('cir.resign_direktur_tolak');
 
     Route::get('hc/cuti', [HcCirController::class, 'indexCuti'])->name('cir.index_cuti');
     Route::get('hc/cuti/create', [HcCirController::class, 'createCuti'])->name('cir.create_cuti');

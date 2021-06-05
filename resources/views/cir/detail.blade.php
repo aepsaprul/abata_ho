@@ -18,7 +18,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Detail Formulir</h1>
+					<h1>Detail Formulir Cuti</h1>
 				</div>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -78,7 +78,7 @@
 									<div id="formulir_cuti">
 										<table class="table table-bordered">
 											<tr>
-												<td><label>Bagian</label></td>
+												<td><label>Jabatan</label></td>
 												<td>:</td>
 												<td>
 													<input type="text" name="master_jabatan_id" id="master_jabatan_id" class="form-control" value="{{ $cuti->masterJabatan->nama_jabatan }}">
@@ -95,36 +95,18 @@
 												<td>:</td>
 												<td><input type="number" name="cuti_telepon" id="cuti_telepon" class="form-control" value="{{ $cuti->telepon }}"></td>
 											</tr>
-											<tr>
-												<td><label>Alamat saat Cuti</label></td>
-												<td>:</td>
-												<td><input type="text" name="cuti_alamat" id="cuti_alamat" class="form-control" value="{{ $cuti->alamat }}"></td>
-											</tr>
 										</table>
 						
 										<label for="">Menerangkan dengan ini bahwa saya bermaksud untuk mengambil cuti :</label>
-										<ul style="list-style-type: none;">
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="melahirkan" @if ($cuti->jenis == "melahirkan") {{ "checked" }}	@endif> Melahirkan</li>
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="tahunan" @if ($cuti->jenis == "tahunan") {{ "checked" }}	@endif> Tahunan</li>
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="kematian" @if ($cuti->jenis == "kematian") {{ "checked" }}	@endif> Kematian</li>
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="menikah" @if ($cuti->jenis == "menikah") {{ "checked" }}	@endif> Menikah</li>
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="lainnya" @if ($cuti->jenis == "lainnya") {{ "checked" }}	@endif> Lainnya</li>
-										</ul>
-						
+										<input type="text" name="cuti_jenis" id="cuti_jenis" class="form-control" value="{{ $cuti->jenis }}">
+										<br>
 										<table class="table table-bordered">
-											<tr>
-												<td>Tanggal</td>
-												<td>
-													<div class="row">
-														<div class="col-md-6">
-															<input type="text" name="cuti_tanggal_mulai" id="cuti_tanggal_mulai" class="form-control" placeholder="Tanggal Mulai" value="{{ $cuti->tanggal_mulai }}">
-														</div>
-														<div class="col-md-6">
-															<input type="text" name="cuti_tanggal_berakhir" id="cuti_tanggal_berakhir" class="form-control" placeholder="Tanggal Berakhir" value="{{ $cuti->tanggal_berakhir }}">
-														</div>
-													</div>
-												</td>
-											</tr>
+											@foreach ($cuti_tgls as $key => $cuti_tgl)
+													<tr>
+														<td>Tanggal {{ $key + 1 }}</td>
+														<td><input type="text" name="cuti_tgl" id="cuti_tgl" class="form-control" value="{{ $cuti_tgl->tanggal }}"></td>
+													</tr>
+											@endforeach
 											<tr>
 												<td>Nama karyawan pengganti saat cuti adalah</td>
 												<td>

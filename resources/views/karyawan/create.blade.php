@@ -66,6 +66,16 @@
 												</dl>
 											</div>
 										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<dl class="row">
+													<dt class="col-sm-8 ml-3">Total Cuti</dt>
+													<dd class="col-sm-10 border-bottom border-warning rounded ml-4 p-2">
+														<input type="number" name="total_cuti" id="total_cuti" style="border: none; width: 100%;" onkeyup="this.value = this.value.toUpperCase()">
+													</dd>
+												</dl>
+											</div>
+										</div>
 									</div>
 									<div class="col-md-9">
 										<div class="row">

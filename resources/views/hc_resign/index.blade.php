@@ -45,9 +45,9 @@
 						</div>
 					@endif
 					<div class="card">
-						<div class="card-header">
+						{{-- <div class="card-header">
 							<h3 class="card-title"><a href="{{ route('cir.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
-						</div>
+						</div> --}}
 						<!-- /.card-header -->
 						<div class="card-body">
 							<table id="example1" class="table table-bordered table-striped">
@@ -81,6 +81,10 @@
 													Acc HC
 												@elseif ($cir->status == 5)
 													Ditolak HC
+												@elseif ($cir->status == 6)
+													Acc Direktur
+												@elseif ($cir->status == 7)
+													Ditolak Direktur
 												@else	
 														
 												@endif
@@ -90,6 +94,8 @@
 													<a href="{{ route('cir.resign_atasan_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.resign_atasan_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
 												@elseif ($cir->status == 2 && Auth::user()->master_karyawan_id != $cir->atasan)
 													<a href="{{ route('cir.resign_hc_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.resign_hc_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
+												@elseif ($cir->status == 4 && Auth::user()->load('masterKaryawan.masterJabatan')->masterKaryawan->masterJabatan->nama_jabatan == "Direktur")
+													<a href="{{ route('cir.resign_direktur_approve', [$cir->id]) }}" class="btn btn-primary">Approve</a> | <a href="{{ route('cir.resign_direktur_tolak', [$cir->id]) }}" class="btn btn-danger">Tolak</a> | 
 												@else
 												@endif
 												

@@ -77,8 +77,14 @@
 													Ditolak Atasan Langsung
 												@elseif ($resign->status == 4)
 													Acc HC
-												@else
+													@elseif ($resign->status == 5)
 													Ditolak HC
+												@elseif ($resign->status == 6)
+													Acc Direktur
+												@elseif ($resign->status == 7)
+													Ditolak Direktur
+												@else	
+														
 												@endif
 											</td>
 										</tr>

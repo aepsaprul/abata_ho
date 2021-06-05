@@ -71,6 +71,7 @@ class MasterKaryawanController extends Controller
         $karyawans->alamat_asal = $request->alamat_ktp;
         $karyawans->alamat_domisili = $request->alamat_sekarang;
         $karyawans->status_perkawinan = $request->status_perkawinan;
+        $karyawans->total_cuti = $request->total_cuti;
         $karyawans->created_by = Auth::user()->id;
         
         if($request->file('foto')) {
