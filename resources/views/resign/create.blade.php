@@ -560,11 +560,17 @@
 										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Alasan utama Anda mengundurkan diri (pilih salah satu) :">
 										<label for="">Alasan utama Anda mengundurkan diri (pilih salah satu) :</label>
 										<ol style="list-style-type: none;">
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="Pindah ke Perusahaan lain yaitu: "> Pindah ke Perusahaan lain yaitu <input type="text" name="pindah_perusahaan" id=""></li>
+											<li>
+												<input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="pindah"> Pindah ke Perusahaan lain yaitu 
+												<input type="text" name="pindah_perusahaan">
+											</li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="melanjutkan sekolah"> Melanjutkan sekolah</li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="wiraswasta"> Wiraswasta</li>
 											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="tidak bekerja"> Tidak bekerja</li>
-											<li><input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="lainnya"> Lainnya <input type="text" name="teks_lainnya" id=""></li>
+											<li>
+												<input type="radio" name="resign_survei_essay_1" id="resign_survei_essay_1" value="lainnya"> Lainnya 
+												<input type="text" name="teks_lainnya">
+											</li>
 										</ol>
 						
 										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Jelaskan apa yang Anda rasakan dengan beban pekerjaan yang telah diberikan pada Anda dari awal masuk kerja hingga saat ini?">
@@ -574,8 +580,8 @@
 										<input type="hidden" name="hc_resign_survei_nama_essay_id[]" value="Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?">
 										<label for="">Bagaimana hubungan kerja Anda di lingkungan kerja perusahaan ini?</label><br>
 										<p for="">
-											<input type="radio" name="essay_radio" id="essay_radio" value="baik"> Baik, Jelaskan 
-											<input type="radio" name="essay_radio" id="essay_radio" value="kurang baik"> Kurang Baik, Jelaskan
+											<input type="radio" name="essay_radio" id="essay_radio" value="baik, "> Baik, Jelaskan 
+											<input type="radio" name="essay_radio" id="essay_radio" value="kurang baik, "> Kurang Baik, Jelaskan
 										</p>
 										<textarea name="resign_survei_essay_3" id="resign_survei_essay_3" rows="3" class="form-control"></textarea>
 						

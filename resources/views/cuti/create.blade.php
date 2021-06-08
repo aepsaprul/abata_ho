@@ -101,7 +101,10 @@
 											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="tahunan"> Tahunan</li>
 											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="kematian"> Kematian</li>
 											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="menikah"> Menikah</li>
-											<li><input type="radio" name="cuti_jenis" id="cuti_jenis" value="lainnya"> Lainnya</li>
+											<li>
+												<input type="radio" name="cuti_jenis" id="cuti_jenis_lainnya" value="lainnya"> Lainnya 
+												<input type="text" name="form_cuti_lainnya" id="form_cuti_lainnya" class="form-control" maxlength="50" placeholder="Isi data lainnya">
+											</li>
 										</ul>
 						
 										<table class="table table-bordered">
@@ -186,6 +189,16 @@
   })
 
 	$(document).ready(function () {
+
+		$('#form_cuti_lainnya').hide();
+
+		$("#cuti_jenis_lainnya").change(function () {
+        if ($("#cuti_jenis_lainnya").is(":checked")) {
+					$('#form_cuti_lainnya').show();
+        }
+        else 
+					alert('false');
+    });    
 		
 		$('#jml_hari').on('change', function () {
 			var jml_hari = $(this).val();

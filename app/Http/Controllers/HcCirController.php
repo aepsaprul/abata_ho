@@ -156,6 +156,17 @@ class HcCirController extends Controller
         $cuti->status = 4;
         $cuti->save();
 
+        $karyawan = MasterKaryawan::find($cuti->master_karyawan_id);
+        $total_cuti = $karyawan->total_cuti;
+        $jml_cuti = $cuti->jml_hari;
+
+        $sisa_cuti = $total_cuti - $jml_cuti;
+        
+        $update_cuti_karyawan = MasterKaryawan::where('id', $cuti->master_karyawan_id)->first();
+        $update_cuti_karyawan->total_cuti = $sisa_cuti;
+        $update_cuti_karyawan->save();
+
+
         return redirect()->route('cir.index')->with('status', 'Cuti Di Approve');
     }
 
@@ -185,19 +196,27 @@ class HcCirController extends Controller
 
     public function storeCuti(Request $request)
     {
+        if ($request->cuti_jenis == "lainnya") {
+            # code...
+            $cuti_jenis = "lainnya : " . $request->form_cuti_lainnya;
+        } else {
+            $cuti_jenis = $request->cuti_jenis;
+        }
+
         $cutis = new HcCuti;
         $cutis->master_karyawan_id = $request->master_karyawan_id;
         $cutis->master_jabatan_id = $request->master_jabatan_id;
         $cutis->atasan = $request->atasan;
         $cutis->telepon = $request->cuti_telepon;
         $cutis->alamat = $request->cuti_alamat;
-        $cutis->jenis = $request->cuti_jenis;
+        $cutis->jenis = $cuti_jenis;
+        $cutis->jml_hari = $request->jml_hari;
         $cutis->tanggal_mulai = $request->cuti_tanggal_mulai;
         $cutis->tanggal_berakhir = $request->cuti_tanggal_berakhir;
         $cutis->karyawan_pengganti = $request->cuti_pengganti;
         $cutis->alasan = $request->cuti_alasan;
         $cutis->tanggal_kerja = $request->cuti_tanggal_kerja;
-        $cutis->tanggal = Date('yyyy-mm-dd');
+        $cutis->tanggal = date("Y-m-d");
         $cutis->status = 1;
         $cutis->save();
 
@@ -230,7 +249,7 @@ class HcCirController extends Controller
 
     public function storeResign(Request $request)
     {
-        // dd($request);
+        // dd($request->resign_survei_essay_1);
         $resigns = new HcResign;
         $resigns->master_karyawan_id = $request->master_karyawan_id;
         $resigns->master_jabatan_id = $request->master_jabatan_id;
@@ -266,7 +285,7 @@ class HcCirController extends Controller
         foreach ($request->resign_ceklis as $key => $value) {
             # code...
             $resign_ceklis = new HcResignCeklis;
-            $resign_ceklis->master_karyawan_id = $request->master_karyawan_id;
+            $resign_ceklis->hc_resign_id = $resigns->id;
             $resign_ceklis->nama_ceklis = $value;
             $resign_ceklis->keterangan = $data_ceklis[$key];
             $resign_ceklis->tanggal_selesai = $request->resign_ceklis_tanggal[$key];
@@ -305,22 +324,30 @@ class HcCirController extends Controller
 
         foreach ($request->hc_resign_survei_nama_ceklis_id as $key => $value) {
             $survei_ceklis = new HcResignSurveiCeklis;
-            $survei_ceklis->master_karyawan_id = $request->master_karyawan_id;
+            $survei_ceklis->hc_resign_id = $resigns->id;
             $survei_ceklis->nama_ceklis = $value;
             $survei_ceklis->keterangan = $data_survei_ceklis[$key];
             $survei_ceklis->save();
         }
 
+        if ($request->resign_survei_essay_1 == "pindah") {
+            $resign_survei_essay_1 = "Pindah ke Perusahaan lain yaitu: " . $request->pindah_perusahaan;
+        } elseif ($request->resign_survei_essay_1 == "lainnya") {
+            $resign_survei_essay_1 = $request->teks_lainnya;
+        } else {
+            $resign_survei_essay_1 = $request->resign_survei_essay_1;
+        }
+
         $data_survei_essay = [
-            $request->resign_survei_essay_1,
+            $resign_survei_essay_1,
             $request->resign_survei_essay_2,
-            $request->resign_survei_essay_3,
+            $request->essay_radio . $request->resign_survei_essay_3,
             $request->resign_survei_essay_4,
         ];
 
         foreach ($request->hc_resign_survei_nama_essay_id as $key => $value) {
             $survei_essay = new HcResignSurveiEssay;
-            $survei_essay->master_karyawan_id = $request->master_karyawan_id;
+            $survei_essay->hc_resign_id = $resigns->id;
             $survei_essay->nama_essay = $value;
             $survei_essay->keterangan = $data_survei_essay[$key];
             $survei_essay->save();

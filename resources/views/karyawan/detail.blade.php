@@ -64,9 +64,9 @@
 										</div>
 										<div class="col-md-12 mt-3">
 											<dl class="row">
-												<dt class="col-sm-8">Ganti Foto</dt>
-												<dd class="col-sm-10 rounded">
-													<input type="file" name="foto" class="form-control pl-0" id="foto" style="border: none; width: 100%;">
+												<dt class="col-sm-8">Total Cuti</dt>
+												<dd class="col-sm-10 border-bottom border-warning rounded">
+													<input type="text" name="total_cuti" class="form-control pl-0" id="total_cuti" style="border: none; width: 100%;" value="{{ $karyawan->total_cuti }}">
 												</dd>
 											</dl>
 										</div>
